@@ -44,7 +44,11 @@ export default async function AdminPage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user || user.email !== ADMIN_EMAIL) {
+  if (!user) {
+    redirect("/login");
+  }
+
+  if (user.email !== ADMIN_EMAIL) {
     redirect("/");
   }
 

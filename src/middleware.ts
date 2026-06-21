@@ -28,8 +28,12 @@ export async function middleware(request: NextRequest) {
   // Refresh the session (keeps user logged in)
   const { data: { user } } = await supabase.auth.getUser();
 
-  // Protect dashboard — redirect to login if not signed in
-  if (!user && request.nextUrl.pathname.startsWith("/dashboard")) {
+  // Protect dashboard and admin — redirect to login if not signed in
+  const isProtected =
+    request.nextUrl.pathname.startsWith("/dashboard") ||
+    request.nextUrl.pathname.startsWith("/admin");
+
+  if (!user && isProtected) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
