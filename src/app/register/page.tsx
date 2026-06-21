@@ -85,14 +85,14 @@ export default function RegisterPage() {
           <div className="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center">
             <Shield className="w-5 h-5 text-white" />
           </div>
-          RenewMate
+          RenewTracker
         </Link>
         <div>
           <h2 className="text-4xl font-bold text-white mb-4 leading-tight">
             Never miss a subscription payment again.
           </h2>
           <p className="text-blue-200 text-lg mb-8">
-            Join thousands who use RenewMate to stay on top of every recurring payment and bill.
+            Join thousands who use RenewTracker to stay on top of every recurring payment and bill.
           </p>
           <ul className="space-y-4">
             {benefits.map((b) => (

@@ -29,7 +29,7 @@ export default function Footer() {
                 <Shield className="w-4 h-4 text-white" />
               </div>
               <span className="text-white">
-                Renew<span className="text-blue-400">Mate</span>
+                Renew<span className="text-blue-400">Tracker</span>
               </span>
             </Link>
             <p className="text-sm text-gray-500 leading-relaxed max-w-xs mb-5">
@@ -37,14 +37,14 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-3">
               <a
-                href="mailto:hello@renewmate.app"
+                href="mailto:hello@renewtracker.net"
                 className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
                 aria-label="Email us"
               >
                 <Mail className="w-4 h-4" />
               </a>
               <a
-                href="https://t.me/renewmate"
+                href="https://t.me/renewtracker"
                 className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
                 aria-label="Telegram"
               >
@@ -77,7 +77,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-4">
             <p className="text-xs text-gray-600">
-              © {new Date().getFullYear()} RenewMate. All rights reserved.
+              © {new Date().getFullYear()} RenewTracker. All rights reserved.
             </p>
             <span className="text-gray-700 text-xs hidden sm:inline">·</span>
             <p className="text-xs text-gray-600 hidden sm:inline">Free for everyone, forever.</p>

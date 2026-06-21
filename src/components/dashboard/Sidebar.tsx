@@ -128,7 +128,7 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
             <Shield className="w-4 h-4 text-white" />
           </div>
           <span className="text-gray-900">
-            Renew<span className="text-blue-600">Mate</span>
+            Renew<span className="text-blue-600">Tracker</span>
           </span>
         </Link>
         <button

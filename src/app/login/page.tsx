@@ -52,7 +52,7 @@ export default function LoginPage() {
               <Shield className="w-5 h-5 text-white" />
             </div>
             <span className="text-gray-900">
-              Renew<span className="text-blue-600">Mate</span>
+              Renew<span className="text-blue-600">Tracker</span>
             </span>
           </Link>
           <h1 className="text-2xl font-bold text-gray-900 mt-4">Welcome back</h1>

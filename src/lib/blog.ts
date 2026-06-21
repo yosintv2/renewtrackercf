@@ -72,11 +72,11 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Once you've audited everything, the key is a system. Use a tool like SubTrack to log every subscription and bill, set the next billing date, and get reminded before charges hit. You will never be surprised by a renewal again.",
+        text: "Once you've audited everything, the key is a system. Use a tool like RenewTracker to log every subscription and bill, set the next billing date, and get reminded before charges hit. You will never be surprised by a renewal again.",
       },
       {
         type: "tip",
-        text: "Track everything in SubTrack — not just streaming, but rent, electricity, loan EMIs, and BNPL installments too. When you see the full picture in one dashboard, managing it becomes simple.",
+        text: "Track everything in RenewTracker — not just streaming, but rent, electricity, loan EMIs, and BNPL installments too. When you see the full picture in one dashboard, managing it becomes simple.",
       },
     ],
   },
@@ -122,7 +122,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "The ideal window for a billing reminder is 7 days. Long enough to do something about it if you want to cancel or pause, short enough that it's still top of mind when the charge happens. SubTrack sends you reminders at 30, 15, 7, 3, and 1 day before every payment.",
+        text: "The ideal window for a billing reminder is 7 days. Long enough to do something about it if you want to cancel or pause, short enough that it's still top of mind when the charge happens. RenewTracker sends you reminders at 30, 15, 7, 3, and 1 day before every payment.",
       },
       {
         type: "tip",
@@ -167,7 +167,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "h2",
-        text: "How to Track BNPL in SubTrack",
+        text: "How to Track BNPL in RenewTracker",
       },
       {
         type: "ol",
@@ -181,7 +181,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "tip",
-        text: "Treat every BNPL installment like a bill, not an optional payment. Add them to SubTrack the same day you make the purchase — while it is still fresh.",
+        text: "Treat every BNPL installment like a bill, not an optional payment. Add them to RenewTracker the same day you make the purchase — while it is still fresh.",
       },
     ],
   },
@@ -238,7 +238,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "tip",
-        text: "Use SubTrack to log every streaming service and its next billing date. When you see them all on one screen with a monthly total, it becomes much easier to decide what to cut.",
+        text: "Use RenewTracker to log every streaming service and its next billing date. When you see them all on one screen with a monthly total, it becomes much easier to decide what to cut.",
       },
     ],
   },
@@ -292,7 +292,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "tip",
-        text: "Add every bill to SubTrack under Living Essentials or Financial Liabilities. Set the next billing date and let the reminders do the work. One dashboard, every obligation visible.",
+        text: "Add every bill to RenewTracker under Living Essentials or Financial Liabilities. Set the next billing date and let the reminders do the work. One dashboard, every obligation visible.",
       },
     ],
   },
@@ -352,7 +352,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Add every subscription you're keeping into SubTrack. Set the billing date, amount, and category. From now on, you have a single view of everything you pay for — and you'll get reminded before each charge.",
+        text: "Add every subscription you're keeping into RenewTracker. Set the billing date, amount, and category. From now on, you have a single view of everything you pay for — and you'll get reminded before each charge.",
       },
       {
         type: "tip",
@@ -402,7 +402,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Before signing up for any lifestyle subscription, add it to SubTrack first — with a billing date 30 days from now and the monthly cost. Seeing it as a future charge before it happens makes the decision much more deliberate.",
+        text: "Before signing up for any lifestyle subscription, add it to RenewTracker first — with a billing date 30 days from now and the monthly cost. Seeing it as a future charge before it happens makes the decision much more deliberate.",
       },
       {
         type: "tip",
@@ -456,7 +456,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "tip",
-        text: "List every tech subscription in SubTrack's Tech & Tools category. You'll often notice duplicates or services you haven't opened in weeks. The dashboard makes it easy to make decisions you'd otherwise keep putting off.",
+        text: "List every tech subscription in RenewTracker's Tech & Tools category. You'll often notice duplicates or services you haven't opened in weeks. The dashboard makes it easy to make decisions you'd otherwise keep putting off.",
       },
     ],
   },
@@ -494,7 +494,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "When you add your credit card to SubTrack under Financial Liabilities, enter the minimum payment amount and the due date. The goal is to never miss a payment — but of course, always aim to pay the full statement balance to avoid interest.",
+        text: "When you add your credit card to RenewTracker under Financial Liabilities, enter the minimum payment amount and the due date. The goal is to never miss a payment — but of course, always aim to pay the full statement balance to avoid interest.",
       },
       {
         type: "h2",
@@ -510,7 +510,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "tip",
-        text: "Add each credit card as a separate entry in SubTrack's Financial Liabilities section. Note the due date and the rough monthly amount. You'll never miss a payment with a 7-day reminder.",
+        text: "Add each credit card as a separate entry in RenewTracker's Financial Liabilities section. Note the due date and the rough monthly amount. You'll never miss a payment with a 7-day reminder.",
       },
     ],
   },
@@ -556,11 +556,11 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "The first step is getting an accurate number. Add every recurring payment you make into SubTrack — not just the obvious ones, but everything. Once you see the monthly and yearly totals, you can make informed decisions about where to cut.",
+        text: "The first step is getting an accurate number. Add every recurring payment you make into RenewTracker — not just the obvious ones, but everything. Once you see the monthly and yearly totals, you can make informed decisions about where to cut.",
       },
       {
         type: "tip",
-        text: "Many people discover $200–300 in monthly subscriptions they had forgotten about after their first SubTrack audit. Seeing the number forces clarity that guessing never provides.",
+        text: "Many people discover $200–300 in monthly subscriptions they had forgotten about after their first RenewTracker audit. Seeing the number forces clarity that guessing never provides.",
       },
     ],
   },

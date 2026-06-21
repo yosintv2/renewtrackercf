@@ -119,7 +119,7 @@ export default function AdminTable({
               <Shield className="w-4 h-4 text-white" />
             </div>
             <span className="font-bold text-gray-900">
-              Renew<span className="text-blue-600">Mate</span>
+              Renew<span className="text-blue-600">Tracker</span>
             </span>
             <span className="text-[10px] font-bold bg-red-100 text-red-600 px-2 py-0.5 rounded-full ml-1">
               ADMIN

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import { Menu, Shield, ChevronDown, Check } from "lucide-react";
 import Link from "next/link";
@@ -15,6 +15,11 @@ import {
 function CurrencySelector() {
   const { code, setCurrency } = useCurrency();
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("renewtracker-currency");
+    if (!stored) setOpen(true);
+  }, []);
 
   return (
     <>
@@ -89,7 +94,7 @@ function Shell({ children }: { children: React.ReactNode }) {
             <div className="w-6 h-6 rounded-md bg-blue-600 flex items-center justify-center">
               <Shield className="w-3.5 h-3.5 text-white" />
             </div>
-            <span className="text-gray-900">Renew<span className="text-blue-600">Mate</span></span>
+            <span className="text-gray-900">Renew<span className="text-blue-600">Tracker</span></span>
           </Link>
 
           <div className="ml-auto flex items-center gap-2">

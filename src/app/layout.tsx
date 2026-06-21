@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RenewMate — Never Miss a Subscription Payment",
+  title: "RenewTracker — Never Miss a Subscription Payment",
   description:
     "Track every subscription, bill, rent, and financial liability in one place. Get reminded before payments hit — Netflix, Spotify, rent, credit cards, BNPL, and more. Free forever.",
   keywords: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     "rent reminder",
   ],
   openGraph: {
-    title: "RenewMate — Never Miss a Subscription Payment",
+    title: "RenewTracker — Never Miss a Subscription Payment",
     description:
       "Track every subscription, bill, and recurring payment. Get reminded before they charge. Free forever.",
     type: "website",

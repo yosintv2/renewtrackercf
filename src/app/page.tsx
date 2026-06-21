@@ -75,15 +75,15 @@ const categories = [
 
 const faqs = [
   {
-    q: "What can RenewMate track?",
-    a: "RenewMate tracks subscriptions, monthly bills, rent, utilities, credit card payments, BNPL installments, loan EMIs, and any other recurring payment you have.",
+    q: "What can RenewTracker track?",
+    a: "RenewTracker tracks subscriptions, monthly bills, rent, utilities, credit card payments, BNPL installments, loan EMIs, and any other recurring payment you have.",
   },
   {
     q: "How do reminders work?",
     a: "We send email reminders at 30, 15, 7, 3, and 1 day before each payment date. Push and Telegram notifications are coming soon.",
   },
   {
-    q: "Is RenewMate free?",
+    q: "Is RenewTracker free?",
     a: "Yes — completely free. No plans, no limits, no credit card required. We built it to be genuinely helpful, not to upsell you.",
   },
   {
@@ -107,7 +107,7 @@ const testimonials = [
   {
     name: "Aryan Mehta",
     role: "Student, Mumbai",
-    text: "I had no idea I was spending $180/month on subscriptions until I added them all to RenewMate. Cancelled 4 I'd completely forgotten about.",
+    text: "I had no idea I was spending $180/month on subscriptions until I added them all to RenewTracker. Cancelled 4 I'd completely forgotten about.",
     avatar: "AM",
     avatarColor: "bg-blue-500",
     stars: 5,
@@ -183,7 +183,7 @@ export default function Home() {
                 <div className="w-3 h-3 rounded-full bg-green-400" />
               </div>
               <div className="ml-3 flex-1 bg-white rounded-md border border-gray-200 px-3 py-1 text-xs text-gray-400 font-mono max-w-xs">
-                renewmate.app/dashboard
+                renewtracker.net/dashboard
               </div>
             </div>
 
@@ -247,7 +247,7 @@ export default function Home() {
               Stop losing money to forgotten payments
             </h2>
             <p className="text-base sm:text-lg text-gray-500 max-w-2xl mx-auto">
-              The average person wastes $300/year on unused subscriptions. RenewMate keeps you aware so every dollar you spend is intentional.
+              The average person wastes $300/year on unused subscriptions. RenewTracker keeps you aware so every dollar you spend is intentional.
             </p>
           </div>
 
@@ -279,7 +279,7 @@ export default function Home() {
               Track every type of recurring payment
             </h2>
             <p className="text-gray-500 max-w-xl mx-auto">
-              From streaming services to rent to BNPL installments — if it repeats, RenewMate tracks it.
+              From streaming services to rent to BNPL installments — if it repeats, RenewTracker tracks it.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
@@ -324,7 +324,7 @@ export default function Home() {
               {
                 step: "02",
                 title: "We track every deadline",
-                desc: "RenewMate monitors all your payment dates and calculates your monthly and yearly totals automatically.",
+                desc: "RenewTracker monitors all your payment dates and calculates your monthly and yearly totals automatically.",
                 icon: LayoutDashboard,
                 color: "from-indigo-600 to-purple-700",
               },

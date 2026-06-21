@@ -148,10 +148,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div className="mt-14 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-6 sm:p-8 text-center">
           <BookOpen className="w-8 h-8 text-blue-200 mx-auto mb-3" />
           <h3 className="text-xl font-bold text-white mb-2">
-            Track all your vehicle renewals in one place
+            Track every subscription and bill in one place
           </h3>
           <p className="text-blue-200 text-sm mb-5">
-            RenewMate reminds you before every tax, bluebook, insurance, and pollution test deadline. Free to start.
+            RenewTracker reminds you before every payment — streaming, rent, loans, BNPL, and more. Free forever.
           </p>
           <Link
             href="/register"

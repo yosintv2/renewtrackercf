@@ -35,13 +35,13 @@ export default function BlogPage() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 text-sm font-medium px-4 py-1.5 rounded-full mb-5">
             <BookOpen className="w-4 h-4" />
-            RenewMate Blog
+            RenewTracker Blog
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 leading-tight">
-            Nepal Vehicle Renewal<br className="hidden sm:block" /> Knowledge Base
+            Subscription &amp; Bill<br className="hidden sm:block" /> Management Guides
           </h1>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-            Guides, tips, and resources to help every Nepal vehicle owner stay on top of renewals, understand the law, and never pay a late fee again.
+            Guides, tips, and resources to help you track every subscription, cut wasted spend, and never miss a payment again.
           </p>
         </div>
       </section>
@@ -118,10 +118,10 @@ export default function BlogPage() {
         {/* CTA */}
         <div className="mt-16 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-3xl p-8 sm:p-12 text-center">
           <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-            Never miss a vehicle renewal
+            Never miss a subscription payment
           </h3>
           <p className="text-blue-200 mb-6 max-w-lg mx-auto">
-            RenewMate tracks all your renewal dates and sends you reminders before every deadline. Free for up to 2 vehicles.
+            RenewTracker tracks every subscription, bill, and recurring payment and reminds you before every charge. Free forever.
           </p>
           <Link
             href="/register"
