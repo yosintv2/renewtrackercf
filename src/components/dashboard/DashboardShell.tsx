@@ -76,7 +76,7 @@ function Shell({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-gray-50 flex w-full overflow-x-hidden">
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
       {sidebarOpen && (
@@ -86,7 +86,7 @@ function Shell({ children }: { children: React.ReactNode }) {
         />
       )}
 
-      <div className="flex-1 flex flex-col min-h-screen lg:ml-64">
+      <div className="flex-1 min-w-0 flex flex-col min-h-screen lg:ml-64">
         <header className="h-14 bg-white border-b border-gray-100 flex items-center px-4 sm:px-6 sticky top-0 z-20 gap-3">
           <button
             className="lg:hidden p-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors"

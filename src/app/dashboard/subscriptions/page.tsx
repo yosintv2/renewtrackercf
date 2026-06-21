@@ -632,7 +632,7 @@ export default function SubscriptionsPage() {
       {/* Filter tabs */}
       {!loading && subscriptions.length > 0 && (
         <>
-          <div className="flex gap-2 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-hide">
+          <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
             {filterTabs.map((tab) => (
               <button
                 key={tab.key}
