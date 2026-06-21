@@ -33,8 +33,14 @@ function CurrencySelector() {
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-sm max-h-[80vh] flex flex-col" showCloseButton={false}>
-          <DialogHeader>
+          <DialogHeader className="flex-row items-center justify-between pr-0">
             <DialogTitle>Choose Currency</DialogTitle>
+            <button
+              onClick={() => setOpen(false)}
+              className="text-xs text-gray-400 hover:text-gray-600 font-medium px-2 py-1 rounded-lg hover:bg-gray-100 transition-colors flex-shrink-0"
+            >
+              Skip
+            </button>
           </DialogHeader>
           <div className="overflow-y-auto -mx-6 px-6 py-2">
             <div className="space-y-0.5">

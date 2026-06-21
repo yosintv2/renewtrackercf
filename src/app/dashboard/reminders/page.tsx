@@ -23,7 +23,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   living: "Living Essentials",
   tech: "Tech & Tools",
   lifestyle: "Lifestyle",
-  financial: "Financial",
+  financial: "Financial Liabilities",
   other: "Other",
 };
 

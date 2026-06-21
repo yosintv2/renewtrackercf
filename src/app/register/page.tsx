@@ -35,7 +35,7 @@ export default function RegisterPage() {
       options: {
         data: { full_name: name },
         // After email confirmation, redirect here
-        emailRedirectTo: `${window.location.origin}/dashboard`,
+        emailRedirectTo: `${window.location.origin}/auth/callback?next=/dashboard`,
       },
     });
 
@@ -114,7 +114,7 @@ export default function RegisterPage() {
               <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center">
                 <Shield className="w-5 h-5 text-white" />
               </div>
-              <span className="text-gray-900">Renew<span className="text-blue-600">Mate</span></span>
+              <span className="text-gray-900">Renew<span className="text-blue-600">Tracker</span></span>
             </Link>
           </div>
 
@@ -159,7 +159,7 @@ export default function RegisterPage() {
                 <Input
                   id="name"
                   type="text"
-                  placeholder="Ramesh Shrestha"
+                  placeholder="Alex Johnson"
                   className="mt-1.5 h-11 border-gray-200"
                   value={name}
                   onChange={(e) => setName(e.target.value)}

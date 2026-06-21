@@ -6,12 +6,12 @@ import { ArrowRight, Clock, BookOpen } from "lucide-react";
 
 const categoryColors: Record<string, string> = {
   Guide: "bg-blue-100 text-blue-700",
-  Insurance: "bg-green-100 text-green-700",
-  Tips: "bg-yellow-100 text-yellow-700",
-  Knowledge: "bg-purple-100 text-purple-700",
-  "Electric Vehicles": "bg-emerald-100 text-emerald-700",
-  "Road Safety": "bg-red-100 text-red-700",
-  Costs: "bg-orange-100 text-orange-700",
+  "Money Tips": "bg-yellow-100 text-yellow-700",
+  Financial: "bg-green-100 text-green-700",
+  Entertainment: "bg-purple-100 text-purple-700",
+  Lifestyle: "bg-pink-100 text-pink-700",
+  Tech: "bg-indigo-100 text-indigo-700",
+  Data: "bg-orange-100 text-orange-700",
 };
 
 function formatDate(dateStr: string): string {
