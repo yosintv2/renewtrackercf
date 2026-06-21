@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Menu, X, Shield, ChevronRight } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Menu, X, Shield, ChevronRight, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -15,12 +16,19 @@ const navLinks = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [loadingHref, setLoadingHref] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const navigate = (href: string) => {
+    setLoadingHref(href);
+    router.push(href);
+  };
 
   return (
     <header
@@ -58,18 +66,28 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-2">
-            <Link
-              href="/login"
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+            <button
+              onClick={() => navigate("/login")}
+              disabled={loadingHref !== null}
+              className="inline-flex items-center justify-center gap-2 min-w-[75px] text-sm font-medium text-gray-600 hover:text-gray-900 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors disabled:pointer-events-none"
             >
-              Sign in
-            </Link>
-            <Link
-              href="/register"
-              className="text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-xl transition-colors shadow-sm"
+              {loadingHref === "/login" ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                "Sign in"
+              )}
+            </button>
+            <button
+              onClick={() => navigate("/register")}
+              disabled={loadingHref !== null}
+              className="inline-flex items-center justify-center gap-2 min-w-[140px] text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-xl transition-colors shadow-sm disabled:opacity-90 disabled:pointer-events-none"
             >
-              Get started free
-            </Link>
+              {loadingHref === "/register" ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                "Get started free"
+              )}
+            </button>
           </div>
 
           {/* Mobile hamburger */}
@@ -103,20 +121,28 @@ export default function Navbar() {
             </Link>
           ))}
           <div className="pt-3 pb-1 border-t border-gray-100 space-y-2">
-            <Link
-              href="/login"
-              className="block w-full text-center text-sm font-medium text-gray-700 border border-gray-200 py-2.5 px-4 rounded-xl hover:bg-gray-50 transition-colors"
-              onClick={() => setOpen(false)}
+            <button
+              onClick={() => { setOpen(false); navigate("/login"); }}
+              disabled={loadingHref !== null}
+              className="w-full inline-flex items-center justify-center text-sm font-medium text-gray-700 border border-gray-200 py-2.5 px-4 rounded-xl hover:bg-gray-50 transition-colors"
             >
-              Sign in
-            </Link>
-            <Link
-              href="/register"
-              className="block w-full text-center text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 py-2.5 px-4 rounded-xl transition-colors"
-              onClick={() => setOpen(false)}
+              {loadingHref === "/login" ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                "Sign in"
+              )}
+            </button>
+            <button
+              onClick={() => { setOpen(false); navigate("/register"); }}
+              disabled={loadingHref !== null}
+              className="w-full inline-flex items-center justify-center text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 py-2.5 px-4 rounded-xl transition-colors"
             >
-              Get started free
-            </Link>
+              {loadingHref === "/register" ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                "Get started free"
+              )}
+            </button>
           </div>
         </div>
       </div>

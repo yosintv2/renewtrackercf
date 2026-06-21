@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import HeroCTAButtons from "@/components/HeroCTAButtons";
 import Link from "next/link";
 import {
   Bell,
@@ -208,21 +209,7 @@ export default function Home() {
             Track vehicle tax, bluebook, insurance, and pollution test renewals for all your vehicles. Get timely reminders and avoid costly late fees — all from one dashboard.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10 sm:mb-14">
-            <Link
-              href="/register"
-              className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-base font-semibold px-6 sm:px-8 py-3.5 rounded-xl shadow-lg shadow-blue-200 transition-all hover:shadow-xl hover:shadow-blue-300 hover:-translate-y-0.5"
-            >
-              Start for free
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              href="/#features"
-              className="inline-flex items-center justify-center gap-2 text-base font-semibold text-gray-700 border border-gray-200 px-6 sm:px-8 py-3.5 rounded-xl hover:border-gray-300 hover:bg-gray-50 transition-all"
-            >
-              See how it works
-            </Link>
-          </div>
+          <HeroCTAButtons />
 
           <div className="flex flex-wrap justify-center gap-4 sm:gap-8 text-sm text-gray-500">
             {["No credit card required", "Free plan forever", "Set up in 2 minutes"].map((t) => (
