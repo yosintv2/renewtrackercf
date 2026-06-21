@@ -17,690 +17,550 @@ export type BlogSection = {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "how-to-renew-vehicle-tax-nepal",
-    title: "How to Renew Vehicle Tax in Nepal: Complete 2024 Guide",
+    slug: "stop-paying-for-subscriptions-you-forgot",
+    title: "Stop Paying for Subscriptions You Forgot You Had",
     excerpt:
-      "A complete walkthrough of renewing vehicle tax in Nepal — deadlines, required documents, fees, and how to avoid costly late charges.",
-    date: "2024-11-10",
-    readTime: "5 min read",
-    category: "Guide",
-    coverEmoji: "🚗",
+      "The average person pays for 4–6 subscriptions they no longer use. Here is how to find them, cancel them, and take back control of your money.",
+    date: "2025-06-01",
+    readTime: "4 min read",
+    category: "Money Tips",
+    coverEmoji: "💸",
     content: [
       {
         type: "p",
-        text: "Vehicle tax — also called road tax or vehicle tax — is one of the most critical annual renewals for every vehicle owner in Nepal. Failing to renew it on time results in fines, and in serious cases, your vehicle can be seized. This guide explains everything you need to know to renew your vehicle tax without stress.",
+        text: "Subscription creep is real. You sign up for a free trial, forget to cancel, and suddenly three years later you are still paying $12.99 a month for something you haven't used since 2022. It happens to almost everyone.",
       },
       {
         type: "h2",
-        text: "When Is Vehicle Tax Due?",
+        text: "How Much Are You Actually Spending?",
       },
       {
         type: "p",
-        text: "In Nepal, vehicle tax is typically due annually, aligned with the Nepali fiscal year (mid-July to mid-July). However, renewal windows and exact deadlines vary slightly by province and vehicle type. Generally, you should plan to renew your vehicle tax every year before Shrawan 15 (approximately August 1) to avoid penalties.",
+        text: "Most people massively underestimate their subscription spend. Studies consistently show that people think they spend around $80 per month on subscriptions, when the real number is often $200 or more. Streaming services, cloud storage, fitness apps, software tools, BNPL installments — it adds up fast.",
       },
       {
         type: "h2",
-        text: "Documents Required",
+        text: "The Hidden Subscriptions Draining Your Account",
       },
       {
         type: "ul",
         items: [
-          "Original bluebook (vehicle registration certificate)",
-          "Previous year's vehicle tax payment receipt",
-          "Pollution test certificate (valid)",
-          "Insurance certificate (valid)",
-          "Citizenship certificate of the vehicle owner",
+          "Free trials that converted to paid without a reminder",
+          "Annual subscriptions you forgot renew automatically",
+          "Duplicate services doing the same thing (e.g. two cloud storage plans)",
+          "Old memberships tied to an email you rarely check",
+          "Apps that raised their prices quietly after your signup",
         ],
       },
       {
         type: "h2",
-        text: "Step-by-Step Renewal Process",
+        text: "How to Find Forgotten Subscriptions",
       },
       {
         type: "ol",
         items: [
-          "Visit the nearest District Transport Management Office (DTMO) or province transport office.",
-          "Get the vehicle tax payment form from the counter.",
-          "Fill in your vehicle number, type, engine capacity, and owner details.",
-          "Submit the form along with required documents.",
-          "Pay the tax amount at the revenue counter or authorized bank.",
-          "Collect your updated tax sticker and payment receipt.",
+          "Check your bank or card statement for recurring charges",
+          "Search your email for words like 'receipt', 'invoice', 'renews', 'subscription'",
+          "Check your phone's app subscription manager (App Store or Play Store)",
+          "Look through your PayPal or digital wallet recurring payments",
+          "Check every card you own — forgotten charges hide on old cards",
         ],
       },
       {
         type: "h2",
-        text: "Vehicle Tax Rates (Approximate)",
+        text: "How to Stay in Control Going Forward",
       },
       {
         type: "p",
-        text: "Tax rates vary by vehicle type and engine capacity. As a rough guide: motorcycles up to 125cc pay Rs. 1,500–2,500 per year; cars 1000–1800cc pay Rs. 5,000–12,000 per year; and trucks pay according to their load capacity. Check with your local DTMO for the exact rate applicable to your vehicle.",
-      },
-      {
-        type: "h2",
-        text: "Late Payment Penalties",
-      },
-      {
-        type: "p",
-        text: "Failing to pay your vehicle tax on time attracts a penalty of approximately 10% of the tax amount per year, compounded. If you miss the renewal for multiple years, the cumulative fines can be substantial — often more than the tax itself. Always renew before the deadline.",
+        text: "Once you've audited everything, the key is a system. Use a tool like SubTrack to log every subscription and bill, set the next billing date, and get reminded before charges hit. You will never be surprised by a renewal again.",
       },
       {
         type: "tip",
-        text: "Set a reminder in RenewMate at least 30 days before your vehicle tax expiry. The app will send you alerts at 30, 15, 7, 3, and 1 day before the due date so you never miss it.",
+        text: "Track everything in SubTrack — not just streaming, but rent, electricity, loan EMIs, and BNPL installments too. When you see the full picture in one dashboard, managing it becomes simple.",
       },
     ],
   },
   {
-    slug: "bluebook-renewal-process-nepal",
-    title: "Bluebook Renewal in Nepal: Step-by-Step Process",
+    slug: "how-to-manage-all-your-subscriptions",
+    title: "How to Manage All Your Subscriptions in One Place",
     excerpt:
-      "The bluebook is the most important document for your vehicle. Learn exactly how to renew it, what documents you need, and how long it takes.",
-    date: "2024-11-18",
-    readTime: "6 min read",
+      "Managing Netflix, Spotify, rent, loans, and utilities across different apps is chaos. Here is a smarter approach.",
+    date: "2025-06-05",
+    readTime: "5 min read",
     category: "Guide",
     coverEmoji: "📋",
     content: [
       {
         type: "p",
-        text: "The bluebook (Prasaripatra) is Nepal's vehicle registration certificate and is one of the most critical documents for any vehicle owner. Renewing it on time is not just a legal requirement — it's essential proof that your vehicle is registered with the government.",
+        text: "Modern life means juggling dozens of recurring payments — streaming services, SaaS tools, rent, utilities, gym memberships, and financial obligations. The problem is that these are spread across different billing dates, payment methods, and email inboxes.",
       },
       {
         type: "h2",
-        text: "What Is the Bluebook?",
+        text: "The Problem With Managing Subscriptions Manually",
       },
       {
         type: "p",
-        text: "The bluebook is an official document issued by the Department of Transport Management (DoTM) that certifies your vehicle's ownership and registration. It contains details like the vehicle number, engine number, chassis number, owner's name, and renewal history.",
+        text: "Trying to track subscriptions in a spreadsheet or your head fails for a simple reason: billing dates creep up on you. You don't think about your AWS bill until you get the charge. You forget your yearly Adobe renewal until the money is already gone.",
       },
       {
         type: "h2",
-        text: "When Does It Need Renewal?",
-      },
-      {
-        type: "p",
-        text: "The bluebook is renewed annually along with the vehicle tax. In Nepal, bluebook renewal typically coincides with the fiscal year deadline (around Shrawan 15). If you miss the deadline, you will be fined, and driving without a valid bluebook is illegal and can lead to vehicle impoundment.",
-      },
-      {
-        type: "h2",
-        text: "Documents Required for Renewal",
+        text: "Organize By Category",
       },
       {
         type: "ul",
         items: [
-          "Original bluebook",
-          "Valid vehicle insurance certificate",
-          "Valid pollution test certificate",
-          "Previous year's tax payment receipt",
-          "Owner's citizenship certificate",
+          "Entertainment: Netflix, Spotify, Crunchyroll, gaming subscriptions",
+          "Living Essentials: Rent, electricity, water, internet, phone bill",
+          "Tech & Tools: iCloud, ChatGPT Plus, Notion, Adobe CC, Microsoft 365",
+          "Lifestyle: Gym, meal kits, fashion boxes, fitness apps",
+          "Financial Liabilities: Credit card bills, BNPL installments, loan EMIs",
         ],
       },
       {
         type: "h2",
-        text: "Renewal Process (Step by Step)",
-      },
-      {
-        type: "ol",
-        items: [
-          "Ensure your pollution test is valid before you go to the DTMO.",
-          "Ensure your vehicle insurance is valid and not expired.",
-          "Go to your provincial DTMO or authorized transport office.",
-          "Submit your documents at the bluebook renewal counter.",
-          "Pay the renewal fee and vehicle tax simultaneously.",
-          "The officer will stamp and update your bluebook.",
-          "If your bluebook pages are full, you may be issued a new volume.",
-        ],
-      },
-      {
-        type: "h2",
-        text: "Online Bluebook Renewal",
+        text: "Set Up Reminders 7 Days in Advance",
       },
       {
         type: "p",
-        text: "Nepal's DoTM has been progressively introducing online services. As of 2024, some provinces allow online appointment booking for bluebook renewal. Check the official Nagarik App or your provincial transport website to see if online renewal is available in your area.",
+        text: "The ideal window for a billing reminder is 7 days. Long enough to do something about it if you want to cancel or pause, short enough that it's still top of mind when the charge happens. SubTrack sends you reminders at 30, 15, 7, 3, and 1 day before every payment.",
       },
       {
-        type: "warning",
-        text: "Always check that your pollution test and insurance are valid before going for bluebook renewal. If either has expired, your renewal will be rejected.",
+        type: "tip",
+        text: "Don't just track what you enjoy. Track everything you're obligated to pay — credit card minimums, BNPL payments, insurance premiums. Missing those has real financial consequences.",
       },
     ],
   },
   {
-    slug: "vehicle-insurance-nepal-guide",
-    title: "Vehicle Insurance in Nepal: Types, Cost & How to Renew",
+    slug: "bnpl-buy-now-pay-later-tracker",
+    title: "BNPL and Pay Later: How to Track Installments Without Falling Behind",
     excerpt:
-      "Everything you need to know about vehicle insurance in Nepal — types of coverage, costs, top insurers, and the renewal process.",
-    date: "2024-12-01",
+      "Buy Now Pay Later is convenient until you lose track of what you owe and when. Here is how to stay ahead of every installment.",
+    date: "2025-06-10",
     readTime: "5 min read",
-    category: "Insurance",
-    coverEmoji: "🛡️",
+    category: "Financial",
+    coverEmoji: "💳",
     content: [
       {
         type: "p",
-        text: "Vehicle insurance is mandatory for all motorized vehicles in Nepal. Without valid insurance, you cannot renew your bluebook or legally drive on public roads. This guide covers everything from the types of insurance to the renewal process.",
+        text: "Buy Now Pay Later (BNPL) services like Klarna, Afterpay, Zip, and Tabby have made it incredibly easy to split purchases into installments. The problem is that it's equally easy to lose track of what you owe, when payments are due, and what total debt you're carrying.",
       },
       {
         type: "h2",
-        text: "Types of Vehicle Insurance in Nepal",
-      },
-      {
-        type: "ul",
-        items: [
-          "Third-Party Insurance: The minimum required by law. Covers damage or injury caused to third parties but not your own vehicle.",
-          "Comprehensive Insurance: Covers third-party liability plus damage to your own vehicle from accidents, fire, theft, and natural disasters.",
-          "Personal Accident Cover: Additional cover for the driver and passengers in case of injury or death.",
-        ],
-      },
-      {
-        type: "h2",
-        text: "Approximate Insurance Costs",
+        text: "The BNPL Debt Trap",
       },
       {
         type: "p",
-        text: "Third-party insurance for a motorcycle starts at around Rs. 700–1,500 per year. For cars, third-party costs Rs. 2,000–5,000 per year depending on engine capacity. Comprehensive insurance is significantly more expensive — typically 1–3% of the vehicle's market value annually.",
+        text: "BNPL payments are small individually. A $50 installment here, a $35 payment there. But when you have four or five active plans simultaneously, the cumulative monthly obligation can easily reach $300–500 — and you may not realize it until your account is short.",
       },
       {
         type: "h2",
-        text: "Top Insurance Companies in Nepal",
+        text: "Why BNPL Reminders Are Critical",
       },
       {
         type: "ul",
         items: [
-          "Rastriya Beema Company (National Insurance Corporation)",
-          "Nepal Insurance Company",
-          "Himalayan General Insurance",
-          "Shikhar Insurance",
-          "Premier Insurance",
-          "Nepal Life Insurance (for PA cover)",
+          "Missed payments often carry immediate late fees, sometimes higher than credit cards",
+          "Some BNPL providers report to credit bureaus — missed payments can affect your score",
+          "Payment dates are staggered across providers and don't align with your paycheck",
+          "It's easy to forget a plan you took out months ago",
         ],
       },
       {
         type: "h2",
-        text: "How to Renew Vehicle Insurance",
+        text: "How to Track BNPL in SubTrack",
       },
       {
         type: "ol",
         items: [
-          "Contact your existing insurer or visit their nearest branch.",
-          "Bring your current insurance certificate and bluebook.",
-          "Fill in the renewal form with updated vehicle details.",
-          "Pay the premium amount (cash, cheque, or eSewa/Khalti).",
-          "Receive your new insurance certificate and sticker.",
+          "Add each active BNPL plan as a separate entry under Financial Liabilities",
+          "Set the name to something recognizable, like 'Klarna – iPhone case'",
+          "Enter the installment amount and the next payment date",
+          "Set billing cycle to Monthly (or Weekly for weekly installments)",
+          "Add notes with the total remaining balance or number of installments left",
         ],
       },
       {
         type: "tip",
-        text: "Compare premiums from at least 2–3 insurers before renewing. You can often get better rates by switching providers. Make sure the new insurer is IBAN-registered.",
+        text: "Treat every BNPL installment like a bill, not an optional payment. Add them to SubTrack the same day you make the purchase — while it is still fresh.",
       },
     ],
   },
   {
-    slug: "pollution-test-requirements-nepal",
-    title: "Vehicle Pollution Test in Nepal: All You Need to Know",
+    slug: "streaming-subscriptions-worth-it",
+    title: "Are Your Streaming Subscriptions Worth It? How to Decide",
     excerpt:
-      "Nepal's pollution test (emision test) is required for all vehicles. Find out the standards, testing centers, costs, and renewal frequency.",
-    date: "2024-12-10",
+      "With Netflix, Disney+, Amazon Prime, Apple TV+ and more all charging monthly, it's worth doing a regular audit. Here's how.",
+    date: "2025-06-15",
+    readTime: "4 min read",
+    category: "Entertainment",
+    coverEmoji: "📺",
+    content: [
+      {
+        type: "p",
+        text: "Streaming has replaced cable, but the bills are starting to look the same. Between Netflix, Disney+, Amazon Prime, Apple TV+, a music service, and maybe a sports platform, a household can easily spend $80–120 per month on entertainment subscriptions alone.",
+      },
+      {
+        type: "h2",
+        text: "The Cost of Streaming Fatigue",
+      },
+      {
+        type: "p",
+        text: "Most people go through phases with streaming services. You binge a show on one platform, then barely open the app for four months. You are paying for access, not usage. That is money leaving your account for no return.",
+      },
+      {
+        type: "h2",
+        text: "A Simple Audit Formula",
+      },
+      {
+        type: "ul",
+        items: [
+          "Track how many hours you used each platform in the last 30 days",
+          "Divide the monthly cost by hours used to get your cost per hour",
+          "Anything over $3–4 per hour is worth reconsidering",
+          "Identify platforms with shows you are 'planning to watch' but never do",
+        ],
+      },
+      {
+        type: "h2",
+        text: "The Rotation Strategy",
+      },
+      {
+        type: "p",
+        text: "Instead of paying for five services simultaneously, subscribe to one or two at a time, binge what you want, then cancel and rotate. Most streaming services have enough content for two to three months of heavy watching. After that, switch to the next one.",
+      },
+      {
+        type: "h2",
+        text: "What You Actually Need Year-Round",
+      },
+      {
+        type: "p",
+        text: "Most households really only need one or two year-round subscriptions. A music service tends to be daily-use and worth keeping. A video platform depends on your watching habits. Everything else can be rotational.",
+      },
+      {
+        type: "tip",
+        text: "Use SubTrack to log every streaming service and its next billing date. When you see them all on one screen with a monthly total, it becomes much easier to decide what to cut.",
+      },
+    ],
+  },
+  {
+    slug: "monthly-bills-tracker-guide",
+    title: "How to Track Monthly Bills So Nothing Gets Missed",
+    excerpt:
+      "Electricity, rent, internet, phone — missing any of these has real consequences. Here is a system that keeps every bill visible.",
+    date: "2025-06-20",
     readTime: "4 min read",
     category: "Guide",
-    coverEmoji: "🌿",
+    coverEmoji: "🧾",
     content: [
       {
         type: "p",
-        text: "The vehicle pollution test (also called the emission test or smoke test) is a mandatory check that ensures your vehicle's exhaust emissions meet Nepal's environmental standards. A valid pollution certificate is required to renew your bluebook each year.",
+        text: "Monthly bills are not optional. Unlike a subscription you can cancel, bills like rent, electricity, and loan EMIs come with consequences if missed — late fees, disconnection, or credit damage. Yet most people have no single place where all their bills live.",
       },
       {
         type: "h2",
-        text: "Who Needs a Pollution Test?",
-      },
-      {
-        type: "p",
-        text: "All motorized vehicles registered in Nepal are required to pass a pollution test annually. This includes motorcycles, scooters, cars, jeeps, vans, buses, and trucks. Electric vehicles are exempt from the emission test.",
-      },
-      {
-        type: "h2",
-        text: "Emission Standards in Nepal",
-      },
-      {
-        type: "p",
-        text: "Nepal follows BS-IV (Bharat Stage IV) emission standards for petrol vehicles and BS-II/III for older diesel vehicles. The test measures CO (carbon monoxide), HC (hydrocarbons), and NOx (nitrogen oxides) levels from the exhaust.",
-      },
-      {
-        type: "h2",
-        text: "Where to Get the Test Done",
-      },
-      {
-        type: "p",
-        text: "Pollution testing centers (authorized by DoTM) are available in major cities across all provinces. In Kathmandu, several testing centers are located in Teku, Balaju, and Kalanki. Contact your local DTMO for the nearest authorized center.",
-      },
-      {
-        type: "h2",
-        text: "Cost of the Pollution Test",
+        text: "The Bills Most People Forget to Track",
       },
       {
         type: "ul",
         items: [
-          "Motorcycles/Scooters: Rs. 150–250",
-          "Cars/Jeeps: Rs. 300–500",
-          "Trucks/Buses: Rs. 500–1,000",
+          "Annual insurance premiums — easy to forget until the policy lapses",
+          "Quarterly taxes or council fees",
+          "Phone EMI payments — often auto-deducted but worth tracking",
+          "Parking or storage unit fees",
+          "Domain or hosting fees for personal projects",
         ],
       },
       {
         type: "h2",
-        text: "What Happens if You Fail?",
+        text: "Build a Master Bill List",
       },
       {
         type: "p",
-        text: "If your vehicle fails the emission test, you will be given a period to fix the issue (typically 30 days). Common fixes include replacing spark plugs, cleaning the air filter, or adjusting the carburetor. After repairs, you can retest at no extra charge within the grace period.",
+        text: "Start by listing every recurring obligation you have. Go through your bank statement for the last three months and highlight anything that recurs. Separate them by category — housing, utilities, financial, tech. This alone gives you a clearer picture of your monthly obligations.",
+      },
+      {
+        type: "h2",
+        text: "Set Billing Dates, Not Just Due Dates",
+      },
+      {
+        type: "p",
+        text: "The critical date to track is the billing or due date — not the service start date. Set a reminder 7 days before so you have time to ensure your account has the funds or to take action if something is wrong.",
       },
       {
         type: "warning",
-        text: "Getting the pollution test done is the first step — do it before visiting DTMO for bluebook renewal. DTMO offices will reject your renewal if the pollution certificate is expired.",
-      },
-    ],
-  },
-  {
-    slug: "avoid-late-fees-vehicle-renewal-nepal",
-    title: "5 Smart Ways to Avoid Late Vehicle Renewal Fees in Nepal",
-    excerpt:
-      "Late renewal fees add up fast. Here are 5 practical strategies Nepal vehicle owners use to stay on top of deadlines and avoid unnecessary fines.",
-    date: "2024-12-20",
-    readTime: "4 min read",
-    category: "Tips",
-    coverEmoji: "💡",
-    content: [
-      {
-        type: "p",
-        text: "Late fees for vehicle renewals in Nepal can be surprisingly steep. A missed vehicle tax deadline means a 10% annual penalty on top of the tax itself. Over several years of neglect, this can add thousands of rupees in avoidable costs. Here are five proven strategies to stay ahead of all your renewal deadlines.",
-      },
-      {
-        type: "h2",
-        text: "1. Use a Digital Reminder App",
-      },
-      {
-        type: "p",
-        text: "The single most effective tool is a dedicated vehicle renewal tracker like RenewMate. It tracks all four renewal types (tax, bluebook, insurance, pollution test) for every vehicle you own and sends you alerts at 30, 15, 7, 3, and 1 day before each deadline. You will never forget again.",
-      },
-      {
-        type: "h2",
-        text: "2. Mark All Expiry Dates in One Calendar",
-      },
-      {
-        type: "p",
-        text: "If you prefer manual tracking, open Google Calendar or any calendar app and set repeating annual reminders for each renewal type for each vehicle. Set them to trigger 45 days before the expiry date — this gives you enough runway to sort out insurance and pollution tests before going to the DTMO.",
-      },
-      {
-        type: "h2",
-        text: "3. Renew Everything Together",
-      },
-      {
-        type: "p",
-        text: "In Nepal, vehicle tax and bluebook renewal happen simultaneously at the DTMO. Try to align your insurance and pollution test renewals to the same period. This way, you only have to visit the offices once per year rather than making separate trips for each document.",
-      },
-      {
-        type: "h2",
-        text: "4. Renew Early, Not on the Last Day",
-      },
-      {
-        type: "p",
-        text: "DTMO offices in Nepal can get extremely crowded in the final week before the fiscal year deadline. Lines can mean a half-day wait. Renewing 3–4 weeks before the deadline means shorter queues and a much less stressful experience.",
-      },
-      {
-        type: "h2",
-        text: "5. Store All Document Expiry Dates in One Place",
-      },
-      {
-        type: "p",
-        text: "Take photos of all your renewal documents and note the expiry dates somewhere permanent — a note on your phone, a spreadsheet, or a tool like RenewMate. When you know all four expiry dates at a glance, planning renewals becomes trivial.",
+        text: "Never rely on the service provider to remind you. Utility companies and lenders may send a statement, but by that time the due date is often only 3–5 days away — leaving you no room.",
       },
       {
         type: "tip",
-        text: "The cost of a vehicle renewal reminder app is a fraction of the fine you pay for even one missed deadline. It pays for itself the first time it saves you from a late fee.",
+        text: "Add every bill to SubTrack under Living Essentials or Financial Liabilities. Set the next billing date and let the reminders do the work. One dashboard, every obligation visible.",
       },
     ],
   },
   {
-    slug: "read-nepal-vehicle-number-plate",
-    title: "How to Read Nepal Vehicle Number Plates (With Examples)",
+    slug: "subscription-audit-save-money",
+    title: "The 30-Minute Subscription Audit That Could Save You $1,000 a Year",
     excerpt:
-      "Nepal's vehicle number plate system encodes the province, vehicle type, and serial number. Learn to decode any plate in Nepal.",
-    date: "2025-01-05",
-    readTime: "4 min read",
-    category: "Knowledge",
-    coverEmoji: "🔢",
-    content: [
-      {
-        type: "p",
-        text: "Nepal's vehicle number plates follow a systematic format that encodes useful information about the vehicle — specifically the province it is registered in, the vehicle class, and its serial number. Once you understand the format, you can tell at a glance where any vehicle in Nepal is from.",
-      },
-      {
-        type: "h2",
-        text: "The Standard Format",
-      },
-      {
-        type: "p",
-        text: "A standard Nepal vehicle plate looks like: BA 1 JA 1234. Let's break it down:",
-      },
-      {
-        type: "ul",
-        items: [
-          "BA — Province code (Bagmati Province = BA)",
-          "1 — Vehicle class code (1 = private vehicle)",
-          "JA — Sequence letters assigned in order of registration",
-          "1234 — Serial number (4 digits)",
-        ],
-      },
-      {
-        type: "h2",
-        text: "Province Codes",
-      },
-      {
-        type: "ul",
-        items: [
-          "KO — Koshi Province (Province 1)",
-          "MA — Madhesh Province (Province 2)",
-          "BA — Bagmati Province (Province 3)",
-          "GA — Gandaki Province (Province 4)",
-          "LU — Lumbini Province (Province 5)",
-          "KA — Karnali Province (Province 6)",
-          "SU — Sudurpashchim Province (Province 7)",
-        ],
-      },
-      {
-        type: "h2",
-        text: "Vehicle Class Codes",
-      },
-      {
-        type: "ul",
-        items: [
-          "1 — Private vehicles (cars, jeeps, personal use)",
-          "2 — Public transportation (minibus, tempo, taxi)",
-          "3 — Goods vehicles (trucks, pickups)",
-          "4 — Government vehicles",
-          "5 — Diplomatic vehicles",
-        ],
-      },
-      {
-        type: "h2",
-        text: "Special Plates",
-      },
-      {
-        type: "p",
-        text: "Red plates indicate government-owned vehicles. Blue plates are for diplomatic vehicles. Green plates are being introduced for electric vehicles (EVs) in Nepal.",
-      },
-      {
-        type: "tip",
-        text: "When adding your vehicle to RenewMate, enter the plate number exactly as it appears on your bluebook, including spaces — e.g., BA 1 JA 1234.",
-      },
-    ],
-  },
-  {
-    slug: "electric-vehicle-registration-nepal",
-    title: "Electric Vehicle Registration and Renewal in Nepal (2025 Guide)",
-    excerpt:
-      "Nepal's EV market is booming. Here's how to register an electric vehicle, what documents you need, and how renewal differs from petrol vehicles.",
-    date: "2025-01-15",
-    readTime: "5 min read",
-    category: "Electric Vehicles",
-    coverEmoji: "⚡",
-    content: [
-      {
-        type: "p",
-        text: "Nepal has seen a dramatic rise in electric vehicle (EV) adoption, driven by rising petrol prices and government incentives. From electric motorcycles to imported electric cars like the BYD Atto and Hyundai Ioniq, EVs are now a mainstream choice. This guide covers EV registration and renewal specifics.",
-      },
-      {
-        type: "h2",
-        text: "EV Registration in Nepal",
-      },
-      {
-        type: "p",
-        text: "Registering an EV in Nepal follows largely the same process as petrol/diesel vehicles through the DTMO. You will need the vehicle invoice from the authorized importer, RUCCA certificate (compliance certificate), and your citizenship document. The key difference is that EVs receive a green number plate.",
-      },
-      {
-        type: "h2",
-        text: "Documents Required for EV Registration",
-      },
-      {
-        type: "ul",
-        items: [
-          "Invoice from authorized importer/dealer",
-          "RUCCA (Road User Certificate of Conformity) certificate",
-          "Customs clearance certificate",
-          "Owner's citizenship certificate",
-          "Insurance certificate (valid)",
-          "Passport-size photos",
-        ],
-      },
-      {
-        type: "h2",
-        text: "How EV Renewal Differs",
-      },
-      {
-        type: "p",
-        text: "Electric vehicles enjoy several advantages during renewal: they are exempt from the pollution test (no emissions to measure), and the government has offered reduced vehicle tax rates for EVs as an incentive for adoption. Check your province's current EV tax rate with the DTMO.",
-      },
-      {
-        type: "h2",
-        text: "EV Tax Benefits in Nepal",
-      },
-      {
-        type: "p",
-        text: "The Government of Nepal has periodically offered reduced customs duty (as low as 1%) and lower road taxes for EVs to encourage adoption. These policies change with each budget — stay updated through the Nepal Rastra Bank and DoTM announcements.",
-      },
-      {
-        type: "h2",
-        text: "Charging Infrastructure",
-      },
-      {
-        type: "p",
-        text: "Kathmandu Valley now has over 50 public EV charging stations. The NEA (Nepal Electricity Authority) is actively expanding this network. Charging at home using a standard 15-amp outlet is common for two-wheelers; four-wheelers typically need a Type 2 AC charger.",
-      },
-      {
-        type: "tip",
-        text: "Even though EVs are exempt from pollution tests, you still need to renew vehicle tax and insurance annually. RenewMate tracks all your EV renewals too.",
-      },
-    ],
-  },
-  {
-    slug: "vehicle-ownership-transfer-nepal",
-    title: "How to Transfer Vehicle Ownership in Nepal: Complete Guide",
-    excerpt:
-      "Buying or selling a vehicle? The ownership transfer process in Nepal has specific steps and documents. This guide walks you through everything.",
-    date: "2025-01-28",
+      "A guided exercise to find every subscription you're paying for, evaluate each one, and cut the ones you don't need.",
+    date: "2025-06-25",
     readTime: "6 min read",
-    category: "Guide",
-    coverEmoji: "🔄",
+    category: "Money Tips",
+    coverEmoji: "🔍",
     content: [
       {
         type: "p",
-        text: "Whether you are buying a used vehicle or selling one, transferring ownership (namasari) is a legal requirement in Nepal. Failing to complete the transfer means the vehicle remains in the seller's name, creating legal complications for both parties.",
+        text: "A subscription audit takes about 30 minutes and has a surprisingly high return. People routinely find $50–100 per month — or more — of recurring charges they had forgotten about, no longer use, or can easily replace with a free alternative.",
       },
       {
         type: "h2",
-        text: "When Is Transfer Required?",
+        text: "Step 1: List Every Card and Payment Method You Own",
       },
       {
         type: "p",
-        text: "Any time a vehicle changes hands — through sale, gift, inheritance, or court order — the ownership must be officially transferred at the DTMO. Driving a vehicle registered in someone else's name without completing the transfer is technically illegal.",
+        text: "Subscriptions can hide across multiple cards. Make a list of every credit card, debit card, PayPal account, digital wallet, and phone billing account you have. Subscriptions get charged to wherever you put them when you signed up — often a card you rarely check.",
       },
       {
         type: "h2",
-        text: "Documents Required (Both Parties)",
+        text: "Step 2: Go Through 3 Months of Statements",
+      },
+      {
+        type: "p",
+        text: "Download or open three months of statements for each payment method. Look for any charge that appears more than once. Note the service name, amount, and how frequently it charges.",
+      },
+      {
+        type: "h2",
+        text: "Step 3: Rate Each Subscription",
       },
       {
         type: "ul",
         items: [
-          "Original bluebook",
-          "All original tax payment receipts",
-          "Valid insurance certificate",
-          "Valid pollution test certificate",
-          "Citizenship certificates of both buyer and seller",
-          "Sale agreement / purchase deed (on stamp paper)",
-          "Seller's tax clearance if applicable",
+          "Keep: You use it regularly and it provides clear value",
+          "Review: You use it occasionally — consider downgrading or replacing",
+          "Cancel: You haven't used it in 30+ days or you can't remember what it is",
         ],
       },
       {
         type: "h2",
-        text: "Step-by-Step Transfer Process",
-      },
-      {
-        type: "ol",
-        items: [
-          "Ensure all existing dues (tax, penalties) are cleared.",
-          "Both buyer and seller visit the DTMO together.",
-          "Submit the transfer application form with all documents.",
-          "Pay the transfer fee (calculated as a percentage of the vehicle's value).",
-          "DTMO officer verifies documents and updates the bluebook.",
-          "The new owner's name is entered in the bluebook — transfer complete.",
-        ],
-      },
-      {
-        type: "h2",
-        text: "Transfer Fees",
+        text: "Step 4: Cancel Immediately",
       },
       {
         type: "p",
-        text: "Transfer fees in Nepal are typically 5% of the vehicle's estimated market value for cars and 2% for motorcycles. The exact rates are set by the provincial government. A nominal DTMO service charge also applies.",
+        text: "Don't add things to a 'cancel later' list. Cancel them right now, during the audit. It takes two minutes per service and the procrastination is what costs you money.",
+      },
+      {
+        type: "h2",
+        text: "Step 5: Track What Remains",
+      },
+      {
+        type: "p",
+        text: "Add every subscription you're keeping into SubTrack. Set the billing date, amount, and category. From now on, you have a single view of everything you pay for — and you'll get reminded before each charge.",
+      },
+      {
+        type: "tip",
+        text: "Do a subscription audit every six months. Services raise prices, your usage habits change, and new subscriptions creep in. Thirty minutes twice a year keeps your recurring spend in check.",
+      },
+    ],
+  },
+  {
+    slug: "gym-lifestyle-subscriptions-guide",
+    title: "Gym Memberships and Lifestyle Subscriptions: Are They Worth It?",
+    excerpt:
+      "From gym memberships to meal kits and fashion boxes, lifestyle subscriptions are easy to sign up for and hard to cancel. Here's how to think about them.",
+    date: "2025-07-01",
+    readTime: "4 min read",
+    category: "Lifestyle",
+    coverEmoji: "🏋️",
+    content: [
+      {
+        type: "p",
+        text: "Lifestyle subscriptions tap into aspirational spending. You sign up for the gym imagining you'll go every day. You start a meal kit to eat healthier. You join a book club with plans to read more. The subscriptions represent who you want to be — not always who you actually are.",
+      },
+      {
+        type: "h2",
+        text: "The 10-Use Rule",
+      },
+      {
+        type: "p",
+        text: "A simple way to evaluate any lifestyle subscription: did you use it at least 10 times in the last month? If the answer is no, the service is costing you more than it's worth. A $50/month gym membership used twice is $25 per session — you'd be better off buying class passes.",
+      },
+      {
+        type: "h2",
+        text: "Common Lifestyle Subscriptions and Their Red Flags",
+      },
+      {
+        type: "ul",
+        items: [
+          "Gym memberships: Low-cost options often have hidden fees or lock-in contracts",
+          "Meal kits: High per-meal cost; most people pause/cancel after a few months",
+          "Fashion boxes: High markup, difficult return process, subscription inertia",
+          "Meditation and fitness apps: Often used intensively for a month then forgotten",
+          "Gaming subscriptions: Easy to keep active 'just in case' without actually playing",
+        ],
+      },
+      {
+        type: "h2",
+        text: "The Pause Before You Subscribe Rule",
+      },
+      {
+        type: "p",
+        text: "Before signing up for any lifestyle subscription, add it to SubTrack first — with a billing date 30 days from now and the monthly cost. Seeing it as a future charge before it happens makes the decision much more deliberate.",
+      },
+      {
+        type: "tip",
+        text: "Annual gym memberships often seem cheaper per month but lock you in. If you've been a member for less than six months, stick to monthly billing until you've proven the habit.",
+      },
+    ],
+  },
+  {
+    slug: "tech-tools-software-subscriptions",
+    title: "Tech and Software Subscriptions: What You Actually Need",
+    excerpt:
+      "Between iCloud, ChatGPT, Adobe, Notion, GitHub, and a dozen others, tech subscriptions can silently drain $100+ per month. Here's how to audit them.",
+    date: "2025-07-05",
+    readTime: "5 min read",
+    category: "Tech",
+    coverEmoji: "💻",
+    content: [
+      {
+        type: "p",
+        text: "Tech subscriptions are sneaky. They often start as free tiers, then a feature you need is moved to paid. Or you sign up during a promotion and forget about it. Or you keep paying for a tool you replaced months ago.",
+      },
+      {
+        type: "h2",
+        text: "The Most Commonly Over-Subscribed Tech Services",
+      },
+      {
+        type: "ul",
+        items: [
+          "Cloud storage: People often pay for iCloud AND Google One AND Dropbox",
+          "AI tools: Multiple AI subscriptions for services that do the same thing",
+          "Design tools: Canva Pro, Figma, and Adobe CC for occasional use",
+          "Password managers: Multiple accounts when one is enough",
+          "Domain and hosting: Forgotten domains registered 'just in case'",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Consolidation vs. Duplication",
+      },
+      {
+        type: "p",
+        text: "Before adding a new tech subscription, ask if you already pay for something that does the same job. Microsoft 365 includes OneDrive — do you still need Dropbox? Apple One bundles iCloud, Apple Music, and Apple TV+ — are you paying for those separately?",
+      },
+      {
+        type: "h2",
+        text: "Annual vs. Monthly for Tech Tools",
+      },
+      {
+        type: "p",
+        text: "Most SaaS tools offer 20–40% discounts for annual billing. If you've used a tool consistently for at least six months and plan to continue, switching to annual billing is usually the right move. But don't pay annually for something you're still evaluating.",
+      },
+      {
+        type: "tip",
+        text: "List every tech subscription in SubTrack's Tech & Tools category. You'll often notice duplicates or services you haven't opened in weeks. The dashboard makes it easy to make decisions you'd otherwise keep putting off.",
+      },
+    ],
+  },
+  {
+    slug: "credit-card-bills-tracker",
+    title: "Never Miss a Credit Card Payment Again",
+    excerpt:
+      "A missed credit card payment can mean fees, interest charges, and damage to your credit score. Here's a simple system to make sure it never happens.",
+    date: "2025-07-10",
+    readTime: "4 min read",
+    category: "Financial",
+    coverEmoji: "💳",
+    content: [
+      {
+        type: "p",
+        text: "Credit cards are one of the most consequential recurring financial obligations. A missed minimum payment triggers immediate late fees, potentially a penalty APR, and a negative mark on your credit report. And yet many people miss credit card due dates simply because they lost track.",
+      },
+      {
+        type: "h2",
+        text: "Why Credit Card Reminders Are Essential",
+      },
+      {
+        type: "ul",
+        items: [
+          "Due dates vary by card and don't always align with payday",
+          "Statement closing dates and payment due dates are different and easy to confuse",
+          "Multiple cards mean multiple dates to track",
+          "Travel, emergencies, or a busy week can push the due date out of your mind",
+          "Autopay doesn't always work — banks sometimes have technical issues",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Track the Minimum, Pay the Full Balance",
+      },
+      {
+        type: "p",
+        text: "When you add your credit card to SubTrack under Financial Liabilities, enter the minimum payment amount and the due date. The goal is to never miss a payment — but of course, always aim to pay the full statement balance to avoid interest.",
+      },
+      {
+        type: "h2",
+        text: "Set Reminders 7 Days Early",
+      },
+      {
+        type: "p",
+        text: "Seven days is the ideal lead time for credit card payment reminders. It gives you enough time to transfer funds if needed, check your balance, and confirm autopay is set up correctly — without being so far in advance that you forget again.",
       },
       {
         type: "warning",
-        text: "Never drive a vehicle you have purchased before the transfer is complete. If the previous owner has unpaid fines or the vehicle is linked to a legal case, you could be held responsible.",
+        text: "Autopay for the minimum payment is a safety net, not a strategy. Always check your statement and aim to pay the full balance. Minimum payments on high-interest cards can take years to clear.",
+      },
+      {
+        type: "tip",
+        text: "Add each credit card as a separate entry in SubTrack's Financial Liabilities section. Note the due date and the rough monthly amount. You'll never miss a payment with a 7-day reminder.",
       },
     ],
   },
   {
-    slug: "road-safety-laws-nepal",
-    title: "Nepal Road Safety Laws Every Driver Must Know in 2025",
+    slug: "how-much-do-subscriptions-cost-monthly",
+    title: "How Much Do Subscriptions Really Cost? The Average Person's Bill",
     excerpt:
-      "From speed limits to helmet laws, here are the key road safety rules in Nepal that every driver and rider must follow to stay legal and safe.",
-    date: "2025-02-10",
-    readTime: "5 min read",
-    category: "Road Safety",
-    coverEmoji: "🛣️",
+      "When you add up every subscription, streaming service, app, and bill, the monthly total surprises most people. Here's the data.",
+    date: "2025-07-15",
+    readTime: "4 min read",
+    category: "Data",
+    coverEmoji: "📊",
     content: [
       {
         type: "p",
-        text: "Nepal's road safety laws are governed primarily by the Motor Vehicles and Transport Management Act and the Transport Management Regulation. Understanding these rules helps you drive legally, avoid fines, and — most importantly — stay safe on Nepal's roads.",
+        text: "Research consistently shows that people underestimate their subscription spending by 40–50%. The average smartphone user has over 30 apps installed, and many of those come with subscriptions. Add in rent, utilities, insurance, and financial obligations, and the monthly total can be startling.",
       },
       {
         type: "h2",
-        text: "Speed Limits",
+        text: "Typical Monthly Subscription Breakdown",
       },
       {
         type: "ul",
         items: [
-          "Inside Kathmandu Valley: 40 km/h for cars, 30 km/h in school zones",
-          "National highways: 80 km/h for private vehicles",
-          "Mountain roads: 40–60 km/h depending on road conditions",
-          "Buses and trucks follow lower limits depending on vehicle class",
+          "Entertainment (streaming + music): $30–80/month",
+          "Living essentials (utilities + phone): $200–500/month",
+          "Tech and software tools: $20–60/month",
+          "Lifestyle (gym, fitness, lifestyle boxes): $30–80/month",
+          "Financial liabilities (BNPL, EMIs, credit cards): $100–300/month",
         ],
       },
       {
         type: "h2",
-        text: "Helmet Law",
+        text: "The Subscription Tipping Point",
       },
       {
         type: "p",
-        text: "Wearing a helmet is mandatory for both the rider and pillion passenger on all motorcycles and scooters throughout Nepal. The helmet must be ISI/DOT-certified. Riding without a helmet carries a fine and can affect your insurance claim in case of an accident.",
+        text: "Research shows that most people start feeling subscription fatigue when their total monthly recurring spend crosses 15–20% of their take-home income. Below that threshold, subscriptions feel manageable. Above it, they start feeling like a burden.",
       },
       {
         type: "h2",
-        text: "Seatbelt Rules",
+        text: "How to Know Your Own Number",
       },
       {
         type: "p",
-        text: "Seatbelts are mandatory for all occupants of four-wheeled vehicles in Nepal. Driving without a seatbelt is a fineable offense. Child safety seats are recommended but not yet mandated by law as of 2025.",
-      },
-      {
-        type: "h2",
-        text: "Drunk Driving Laws",
-      },
-      {
-        type: "p",
-        text: "Nepal has a zero-tolerance policy for drink driving. The legal blood alcohol limit is 0.03% (compared to 0.08% in many countries). Police conduct regular breathalyzer checkpoints, especially on weekends and holidays. Penalties include license suspension and criminal charges for repeat offenders.",
-      },
-      {
-        type: "h2",
-        text: "Mobile Phone Use While Driving",
-      },
-      {
-        type: "p",
-        text: "Using a handheld mobile phone while driving is illegal and carries a fine. Hands-free use is technically permitted, though it is still discouraged as a distraction.",
+        text: "The first step is getting an accurate number. Add every recurring payment you make into SubTrack — not just the obvious ones, but everything. Once you see the monthly and yearly totals, you can make informed decisions about where to cut.",
       },
       {
         type: "tip",
-        text: "Keep digital copies of your driving license, bluebook, insurance, and pollution certificate on your phone. In case of a spot check, you can show them digitally though carrying originals is always recommended.",
-      },
-    ],
-  },
-  {
-    slug: "vehicle-renewal-costs-nepal-provinces",
-    title: "Vehicle Renewal Costs Across Nepal's 7 Provinces (2025)",
-    excerpt:
-      "Vehicle tax rates and renewal costs vary significantly between Nepal's 7 provinces. Here's a comparison to help you plan your annual renewal budget.",
-    date: "2025-02-20",
-    readTime: "5 min read",
-    category: "Costs",
-    coverEmoji: "💰",
-    content: [
-      {
-        type: "p",
-        text: "One of the less-known facts about vehicle ownership in Nepal is that renewal costs — particularly vehicle tax — are not uniform across the country. Each of Nepal's seven provinces has the authority to set its own tax rates within the limits defined by the central government. This means the cost of renewing your vehicle can vary depending on where it is registered.",
-      },
-      {
-        type: "h2",
-        text: "Vehicle Tax Rates by Province (Approximate 2025)",
-      },
-      {
-        type: "p",
-        text: "Rates below are approximate for a private car with 1300–1800cc engine capacity. Actual rates vary by engine size and vehicle type.",
-      },
-      {
-        type: "ul",
-        items: [
-          "Koshi Province: Rs. 7,000–10,000/year",
-          "Madhesh Province: Rs. 6,500–9,500/year",
-          "Bagmati Province: Rs. 8,000–12,000/year (highest — includes Kathmandu)",
-          "Gandaki Province: Rs. 7,000–10,000/year",
-          "Lumbini Province: Rs. 6,000–9,000/year",
-          "Karnali Province: Rs. 5,000–8,000/year (lowest rates)",
-          "Sudurpashchim Province: Rs. 5,500–8,500/year",
-        ],
-      },
-      {
-        type: "h2",
-        text: "Other Annual Renewal Costs to Budget For",
-      },
-      {
-        type: "ul",
-        items: [
-          "Third-party insurance: Rs. 2,500–5,000 (car)",
-          "Pollution test: Rs. 300–500 (car)",
-          "DTMO service fee: Rs. 200–500",
-          "Bluebook renewal stamp: Rs. 50–100",
-        ],
-      },
-      {
-        type: "h2",
-        text: "Total Annual Renewal Cost (Car, Bagmati Province)",
-      },
-      {
-        type: "p",
-        text: "For a typical car registered in Bagmati Province (Kathmandu), expect to pay approximately Rs. 10,000–15,000 per year for all renewals combined. This includes vehicle tax, insurance, pollution test, and DTMO fees.",
-      },
-      {
-        type: "h2",
-        text: "How to Reduce Your Renewal Costs",
-      },
-      {
-        type: "ul",
-        items: [
-          "Pay on time — late fees add 10% annually",
-          "Compare insurance quotes from multiple providers",
-          "If you drive an EV, enjoy reduced tax rates",
-          "Check if your province offers early payment discounts",
-        ],
-      },
-      {
-        type: "tip",
-        text: "Track all your renewal dates with RenewMate so you always know the total renewal cost coming up for all your vehicles at once. Use the dashboard to plan your budget months in advance.",
+        text: "Many people discover $200–300 in monthly subscriptions they had forgotten about after their first SubTrack audit. Seeing the number forces clarity that guessing never provides.",
       },
     ],
   },

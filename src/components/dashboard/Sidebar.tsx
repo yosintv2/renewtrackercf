@@ -5,11 +5,9 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
   LayoutDashboard,
-  Car,
   Bell,
   FileText,
   Settings,
-  CreditCard,
   Shield,
   LogOut,
   X,
@@ -45,10 +43,8 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
   const pathname = usePathname();
   const router = useRouter();
   const [userName, setUserName] = useState("...");
-  const [userPlan, setUserPlan] = useState("free");
-  const [vehicleCount, setVehicleCount] = useState(0);
-  const [alertCount, setAlertCount] = useState(0);
   const [subCount, setSubCount] = useState(0);
+  const [alertCount, setAlertCount] = useState(0);
   const [initials, setInitials] = useState("?");
   const [avatarColor, setAvatarColor] = useState("bg-blue-500");
 
@@ -57,15 +53,11 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
   useEffect(() => {
     async function load() {
       const supabase = createClient();
-      const [{ data: authData }, { data: vehicles }, { data: profile }, { data: subs }] =
-        await Promise.all([
-          supabase.auth.getUser(),
-          supabase
-            .from("vehicles")
-            .select("tax_expiry, bluebook_expiry, insurance_expiry, pollution_expiry"),
-          supabase.from("profiles").select("name, plan").single(),
-          supabase.from("subscriptions").select("next_billing_date"),
-        ]);
+      const [{ data: authData }, { data: subs }, { data: profile }] = await Promise.all([
+        supabase.auth.getUser(),
+        supabase.from("subscriptions").select("next_billing_date"),
+        supabase.from("profiles").select("name").single(),
+      ]);
 
       const displayName =
         profile?.name ||
@@ -73,7 +65,6 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         authData?.user?.email ||
         "User";
       setUserName(displayName);
-      setUserPlan(profile?.plan ?? "free");
 
       const parts = displayName.split(" ").filter(Boolean);
       const inits =
@@ -82,28 +73,17 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
           : displayName.slice(0, 2).toUpperCase();
       setInitials(inits);
 
-      // consistent color based on initials
       const colorIdx = (inits.charCodeAt(0) + (inits.charCodeAt(1) || 0)) % colors.length;
       setAvatarColor(colors[colorIdx]);
 
-      if (vehicles) {
-        setVehicleCount(vehicles.length);
-        const vehicleAlerts = vehicles.reduce((count, v) => {
-          const days = [
-            daysUntil(v.tax_expiry),
-            daysUntil(v.bluebook_expiry),
-            daysUntil(v.insurance_expiry),
-            daysUntil(v.pollution_expiry),
-          ].filter((d): d is number => d !== null);
-          return count + days.filter((d) => d <= 30).length;
-        }, 0);
-        const subAlerts = (subs ?? []).filter((s) => {
+      if (subs) {
+        setSubCount(subs.length);
+        const alerts = subs.filter((s) => {
           const d = daysUntil(s.next_billing_date);
           return d !== null && d <= 7;
         }).length;
-        setAlertCount(vehicleAlerts + subAlerts);
+        setAlertCount(alerts);
       }
-      if (subs) setSubCount(subs.length);
     }
     load();
   }, [pathname]);
@@ -117,13 +97,6 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
 
   const navItems: NavItem[] = [
     { href: "/dashboard", label: "Overview", icon: LayoutDashboard },
-    {
-      href: "/dashboard/vehicles",
-      label: "Vehicles",
-      icon: Car,
-      badge: vehicleCount > 0 ? String(vehicleCount) : undefined,
-      badgeVariant: "count",
-    },
     {
       href: "/dashboard/subscriptions",
       label: "Subscriptions",
@@ -140,18 +113,7 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
     },
     { href: "/dashboard/documents", label: "Documents", icon: FileText },
     { href: "/dashboard/settings", label: "Settings", icon: Settings },
-    { href: "/dashboard/billing", label: "Billing", icon: CreditCard },
   ];
-
-  const planLabel =
-    userPlan === "premium" ? "Premium" : userPlan === "fleet" ? "Fleet" : "Free plan";
-
-  const planBadgeClass =
-    userPlan === "premium"
-      ? "bg-yellow-100 text-yellow-700"
-      : userPlan === "fleet"
-      ? "bg-purple-100 text-purple-700"
-      : "bg-gray-100 text-gray-500";
 
   return (
     <aside
@@ -161,14 +123,14 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         open ? "translate-x-0" : "-translate-x-full"
       )}
     >
-      {/* Logo + close button */}
-      <div className="h-16 flex items-center justify-between px-5 border-b border-gray-100 flex-shrink-0">
+      {/* Logo */}
+      <div className="h-14 flex items-center justify-between px-5 border-b border-gray-100 flex-shrink-0">
         <Link href="/" className="flex items-center gap-2 font-bold text-lg" onClick={onClose}>
           <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center shadow-sm">
             <Shield className="w-4 h-4 text-white" />
           </div>
           <span className="text-gray-900">
-            Renew<span className="text-blue-600">Mate</span>
+            Sub<span className="text-blue-600">Track</span>
           </span>
         </Link>
         <button
@@ -182,9 +144,6 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
 
       {/* Nav */}
       <nav className="flex-1 px-3 py-4 overflow-y-auto">
-        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-3 mb-3">
-          Menu
-        </p>
         <ul className="space-y-0.5">
           {navItems.map((item) => {
             const active = pathname === item.href;
@@ -194,7 +153,7 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
                   href={item.href}
                   onClick={onClose}
                   className={cn(
-                    "group flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all",
+                    "group flex items-center gap-3 px-3 py-3 rounded-xl text-sm font-medium transition-all",
                     active
                       ? "bg-blue-600 text-white shadow-md shadow-blue-200"
                       : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
@@ -221,34 +180,17 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
                       {item.badge}
                     </span>
                   )}
-                  {!active && <ChevronRight className="w-3 h-3 text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity" />}
+                  {!active && (
+                    <ChevronRight className="w-3 h-3 text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  )}
                 </Link>
               </li>
             );
           })}
         </ul>
-
-        {/* Upgrade CTA for free users */}
-        {userPlan === "free" && (
-          <div className="mt-6 mx-1">
-            <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-xl p-4">
-              <p className="text-white text-xs font-bold mb-1">Upgrade to Premium</p>
-              <p className="text-blue-200 text-[11px] leading-relaxed mb-3">
-                Unlimited vehicles, Telegram alerts & document storage.
-              </p>
-              <Link
-                href="/dashboard/billing"
-                onClick={onClose}
-                className="block w-full text-center bg-white text-blue-700 text-xs font-bold py-1.5 px-3 rounded-lg hover:bg-blue-50 transition-colors"
-              >
-                Rs. 99/month →
-              </Link>
-            </div>
-          </div>
-        )}
       </nav>
 
-      {/* User section */}
+      {/* User */}
       <div className="p-3 border-t border-gray-100 flex-shrink-0">
         <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-gray-50 transition-colors">
           <div
@@ -260,17 +202,9 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
             {initials}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-gray-900 truncate leading-none mb-0.5">
+            <p className="text-sm font-semibold text-gray-900 truncate leading-none">
               {userName}
             </p>
-            <span
-              className={cn(
-                "text-[10px] font-semibold px-1.5 py-0.5 rounded-full",
-                planBadgeClass
-              )}
-            >
-              {planLabel}
-            </span>
           </div>
           <button
             onClick={handleLogout}

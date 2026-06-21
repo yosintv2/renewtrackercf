@@ -68,9 +68,9 @@ create table public.subscriptions (
   id uuid default gen_random_uuid() primary key,
   user_id uuid references auth.users(id) on delete cascade not null,
   name text not null,
-  category text not null check (category in ('streaming', 'music', 'gaming', 'bills', 'cloud', 'other')),
+  category text not null check (category in ('entertainment', 'living', 'tech', 'lifestyle', 'financial', 'other')),
   price numeric(10,2) not null,
-  billing_cycle text not null check (billing_cycle in ('monthly', 'yearly')),
+  billing_cycle text not null check (billing_cycle in ('monthly', 'yearly', 'weekly', 'quarterly')),
   next_billing_date date not null,
   notes text,
   created_at timestamptz default now()
