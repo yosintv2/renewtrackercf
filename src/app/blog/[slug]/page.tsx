@@ -86,12 +86,13 @@ function renderSection(section: BlogSection, idx: number) {
   }
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = getBlogPost(params.slug);
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = getBlogPost(slug);
   if (!post) notFound();
 
-  const related = getRelatedPosts(params.slug, 3);
-  const postIndex = blogPosts.findIndex((p) => p.slug === params.slug);
+  const related = getRelatedPosts(slug, 3);
+  const postIndex = blogPosts.findIndex((p) => p.slug === slug);
   const prevPost = postIndex > 0 ? blogPosts[postIndex - 1] : null;
   const nextPost = postIndex < blogPosts.length - 1 ? blogPosts[postIndex + 1] : null;
 

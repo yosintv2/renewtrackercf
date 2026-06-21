@@ -52,10 +52,10 @@ export default function BlogPage() {
           href={`/blog/${featured.slug}`}
           className="group block mb-14"
         >
-          <div className="grid md:grid-cols-2 gap-6 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-blue-200 transition-all duration-300">
+          <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-blue-200 transition-all duration-300">
             <div className="p-8 md:p-10 flex flex-col justify-center">
               <div className="flex items-center gap-3 mb-4">
-                <span className={`text-xs font-semibold px-2.5 py-1 rounded-full bg-white/20 text-white`}>
+                <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-white/20 text-white">
                   {featured.category}
                 </span>
                 <span className="text-xs text-blue-200 flex items-center gap-1">
@@ -75,9 +75,6 @@ export default function BlogPage() {
                 </span>
               </div>
             </div>
-            <div className="hidden md:flex items-center justify-center bg-white/10 p-10">
-              <span className="text-9xl">{featured.coverEmoji}</span>
-            </div>
           </div>
         </Link>
 
@@ -91,11 +88,6 @@ export default function BlogPage() {
                 href={`/blog/${post.slug}`}
                 className="group flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden hover:border-blue-200 hover:shadow-lg hover:shadow-blue-50 transition-all duration-200"
               >
-                {/* Card top */}
-                <div className="bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center py-10 text-6xl">
-                  {post.coverEmoji}
-                </div>
-                {/* Card body */}
                 <div className="p-5 flex flex-col flex-1">
                   <div className="flex items-center gap-2 mb-3">
                     <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-full ${categoryColors[post.category] ?? "bg-gray-100 text-gray-600"}`}>
