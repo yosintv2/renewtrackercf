@@ -1,0 +1,146 @@
+---
+const { currentPath = "/" } = Astro.props as { currentPath?: string };
+
+const navLinks = [
+  { href: "/#features", label: "Features" },
+  { href: "/blog", label: "Blog" },
+  { href: "/#faq", label: "FAQ" },
+];
+
+function isActive(linkHref: string, current: string): boolean {
+  if (linkHref.startsWith("#")) return false;
+  if (linkHref === "/") return current === "/";
+  return current.startsWith(linkHref);
+}
+---
+
+<header class="fixed top-0 left-0 right-0 z-50" id="navbar">
+  <div class="transition-[background-color,box-shadow,border-color] duration-200 bg-transparent" id="navbar-bar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="/" class="flex items-center gap-2 font-bold text-xl flex-shrink-0">
+          <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/></svg>
+          </div>
+          <span class="text-gray-900">Renew<span class="text-blue-600">Tracker</span></span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-1">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              class="text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-2 rounded-lg transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <div class="hidden md:flex items-center gap-2">
+          <a
+            href="/login"
+            class="inline-flex items-center justify-center gap-2 min-w-[75px] text-sm font-medium text-gray-600 hover:text-gray-900 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            Sign in
+          </a>
+          <a
+            href="/register"
+            class="inline-flex items-center justify-center gap-2 min-w-[140px] text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-xl transition-colors shadow-sm"
+          >
+            Get started free
+          </a>
+        </div>
+
+        <button
+          class="md:hidden p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors"
+          id="menu-toggle"
+          aria-label="Toggle menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="menu-icon-open"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="menu-icon-close" class="hidden"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="md:hidden absolute left-0 right-0 bg-white border-b border-gray-100 shadow-lg transition-[transform,opacity] duration-150 ease-out will-change-transform -translate-y-3 opacity-0 pointer-events-none"
+  >
+    <div class="px-4 py-4 space-y-1">
+      {navLinks.map((link) => (
+        <a
+          key={link.href}
+          href={link.href}
+          class="flex items-center justify-between text-sm font-medium text-gray-700 hover:text-blue-600 py-3 px-3 rounded-xl hover:bg-blue-50 transition-colors"
+        >
+          {link.label}
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><path d="m9 18 6-6-6-6"/></svg>
+        </a>
+      ))}
+      <div class="pt-3 pb-1 border-t border-gray-100 space-y-2">
+        <a
+          href="/login"
+          class="w-full inline-flex items-center justify-center text-sm font-medium text-gray-700 border border-gray-200 py-2.5 px-4 rounded-xl hover:bg-gray-50 transition-colors"
+        >
+          Sign in
+        </a>
+        <a
+          href="/register"
+          class="w-full inline-flex items-center justify-center text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 py-2.5 px-4 rounded-xl transition-colors"
+        >
+          Get started free
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  (function() {
+    const navbar = document.getElementById('navbar');
+    const bar = document.getElementById('navbar-bar');
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+
+    let menuOpen = false;
+
+    function onScroll() {
+      if (window.scrollY > 10) {
+        bar.className = 'transition-[background-color,box-shadow,border-color] duration-200 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100';
+      } else {
+        bar.className = 'transition-[background-color,box-shadow,border-color] duration-200 bg-transparent';
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    if (toggle) {
+      toggle.addEventListener('click', function() {
+        menuOpen = !menuOpen;
+        if (menuOpen) {
+          menu.className = 'md:hidden absolute left-0 right-0 bg-white border-b border-gray-100 shadow-lg transition-[transform,opacity] duration-150 ease-out will-change-transform translate-y-0 opacity-100 pointer-events-auto';
+          iconOpen?.classList.add('hidden');
+          iconClose?.classList.remove('hidden');
+        } else {
+          menu.className = 'md:hidden absolute left-0 right-0 bg-white border-b border-gray-100 shadow-lg transition-[transform,opacity] duration-150 ease-out will-change-transform -translate-y-3 opacity-0 pointer-events-none';
+          iconOpen?.classList.remove('hidden');
+          iconClose?.classList.add('hidden');
+        }
+      });
+    }
+
+    // Close menu on link click
+    menu?.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        menuOpen = false;
+        menu.className = 'md:hidden absolute left-0 right-0 bg-white border-b border-gray-100 shadow-lg transition-[transform,opacity] duration-150 ease-out will-change-transform -translate-y-3 opacity-0 pointer-events-none';
+        iconOpen?.classList.remove('hidden');
+        iconClose?.classList.add('hidden');
+      });
+    });
+  })();
+</script>

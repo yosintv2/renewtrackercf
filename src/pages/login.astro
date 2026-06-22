@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LoginForm from "../components/LoginForm";
+---
+
+<BaseLayout title="Sign in — RenewTracker" description="Sign in to your RenewTracker account to manage subscriptions and bills.">
+  <div class="min-h-screen bg-gray-50 flex flex-col items-center justify-center px-4">
+    <div class="w-full max-w-md">
+      <div class="text-center mb-8">
+        <a href="/" class="inline-flex items-center gap-2 font-bold text-xl mb-2">
+          <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/></svg>
+          </div>
+          <span class="text-gray-900">Renew<span class="text-blue-600">Tracker</span></span>
+        </a>
+        <h1 class="text-2xl font-bold text-gray-900 mt-4">Welcome back</h1>
+        <p class="text-gray-500 text-sm mt-1">Sign in to your account</p>
+      </div>
+
+      <LoginForm client:load />
+
+      <p class="text-center text-sm text-gray-500 mt-6">
+        No account yet?{" "}
+        <a href="/register" class="text-blue-600 font-medium hover:text-blue-700">Create one free</a>
+      </p>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import DashboardShell from "../../components/dashboard/DashboardShell";
+import ItemsPage from "../../components/dashboard/ItemsPage";
+---
+
+<BaseLayout title="Bills — RenewTracker">
+  <DashboardShell currentPage="/dashboard/bills" client:load>
+    <ItemsPage mode="bills" />
+  </DashboardShell>
+</BaseLayout>

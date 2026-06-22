@@ -1,0 +1,80 @@
+---
+const footerLinks: Record<string, { href: string; label: string }[]> = {
+  Product: [
+    { href: "/#features", label: "Features" },
+    { href: "/blog", label: "Blog" },
+    { href: "/#faq", label: "FAQ" },
+  ],
+  Company: [
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
+  ],
+  Legal: [
+    { href: "/privacy", label: "Privacy Policy" },
+    { href: "/terms", label: "Terms of Service" },
+  ],
+};
+---
+
+<footer class="bg-gray-950 text-gray-400">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+      <div class="col-span-2">
+        <a href="/" class="inline-flex items-center gap-2 font-bold text-xl mb-4">
+          <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/></svg>
+          </div>
+          <span class="text-white">Renew<span class="text-blue-400">Tracker</span></span>
+        </a>
+        <p class="text-sm text-gray-500 leading-relaxed max-w-xs mb-5">
+          Track every subscription, bill, and recurring payment in one place. Get reminded before they charge — stay in control of your money.
+        </p>
+        <div class="flex items-center gap-3">
+          <a
+            href="mailto:hello@renewtracker.net"
+            class="w-9 h-9 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
+            aria-label="Email us"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </a>
+          <a
+            href="https://t.me/renewtracker"
+            class="w-9 h-9 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
+            aria-label="Telegram"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 4.5 2.5 10.5l7.5 3 3 7.5 8.5-16.5z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      {Object.entries(footerLinks).map(([section, links]) => (
+        <div>
+          <h4 class="text-white font-semibold text-sm mb-4">{section}</h4>
+          <ul class="space-y-3">
+            {links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-gray-500 hover:text-gray-200 transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-4">
+        <p class="text-xs text-gray-600">
+          &copy; {new Date().getFullYear()} RenewTracker. All rights reserved.
+        </p>
+        <span class="text-gray-700 text-xs hidden sm:inline">&middot;</span>
+        <p class="text-xs text-gray-600 hidden sm:inline">Free for everyone, forever.</p>
+      </div>
+      <p class="text-xs text-gray-600 italic">Never Miss a Payment.</p>
+    </div>
+  </div>
+</footer>

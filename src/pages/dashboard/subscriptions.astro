@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import DashboardShell from "../../components/dashboard/DashboardShell";
+import ItemsPage from "../../components/dashboard/ItemsPage";
+---
+
+<BaseLayout title="Subscriptions — RenewTracker">
+  <DashboardShell currentPage="/dashboard/subscriptions" client:load>
+    <ItemsPage mode="subscriptions" />
+  </DashboardShell>
+</BaseLayout>

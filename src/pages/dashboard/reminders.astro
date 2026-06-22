@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import DashboardShell from "../../components/dashboard/DashboardShell";
+import RemindersContent from "../../components/dashboard/RemindersContent";
+---
+
+<BaseLayout title="Reminders — RenewTracker">
+  <DashboardShell currentPage="/dashboard/reminders" client:load>
+    <RemindersContent />
+  </DashboardShell>
+</BaseLayout>

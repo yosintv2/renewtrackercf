@@ -1,0 +1,11 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import DashboardShell from "../../components/dashboard/DashboardShell";
+import SettingsContent from "../../components/dashboard/SettingsContent";
+---
+
+<BaseLayout title="Settings — RenewTracker">
+  <DashboardShell currentPage="/dashboard/settings" client:load>
+    <SettingsContent />
+  </DashboardShell>
+</BaseLayout>

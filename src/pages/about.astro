@@ -1,0 +1,142 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const values = [
+  {
+    icon: "heart",
+    title: "Free forever",
+    desc: "Core tracking and reminders will always be free. No paywalls, no trials, no bait-and-switch.",
+    color: "bg-red-50 text-red-500",
+  },
+  {
+    icon: "lock",
+    title: "Privacy first",
+    desc: "Your subscription data lives in your account only. We never sell data or show ads.",
+    color: "bg-blue-50 text-blue-500",
+  },
+  {
+    icon: "zap",
+    title: "Simple by design",
+    desc: "Add a subscription in seconds. No spreadsheets, no complex setup — just add and forget.",
+    color: "bg-yellow-50 text-yellow-500",
+  },
+  {
+    icon: "globe",
+    title: "Built for everyone",
+    desc: "34 currencies supported. Whether you pay in USD, INR, THB, or EUR — we have you covered.",
+    color: "bg-green-50 text-green-500",
+  },
+];
+
+const whatWeTrack = [
+  "Netflix, Spotify, Disney+, YouTube Premium",
+  "Rent, electricity, internet, utilities",
+  "Credit card bills and EMIs",
+  "Buy Now Pay Later instalments (Klarna, Afterpay)",
+  "Gym memberships and fitness apps",
+  "SaaS tools and software licences",
+  "Insurance premiums",
+  "Any custom subscription or bill",
+];
+
+const icnMap: Record<string, string> = {
+  heart: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>',
+  lock: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>',
+  zap: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+  globe: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+};
+---
+
+<BaseLayout title="About — RenewTracker" description="Learn about RenewTracker — the free subscription and bill tracking app that keeps you in control of every recurring payment.">
+  <div class="min-h-screen bg-white">
+    <Navbar currentPath={Astro.url.pathname} />
+
+    <section class="pt-28 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50 to-white">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="w-16 h-16 rounded-2xl bg-blue-600 flex items-center justify-center mx-auto mb-6 shadow-lg shadow-blue-200">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/></svg>
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-5 leading-tight">Built so you never get surprised by a charge again</h1>
+        <p class="text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto">
+          RenewTracker is a free, privacy-first tool for tracking every subscription, bill, and recurring payment — and reminding you before each one hits.
+        </p>
+      </div>
+    </section>
+
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-5">Why we built this</h2>
+      <div class="space-y-4 text-gray-600 leading-relaxed text-base">
+        <p>It started with a surprise charge. A streaming trial nobody remembered signing up for, quietly renewing for the third month in a row. Sound familiar? Between streaming services, SaaS tools, BNPL instalments, gym memberships, and annual renewals, the average person now manages more recurring payments than ever — scattered across emails, bank statements, and memory.</p>
+        <p>Spreadsheets work, but they need manual upkeep. Bank apps show charges after the fact. Calendar reminders get dismissed and forgotten. We wanted something that just works: add a subscription once, get reminded before it charges, see everything in one place.</p>
+        <p>RenewTracker was built to be that tool — simple enough to use in 30 seconds, useful enough to actually change how you manage money.</p>
+      </div>
+    </section>
+
+    <section class="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">What you can track</h2>
+        <p class="text-gray-500 mb-8">Anything that charges you on a schedule belongs here.</p>
+        <div class="grid sm:grid-cols-2 gap-3">
+          {whatWeTrack.map((item) => (
+            <div class="flex items-start gap-3 bg-white rounded-xl border border-gray-100 px-4 py-3 shadow-sm">
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0" />
+              <span class="text-sm text-gray-700">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-8">How it works</h2>
+      <div class="space-y-6">
+        {[
+          { title: "Smart reminders", desc: "Get notified 30, 15, 7, 3, and 1 day before every charge. Never be caught off guard." },
+          { title: "Spending overview", desc: "See your total monthly and annual recurring spend at a glance. Spot what's worth keeping." },
+          { title: "Multi-currency", desc: "Track subscriptions in 34 currencies. Great for services billed in a foreign currency." },
+        ].map(({ title, desc }) => (
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900 mb-1">{title}</h3>
+              <p class="text-sm text-gray-500 leading-relaxed">{desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="bg-gray-50 py-16 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8">Our values</h2>
+        <div class="grid sm:grid-cols-2 gap-5">
+          {values.map(({ icon, title, desc, color }) => (
+            <div class="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
+              <div class={`w-9 h-9 rounded-xl ${color} flex items-center justify-center mb-3`} set:html={icnMap[icon]} />
+              <h3 class="font-semibold text-gray-900 mb-1">{title}</h3>
+              <p class="text-sm text-gray-500 leading-relaxed">{desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">Ready to take control?</h2>
+      <p class="text-gray-500 mb-8">Join thousands of people who never miss a payment. Free, always.</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/register" class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-7 py-3 rounded-xl shadow-md shadow-blue-200 transition-colors">
+          Get started free
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a href="/contact" class="inline-flex items-center justify-center gap-2 border border-gray-200 text-gray-700 hover:bg-gray-50 font-semibold px-7 py-3 rounded-xl transition-colors">Get in touch</a>
+      </div>
+    </section>
+
+    <Footer />
+  </div>
+</BaseLayout>

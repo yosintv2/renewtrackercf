@@ -1,0 +1,135 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import ContactForm from "../components/ContactForm";
+import { Mail, MessageCircle, Clock, ArrowRight } from "lucide";
+
+const CONTACT_EMAIL = "hello@renewtracker.net";
+
+const channels = [
+  {
+    icon: "mail",
+    title: "Email",
+    value: CONTACT_EMAIL,
+    href: `mailto:${CONTACT_EMAIL}`,
+    badge: "Preferred",
+    badgeColor: "bg-blue-100 text-blue-700",
+    desc: "Best for account issues, bug reports, or anything detailed.",
+    response: "Usually within 24–48 hours",
+  },
+  {
+    icon: "message",
+    title: "Telegram",
+    value: "@renewtracker",
+    href: "https://t.me/renewtracker",
+    badge: "Fast",
+    badgeColor: "bg-green-100 text-green-700",
+    desc: "Quick questions, feedback, or general chat.",
+    response: "Usually within a few hours",
+  },
+];
+
+const faqs = [
+  { q: "Is RenewTracker really free?", a: "Yes — core tracking and reminders are free with no time limit. We may add optional paid features in the future, but the essentials stay free forever." },
+  { q: "I forgot my password. What do I do?", a: "Go to the login page and click 'Forgot password'. We'll email you a reset link within a minute." },
+  { q: "Can I delete my account?", a: "Yes. Go to Dashboard → Settings → scroll to the bottom → Delete Account. This permanently removes all your data." },
+  { q: "Which currencies are supported?", a: "34 currencies including USD, EUR, GBP, INR, JPY, THB, AED, and more. You can switch currency from the dashboard header." },
+  { q: "I found a bug. How do I report it?", a: "Email us at hello@renewtracker.net with a short description of what happened. Screenshots are always helpful." },
+];
+
+const icn: Record<string, string> = {
+  mail: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>',
+  message: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 4.5 2.5 10.5l7.5 3 3 7.5 8.5-16.5z"/></svg>',
+};
+---
+
+<BaseLayout title="Get in touch — RenewTracker" description="Questions, feedback, or something broken? Contact RenewTracker.">
+  <div class="min-h-screen bg-white">
+    <Navbar currentPath={Astro.url.pathname} />
+
+    <section class="pt-28 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50 to-white">
+      <div class="max-w-2xl mx-auto text-center">
+        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 leading-tight">Get in touch</h1>
+        <p class="text-lg text-gray-500">Questions, feedback, or something broken? We read everything.</p>
+      </div>
+    </section>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div class="grid sm:grid-cols-2 gap-5 mb-14">
+        {channels.map((ch) => (
+          <a
+            href={ch.href}
+            target={ch.href.startsWith("http") ? "_blank" : undefined}
+            rel="noopener noreferrer"
+            class="group flex flex-col gap-4 bg-white border border-gray-100 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-50 rounded-2xl p-6 transition-all duration-200"
+          >
+            <div class="flex items-start justify-between">
+              <div class="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center group-hover:bg-blue-100 transition-colors" set:html={icn[ch.icon]} />
+              <span class={`text-[11px] font-semibold px-2.5 py-1 rounded-full ${ch.badgeColor}`}>{ch.badge}</span>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900 text-lg">{ch.title}</p>
+              <p class="text-blue-600 font-medium text-sm mt-0.5">{ch.value}</p>
+              <p class="text-sm text-gray-500 mt-2 leading-relaxed">{ch.desc}</p>
+            </div>
+            <div class="flex items-center justify-between mt-auto pt-3 border-t border-gray-100">
+              <span class="flex items-center gap-1.5 text-xs text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                {ch.response}
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-300 group-hover:text-blue-500 group-hover:translate-x-0.5 transition-all"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="grid lg:grid-cols-5 gap-10 mb-16">
+        <div class="lg:col-span-3">
+          <h2 class="text-xl font-bold text-gray-900 mb-1">Send us a message</h2>
+          <p class="text-sm text-gray-500 mb-6">We'll reply to your email address.</p>
+          <ContactForm client:load />
+        </div>
+
+        <div class="lg:col-span-2 space-y-5">
+          <div class="bg-gray-50 rounded-2xl p-5">
+            <h3 class="font-semibold text-gray-900 text-sm mb-3">Before you write</h3>
+            <ul class="space-y-2.5">
+              {[
+                { href: "/blog", text: "Check our guides for how-to questions" },
+                { href: "/forgot-password", text: "Use forgot password for login issues" },
+              ].map(({ href, text }) => (
+                <li>
+                  <a href={href} class="flex items-center gap-2 text-sm text-gray-600 hover:text-blue-600 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 flex-shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    {text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-blue-50 rounded-2xl p-5">
+            <h3 class="font-semibold text-gray-900 text-sm mb-2">Response time</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              We typically reply within <strong>24–48 hours</strong> on weekdays. For urgent issues, Telegram is fastest.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-gray-900 mb-6">Common questions</h2>
+        <div class="space-y-3">
+          {faqs.map(({ q, a }) => (
+            <div class="bg-gray-50 rounded-2xl px-6 py-5">
+              <h3 class="font-semibold text-gray-900 text-sm mb-2">{q}</h3>
+              <p class="text-sm text-gray-500 leading-relaxed">{a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <Footer />
+  </div>
+</BaseLayout>
