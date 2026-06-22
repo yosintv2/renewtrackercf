@@ -1,0 +1,29 @@
+# RenewTracker
+
+> RenewTracker is a free subscription and bill tracking web app. It helps individuals track every recurring payment — Netflix, Spotify, rent, credit cards, BNPL loans, gym memberships, and more — and sends reminders before each charge so users never miss a payment or get hit by an unexpected auto-renewal.
+
+## Product
+
+- [Home](https://renewtracker.net/): Landing page with feature overview and sign-up
+- [Register](https://renewtracker.net/register): Create a free account
+- [Login](https://renewtracker.net/login): Sign in to your account
+- [Privacy Policy](https://renewtracker.net/privacy): How user data is collected and stored
+- [Terms of Service](https://renewtracker.net/terms): Terms governing use of the service
+
+## Blog — Guides & Tips
+
+- [Stop Paying for Subscriptions You Forgot](https://renewtracker.net/blog/stop-paying-for-subscriptions-you-forgot): How to audit and cancel forgotten subscriptions
+- [How to Manage All Your Subscriptions](https://renewtracker.net/blog/how-to-manage-all-your-subscriptions): Step-by-step guide to organising recurring payments
+- [BNPL / Buy Now Pay Later Tracker](https://renewtracker.net/blog/bnpl-buy-now-pay-later-tracker): Tracking Klarna, Afterpay, and other BNPL instalments
+- [Are Streaming Subscriptions Worth It?](https://renewtracker.net/blog/streaming-subscriptions-worth-it): Calculating the real cost of Netflix, Disney+, and more
+- [Monthly Bills Tracker Guide](https://renewtracker.net/blog/monthly-bills-tracker-guide): How to track rent, utilities, and regular bills
+- [Subscription Audit: Save Money](https://renewtracker.net/blog/subscription-audit-save-money): A practical audit checklist to cut wasted spend
+- [Gym & Lifestyle Subscriptions Guide](https://renewtracker.net/blog/gym-lifestyle-subscriptions-guide): Managing gym, wellness, and lifestyle memberships
+- [Tech Tools & Software Subscriptions](https://renewtracker.net/blog/tech-tools-software-subscriptions): Tracking SaaS and developer tool costs
+- [Credit Card Bills Tracker](https://renewtracker.net/blog/credit-card-bills-tracker): Never miss a credit card payment again
+- [How Much Do Subscriptions Cost Monthly?](https://renewtracker.net/blog/how-much-do-subscriptions-cost-monthly): Average subscription spend data and analysis
+
+## Technical
+
+- Sitemap: https://renewtracker.net/sitemap.xml
+- Contact: hello@renewtracker.net
