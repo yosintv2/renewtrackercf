@@ -5,6 +5,8 @@
 ## Product
 
 - [Home](https://renewtracker.net/): Landing page with feature overview and sign-up
+- [About](https://renewtracker.net/about): What RenewTracker is, why it was built, and our values
+- [Contact](https://renewtracker.net/contact): Get in touch via email or Telegram; includes FAQ
 - [Register](https://renewtracker.net/register): Create a free account
 - [Login](https://renewtracker.net/login): Sign in to your account
 - [Privacy Policy](https://renewtracker.net/privacy): How user data is collected and stored
