@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -53,7 +54,20 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        {/* Stats counters — hidden from view, sitewide */}
+        <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "1px", overflow: "hidden", visibility: "hidden", zIndex: -1 }}>
+          <Script src="https://widget.supercounters.com/ssl/online_i.js" strategy="afterInteractive" />
+          <Script id="sc-online-init" strategy="afterInteractive">
+            {`sc_online_i(1714446,"ffffff","ffffff");`}
+          </Script>
+          <Script id="wau-init" strategy="afterInteractive">
+            {`var _wau = _wau || []; _wau.push(["sjphoi7xt1", "1qzxz258so", "9qe", "c4302bffffff", "small"]);`}
+          </Script>
+          <Script src="https://waust.at/d.js" strategy="afterInteractive" />
+        </div>
+      </body>
     </html>
   );
 }
