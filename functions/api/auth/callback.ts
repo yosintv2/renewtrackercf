@@ -57,10 +57,10 @@ export async function onRequest(context: {
   const { error } = await supabase.auth.exchangeCodeForSession(code);
 
   if (error) {
-    return Response.redirect(
-      new URL(`/login?error=${encodeURIComponent(error.message)}`, url.origin),
-      302,
-    );
+    const errorPath = next === "/reset-password"
+      ? `/forgot-password?error=link_expired`
+      : `/login?error=${encodeURIComponent(error.message)}`;
+    return Response.redirect(new URL(errorPath, url.origin), 302);
   }
 
   const headers = new Headers();

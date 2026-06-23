@@ -5,9 +5,25 @@ export interface Props {
   title?: string;
   description?: string;
   canonical?: string;
+  ogImage?: string;
 }
 
-const { title = "RenewTracker — Never Miss a Subscription Payment", description = "Track every subscription, bill, rent, and financial liability in one place. Get reminded before payments hit — Netflix, Spotify, rent, credit cards, BNPL, and more. Free forever." } = Astro.props;
+const site = "https://www.renewtracker.net";
+const defaultTitle = "RenewTracker — Never Miss a Payment";
+const defaultDesc = "Track every subscription, bill, rent, loan, and recurring payment in one place. Free reminders before every due date — Netflix, rent, credit cards, BNPL, and more.";
+const { title = defaultTitle, description = defaultDesc, canonical, ogImage = "/apple-icon.png" } = Astro.props;
+
+const pageTitle = title.includes("RenewTracker") ? title : `${title} — RenewTracker`;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "RenewTracker",
+  url: site,
+  description: defaultDesc,
+  applicationCategory: "FinanceApplication",
+  operatingSystem: "Web",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+};
 ---
 
 <!doctype html>
@@ -15,15 +31,32 @@ const { title = "RenewTracker — Never Miss a Subscription Payment", descriptio
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <title>{title}</title>
+    <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="subscription tracker,bill reminder app,subscription management,recurring payment tracker,Netflix reminder,subscription cost tracker,monthly bill tracker,BNPL tracker,credit card payment reminder,rent reminder" />
+    <meta name="keywords" content="subscription tracker,bill reminder,recurring payment tracker,subscription management,monthly bill organizer,BNPL tracker,rent reminder,credit card payment reminder,free subscription manager,renewtracker" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#2563eb" />
+    <link rel="canonical" href={canonical || site + Astro.url.pathname} />
+
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-icon.png" />
-    <meta property="og:title" content={title} />
+
+    <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical || site + Astro.url.pathname} />
+    <meta property="og:image" content={site + ogImage} />
+    <meta property="og:site_name" content="RenewTracker" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={site + ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
     <link rel="preconnect" href="https://api.fontshare.com" />
     <style>
       @font-face {

@@ -3,26 +3,54 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import LoginForm from "../components/LoginForm";
 ---
 
-<BaseLayout title="Sign in — RenewTracker" description="Sign in to your RenewTracker account to manage subscriptions and bills.">
-  <div class="min-h-screen bg-gray-50 flex flex-col items-center justify-center px-4">
-    <div class="w-full max-w-md">
-      <div class="text-center mb-8">
-        <a href="/" class="inline-flex items-center gap-2 font-bold text-xl mb-2">
-          <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/></svg>
-          </div>
-          <span class="text-gray-900">Renew<span class="text-blue-600">Tracker</span></span>
-        </a>
-        <h1 class="text-2xl font-bold text-gray-900 mt-4">Welcome back</h1>
-        <p class="text-gray-500 text-sm mt-1">Sign in to your account</p>
+<BaseLayout title="Sign in — RenewTracker" description="Sign in to RenewTracker to manage your subscriptions, bills, and recurring payments. View your dashboard, check due dates, and update settings.">
+  <div class="min-h-screen bg-gray-50 flex flex-col lg:flex-row">
+    <div class="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-blue-600 to-indigo-700 flex-col justify-between p-8 relative overflow-hidden">
+      <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 24px 24px;"></div>
+      <a href="/" class="relative inline-flex items-center gap-2.5 font-bold text-lg text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" class="w-8 h-8">
+          <rect width="32" height="32" rx="8" fill="rgba(255,255,255,0.2)"/>
+          <path d="M16 5.5L25 8.5V16C25 22 21 26 16 27.5C11 26 7 22 7 16V8.5L16 5.5Z" fill="white"/>
+        </svg>
+        RenewTracker
+      </a>
+      <div class="relative">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight">Track every subscription. Never miss a payment.</h2>
+        <p class="text-blue-200 text-sm sm:text-base mb-5 max-w-sm">Join thousands who use RenewTracker to stay on top of every subscription, bill, and recurring payment.</p>
+        <ul class="space-y-2.5">
+          {["See your monthly and yearly spend breakdown at a glance","Know exactly what's due and when — overdue, upcoming, and paid","Get smart reminders 30, 15, 7, 3, and 1 day before every charge","100% free — no limits, no credit card, forever"].map((b) => (
+            <li class="flex items-start gap-2.5 text-white text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-300 flex-shrink-0 mt-0.5"><path d="M20 6 9 17l-5-5"/></svg>
+              <span class="text-blue-100">{b}</span>
+            </li>
+          ))}
+        </ul>
       </div>
+      <p class="relative text-blue-300 text-xs">Free for everyone, forever.</p>
+    </div>
 
-      <LoginForm client:load />
+    <div class="flex-1 flex flex-col items-center justify-center px-4 py-4 lg:overflow-y-auto">
+      <div class="w-full max-w-md">
+        <div class="text-center mb-4 lg:hidden">
+          <a href="/" class="inline-flex items-center gap-2.5 font-bold text-lg mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" class="w-8 h-8">
+              <rect width="32" height="32" rx="8" fill="#2563EB"/>
+              <path d="M16 5.5L25 8.5V16C25 22 21 26 16 27.5C11 26 7 22 7 16V8.5L16 5.5Z" fill="white"/>
+            </svg>
+            <span class="text-gray-900">Renew<span class="text-blue-600">Tracker</span></span>
+          </a>
+        </div>
 
-      <p class="text-center text-sm text-gray-500 mt-6">
-        No account yet?{" "}
-        <a href="/register" class="text-blue-600 font-medium hover:text-blue-700">Create one free</a>
-      </p>
+        <h1 class="text-xl sm:text-2xl font-bold text-gray-900 mb-1 lg:text-center">Welcome back</h1>
+        <p class="text-gray-500 text-sm mb-5 lg:text-center">Sign in to pick up right where you left off.</p>
+
+        <LoginForm client:load />
+
+        <p class="text-center text-sm text-gray-500 mt-4">
+          No account yet?{" "}
+          <a href="/register" class="text-blue-600 font-medium hover:text-blue-700">Create one free — no credit card needed</a>
+        </p>
+      </div>
     </div>
   </div>
 </BaseLayout>

@@ -24,7 +24,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-06-01",
     readTime: "4 min read",
     category: "Money Tips",
-    coverEmoji: "💸",
+    coverEmoji: "banknote",
     content: [
       {
         type: "p",
@@ -88,7 +88,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-06-05",
     readTime: "5 min read",
     category: "Guide",
-    coverEmoji: "📋",
+    coverEmoji: "clipboard",
     content: [
       {
         type: "p",
@@ -138,7 +138,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-06-10",
     readTime: "5 min read",
     category: "Financial",
-    coverEmoji: "💳",
+    coverEmoji: "creditcard",
     content: [
       {
         type: "p",
@@ -193,7 +193,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-06-15",
     readTime: "4 min read",
     category: "Entertainment",
-    coverEmoji: "📺",
+    coverEmoji: "tv",
     content: [
       {
         type: "p",
@@ -250,7 +250,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-06-20",
     readTime: "4 min read",
     category: "Guide",
-    coverEmoji: "🧾",
+    coverEmoji: "receipt",
     content: [
       {
         type: "p",
@@ -304,7 +304,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-06-25",
     readTime: "6 min read",
     category: "Money Tips",
-    coverEmoji: "🔍",
+    coverEmoji: "search",
     content: [
       {
         type: "p",
@@ -368,7 +368,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-07-01",
     readTime: "4 min read",
     category: "Lifestyle",
-    coverEmoji: "🏋️",
+    coverEmoji: "dumbbell",
     content: [
       {
         type: "p",
@@ -418,7 +418,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-07-05",
     readTime: "5 min read",
     category: "Tech",
-    coverEmoji: "💻",
+    coverEmoji: "monitor",
     content: [
       {
         type: "p",
@@ -468,7 +468,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-07-10",
     readTime: "4 min read",
     category: "Financial",
-    coverEmoji: "💳",
+    coverEmoji: "creditcard",
     content: [
       {
         type: "p",
@@ -522,7 +522,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-07-15",
     readTime: "4 min read",
     category: "Data",
-    coverEmoji: "📊",
+    coverEmoji: "chart",
     content: [
       {
         type: "p",

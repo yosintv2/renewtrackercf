@@ -49,16 +49,16 @@ const icnMap: Record<string, string> = {
 };
 ---
 
-<BaseLayout title="About — RenewTracker" description="Learn about RenewTracker — the free subscription and bill tracking app that keeps you in control of every recurring payment.">
+<BaseLayout title="About — RenewTracker" description="RenewTracker is the free subscription and bill tracker that reminds you before every payment. Track Netflix, rent, credit cards, BNPL, and more — all in one place.">
   <div class="min-h-screen bg-white">
     <Navbar currentPath={Astro.url.pathname} />
 
     <section class="pt-28 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50 to-white">
       <div class="max-w-3xl mx-auto text-center">
-        <div class="w-16 h-16 rounded-2xl bg-blue-600 flex items-center justify-center mx-auto mb-6 shadow-lg shadow-blue-200">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/></svg>
-        </div>
-        <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-5 leading-tight">Built so you never get surprised by a charge again</h1>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" class="w-16 h-16 mx-auto mb-6 shadow-lg shadow-blue-200 rounded-2xl">
+          <rect width="32" height="32" rx="8" fill="#2563EB"/>
+          <path d="M16 5.5L25 8.5V16C25 22 21 26 16 27.5C11 26 7 22 7 16V8.5L16 5.5Z" fill="white"/>
+        </svg>
         <p class="text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto">
           RenewTracker is a free, privacy-first tool for tracking every subscription, bill, and recurring payment — and reminding you before each one hits.
         </p>

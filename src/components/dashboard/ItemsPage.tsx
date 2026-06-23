@@ -361,7 +361,7 @@ function SubCard({ s, fmt, onEdit, onDelete, onPaid }: {
 
   const isOnce = s.billing_cycle === "once";
   const showPaidTag = paidState?.date;
-  const btnLabel = paying ? "Advancing..." : paidState ? "Paid! ✓" : isOnce ? "Mark done" : "Mark paid";
+  const btnLabel = paying ? "Advancing..." : paidState ? "Paid!" : isOnce ? "Mark done" : "Mark paid";
   const btnIcon = paying ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <CheckCircle2 className="w-3.5 h-3.5" />;
 
   return (

@@ -1,5 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from "react";
-import { Menu, Shield, ChevronDown, Check, X, LogOut, ChevronRight, LayoutDashboard, Bell, Settings, Tv, Receipt, Clock, LoaderCircle } from "lucide-react";
+import { Menu, ChevronDown, Check, X, LogOut, ChevronRight, LayoutDashboard, Bell, Settings, Tv, Receipt, Clock, LoaderCircle } from "lucide-react";
 import { CurrencyProvider, useCurrency, CURRENCIES } from "@/lib/currency";
 import DashboardOverviewContent from "./DashboardOverviewContent";
 import ItemsPage from "./ItemsPage";
@@ -134,12 +134,13 @@ function Sidebar({ currentPage, onClose }: { currentPage: string; onClose: () =>
   return (
     <aside className="fixed left-0 top-0 bottom-0 w-64 bg-white border-r border-gray-100 flex flex-col z-40">
       <div className="h-14 flex items-center justify-between px-5 border-b border-gray-100 flex-shrink-0">
-        <a href="/" className="flex items-center gap-2 font-bold text-lg">
-          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center shadow-sm">
-            <Shield className="w-4 h-4 text-white" />
-          </div>
-          <span className="text-gray-900">Renew<span className="text-blue-600">Tracker</span></span>
-        </a>
+          <a href="/" className="flex items-center gap-2 font-bold text-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" class="w-8 h-8">
+              <rect width="32" height="32" rx="8" fill="#2563EB"/>
+              <path d="M16 5.5L25 8.5V16C25 22 21 26 16 27.5C11 26 7 22 7 16V8.5L16 5.5Z" fill="white"/>
+            </svg>
+            <span className="text-gray-900">Renew<span className="text-blue-600">Tracker</span></span>
+          </a>
         <button className="lg:hidden min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100" onClick={onClose} aria-label="Close menu">
           <X className="w-4 h-4" />
         </button>
@@ -212,9 +213,10 @@ function Shell({ children, currentPage }: { children: React.ReactNode; currentPa
           </button>
 
           <a href="/" className="lg:hidden flex items-center gap-1.5 font-bold text-sm sm:text-base flex-shrink-0">
-            <div className="w-6 h-6 rounded-md bg-blue-600 flex items-center justify-center">
-              <Shield className="w-3.5 h-3.5 text-white" />
-            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" class="w-7 h-7">
+              <rect width="32" height="32" rx="8" fill="#2563EB"/>
+              <path d="M16 5.5L25 8.5V16C25 22 21 26 16 27.5C11 26 7 22 7 16V8.5L16 5.5Z" fill="white"/>
+            </svg>
             <span className="text-gray-900 whitespace-nowrap">Renew<span className="text-blue-600">Tracker</span></span>
           </a>
 

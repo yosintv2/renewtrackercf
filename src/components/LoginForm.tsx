@@ -1,12 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Loader2, AlertCircle } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
+
+const ERROR_MESSAGES: Record<string, string> = {
+  no_code: "Invalid sign-in link. Please try again.",
+  invalid_verifier: "Sign-in link expired or already used. Please sign in again.",
+  link_expired: "This reset link has expired. Please request a new one.",
+};
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [urlError, setUrlError] = useState("");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const err = params.get("error");
+    if (err) setUrlError(ERROR_MESSAGES[err] ?? err);
+  }, []);
 
   async function handleEmailLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -33,17 +46,17 @@ export default function LoginForm() {
   }
 
   return (
-    <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-8">
-      {error && (
-        <div class="flex items-center gap-2 text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-3 mb-5 text-sm">
-          <AlertCircle class="w-4 h-4 flex-shrink-0" />
-          {error}
+    <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+      {(error || urlError) && (
+        <div class="flex items-start gap-2 text-red-600 bg-red-50 border border-red-200 rounded-xl px-3 py-2.5 mb-4 text-sm">
+          <AlertCircle class="w-4 h-4 flex-shrink-0 mt-0.5" />
+          <span>{error || urlError}</span>
         </div>
       )}
 
       <button
         onClick={handleGoogleLogin}
-        class="w-full h-11 border border-gray-200 rounded-xl text-gray-700 font-medium hover:bg-gray-50 mb-6 inline-flex items-center justify-center gap-2 transition-colors"
+        class="w-full h-10 border border-gray-200 rounded-xl text-gray-700 font-medium hover:bg-gray-50 mb-4 inline-flex items-center justify-center gap-2 transition-colors text-sm"
         type="button"
       >
         <svg class="w-4 h-4" viewBox="0 0 24 24">
@@ -55,7 +68,7 @@ export default function LoginForm() {
         Continue with Google
       </button>
 
-      <div class="relative mb-6">
+      <div class="relative mb-4">
         <div class="absolute inset-0 flex items-center">
           <div class="w-full border-t border-gray-200" />
         </div>
@@ -64,14 +77,14 @@ export default function LoginForm() {
         </div>
       </div>
 
-      <form onSubmit={handleEmailLogin} class="space-y-4">
+      <form onSubmit={handleEmailLogin} class="space-y-3">
         <div>
           <label for="email" class="text-sm font-medium text-gray-700">Email address</label>
           <input
             id="email"
             type="email"
             placeholder="you@example.com"
-            class="mt-1.5 w-full h-11 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
+            class="mt-1 w-full h-10 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -79,7 +92,7 @@ export default function LoginForm() {
         </div>
 
         <div>
-          <div class="flex justify-between items-center mb-1.5">
+          <div class="flex justify-between items-center mb-1">
             <label for="password" class="text-sm font-medium text-gray-700">Password</label>
             <a href="/forgot-password" class="text-xs text-blue-600 hover:text-blue-700 font-medium">Forgot password?</a>
           </div>
@@ -87,7 +100,7 @@ export default function LoginForm() {
             id="password"
             type="password"
             placeholder="••••••••"
-            class="mt-1.5 w-full h-11 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
+            class="mt-1 w-full h-10 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -97,7 +110,7 @@ export default function LoginForm() {
         <button
           type="submit"
           disabled={loading}
-          class="w-full h-11 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl inline-flex items-center justify-center gap-2 transition-colors disabled:opacity-90 mt-2"
+          class="w-full h-10 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl inline-flex items-center justify-center gap-2 transition-colors disabled:opacity-90 text-sm"
         >
           {loading && <Loader2 class="w-4 h-4 animate-spin" />}
           {loading ? "Signing in..." : "Sign in"}

@@ -40,7 +40,7 @@ function monthlyEquiv(price: number, cycle: string) {
 }
 
 function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString(undefined, { day: "numeric", month: "short" });
+  return new Date(dateStr).toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" });
 }
 
 function DaysTag({ days }: { days: number }) {
@@ -48,10 +48,10 @@ function DaysTag({ days }: { days: number }) {
   if (days < 0) return <span className={cn(base, "bg-red-100 text-red-700")}>Overdue</span>;
   if (days === 0) return <span className={cn(base, "bg-red-100 text-red-700")}>Today</span>;
   if (days === 1) return <span className={cn(base, "bg-red-100 text-red-700")}>Tomorrow</span>;
-  if (days <= 3) return <span className={cn(base, "bg-red-100 text-red-700")}>{days}d left</span>;
-  if (days <= 7) return <span className={cn(base, "bg-orange-100 text-orange-700")}>{days}d left</span>;
-  if (days <= 30) return <span className={cn(base, "bg-yellow-100 text-yellow-700")}>{days}d</span>;
-  return <span className={cn(base, "bg-green-100 text-green-700")}>{days}d</span>;
+  if (days <= 3) return <span className={cn(base, "bg-red-100 text-red-700")}>{days} days left</span>;
+  if (days <= 7) return <span className={cn(base, "bg-orange-100 text-orange-700")}>{days} days left</span>;
+  if (days <= 30) return <span className={cn(base, "bg-yellow-100 text-yellow-700")}>{days} days left</span>;
+  return <span className={cn(base, "bg-green-100 text-green-700")}>{days} days left</span>;
 }
 
 export default function DashboardOverviewContent() {

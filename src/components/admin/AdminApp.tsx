@@ -251,7 +251,10 @@ export default function AdminApp() {
       <header className="bg-white border-b border-gray-200 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex items-center justify-between h-14">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center"><Shield className="w-4 h-4 text-white" /></div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" class="w-8 h-8">
+              <rect width="32" height="32" rx="8" fill="#2563EB"/>
+              <path d="M16 5.5L25 8.5V16C25 22 21 26 16 27.5C11 26 7 22 7 16V8.5L16 5.5Z" fill="white"/>
+            </svg>
             <span className="font-bold text-gray-900">Renew<span className="text-blue-600">Tracker</span></span>
             <span className="text-[10px] font-bold bg-red-100 text-red-600 px-2 py-0.5 rounded-full ml-1">ADMIN</span>
           </div>

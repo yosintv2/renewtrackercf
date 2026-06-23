@@ -1,5 +1,6 @@
 import { ArrowRight, CheckCircle2, Star, BookOpen, Bell, LayoutDashboard, Shield, WalletCards, Globe, TrendingDown, Zap, CreditCard, Calendar, Clock, AlertTriangle, ChevronDown, Repeat2, BarChart3, Users, Sparkles, Timer } from "lucide-react";
 import { blogPosts } from "../lib/blog";
+import BlogCoverIcon from "./BlogCoverIcon";
 
 const features = [
   { icon: Bell, title: "Smart Payment Reminders", description: "Get notified 30, 15, 7, 3, and 1 day before every subscription or bill charges. Never get surprised by a payment again.", gradient: "from-blue-500 to-blue-700" },
@@ -157,11 +158,11 @@ export default function HomeContent() {
               </div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-gray-900 leading-[1.05] mb-5 tracking-tight">
                 Never Miss a<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">Subscription Payment</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">Payment</span>
                 <br />Again.
               </h1>
               <p className="text-sm sm:text-base text-gray-500 max-w-md mx-auto lg:mx-0 mb-8 leading-relaxed">
-                Track every subscription, bill, rent, and financial liability in one place. Get reminded before payments hit — so you're always in control of your money.
+                Track every subscription, bill, rent, loan, and recurring payment in one place. Get reminded before every due date — so you're always in control of your money.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-8">
                 <a href="/register"
@@ -344,7 +345,7 @@ export default function HomeContent() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {blogPosts.slice(0, 3).map(post => (
               <a key={post.slug} href={`/blog/${post.slug}`} className="group bg-white border border-gray-100 rounded-2xl p-5 sm:p-6 hover:border-blue-200 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
-                <div className="text-4xl mb-4">{post.coverEmoji}</div>
+                <BlogCoverIcon icon={post.coverEmoji} size="sm" />
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-[11px] font-semibold text-blue-600 bg-blue-50 px-2 py-0.5 rounded-full">{post.category}</span>
                   <span className="text-[11px] text-gray-400 flex items-center gap-1"><Timer className="w-3 h-3" />{post.readTime}</span>

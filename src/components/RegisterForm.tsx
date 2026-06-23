@@ -12,12 +12,12 @@ export default function RegisterForm() {
 
   if (success) {
     return (
-      <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-10 text-center">
-        <div class="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center mx-auto mb-4">
-          <CheckCircle2 class="w-7 h-7 text-green-600" />
+      <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 text-center">
+        <div class="w-12 h-12 rounded-2xl bg-green-100 flex items-center justify-center mx-auto mb-3">
+          <CheckCircle2 class="w-6 h-6 text-green-600" />
         </div>
-        <h2 class="text-xl font-bold text-gray-900 mb-2">Check your email</h2>
-        <p class="text-gray-500 text-sm mb-6">
+        <h2 class="text-lg font-bold text-gray-900 mb-1">Check your email</h2>
+        <p class="text-gray-500 text-sm mb-4">
           We sent a confirmation link to <strong>{email}</strong>. Click it to activate your account.
         </p>
         <a href="/login" class="text-blue-600 text-sm font-medium hover:underline">Back to sign in</a>
@@ -58,9 +58,9 @@ export default function RegisterForm() {
   }
 
   return (
-    <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-8">
+    <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
       {error && (
-        <div class="flex items-center gap-2 text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-3 mb-5 text-sm">
+        <div class="flex items-center gap-2 text-red-600 bg-red-50 border border-red-200 rounded-xl px-3 py-2.5 mb-4 text-sm">
           <AlertCircle class="w-4 h-4 flex-shrink-0" />
           {error}
         </div>
@@ -68,7 +68,7 @@ export default function RegisterForm() {
 
       <button
         onClick={handleGoogleLogin}
-        class="w-full h-11 border border-gray-200 rounded-xl text-gray-700 font-medium hover:bg-gray-50 mb-6 inline-flex items-center justify-center gap-2 transition-colors"
+        class="w-full h-10 border border-gray-200 rounded-xl text-gray-700 font-medium hover:bg-gray-50 mb-4 inline-flex items-center justify-center gap-2 transition-colors text-sm"
         type="button"
       >
         <svg class="w-4 h-4" viewBox="0 0 24 24">
@@ -80,7 +80,7 @@ export default function RegisterForm() {
         Continue with Google
       </button>
 
-      <div class="relative mb-6">
+      <div class="relative mb-4">
         <div class="absolute inset-0 flex items-center">
           <div class="w-full border-t border-gray-200" />
         </div>
@@ -89,14 +89,14 @@ export default function RegisterForm() {
         </div>
       </div>
 
-      <form onSubmit={handleRegister} class="space-y-4">
+      <form onSubmit={handleRegister} class="space-y-3">
         <div>
           <label for="name" class="text-sm font-medium text-gray-700">Full name</label>
           <input
             id="name"
             type="text"
             placeholder="Alex Johnson"
-            class="mt-1.5 w-full h-11 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
+            class="mt-1 w-full h-10 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
@@ -108,7 +108,7 @@ export default function RegisterForm() {
             id="email"
             type="email"
             placeholder="you@example.com"
-            class="mt-1.5 w-full h-11 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
+            class="mt-1 w-full h-10 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -120,7 +120,7 @@ export default function RegisterForm() {
             id="password"
             type="password"
             placeholder="At least 8 characters"
-            class="mt-1.5 w-full h-11 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
+            class="mt-1 w-full h-10 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             minLength={8}
@@ -131,7 +131,7 @@ export default function RegisterForm() {
         <button
           type="submit"
           disabled={loading}
-          class="w-full h-11 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl inline-flex items-center justify-center gap-2 transition-colors disabled:opacity-90 mt-2"
+          class="w-full h-10 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl inline-flex items-center justify-center gap-2 transition-colors disabled:opacity-90 text-sm"
         >
           {loading && <Loader2 class="w-4 h-4 animate-spin" />}
           {loading ? "Creating account..." : "Create free account"}

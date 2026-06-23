@@ -50,7 +50,7 @@ function ReminderRow({ s, fmt }: { s: Subscription; fmt: (n: number) => string }
     ? <Clock className="w-4 h-4 text-yellow-500 flex-shrink-0" />
     : <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0" />;
 
-  const daysLabel = isOverdue ? `Overdue ${Math.abs(days)}d`
+  const daysLabel = isOverdue ? `Overdue ${Math.abs(days)} days`
     : days === 0 ? "Due today"
     : days === 1 ? "Tomorrow"
     : `${days} days`;

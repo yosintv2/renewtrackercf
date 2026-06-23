@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Loader2, CheckCircle2, AlertCircle, KeyRound } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Loader2, CheckCircle2, AlertCircle, KeyRound, ShieldAlert } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 
 export default function ResetPasswordForm() {
@@ -8,14 +8,54 @@ export default function ResetPasswordForm() {
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState("");
+  const [checking, setChecking] = useState(true);
+  const [hasSession, setHasSession] = useState(false);
+
+  useEffect(() => {
+    async function check() {
+      const supabase = createClient();
+      const { data } = await supabase.auth.getSession();
+      setHasSession(!!data.session);
+      setChecking(false);
+    }
+    check();
+  }, []);
+
+  if (checking) {
+    return (
+      <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 text-center">
+        <Loader2 class="w-6 h-6 animate-spin text-blue-600 mx-auto" />
+      </div>
+    );
+  }
+
+  if (!hasSession) {
+    return (
+      <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-8 text-center">
+        <div class="w-14 h-14 rounded-2xl bg-amber-100 flex items-center justify-center mx-auto mb-4">
+          <ShieldAlert class="w-7 h-7 text-amber-600" />
+        </div>
+        <h2 class="text-lg font-bold text-gray-900 mb-2">Invalid or expired reset link</h2>
+        <p class="text-sm text-gray-500 mb-6">
+          This password reset link is invalid or was opened in a different browser. Please request a new reset link to continue.
+        </p>
+        <a
+          href="/forgot-password"
+          class="inline-flex items-center gap-2 h-10 px-5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-colors text-sm"
+        >
+          Request new reset link
+        </a>
+      </div>
+    );
+  }
 
   if (done) {
     return (
-      <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-10 text-center">
-        <div class="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center mx-auto mb-4">
-          <CheckCircle2 class="w-7 h-7 text-green-600" />
+      <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 text-center">
+        <div class="w-12 h-12 rounded-2xl bg-green-100 flex items-center justify-center mx-auto mb-3">
+          <CheckCircle2 class="w-6 h-6 text-green-600" />
         </div>
-        <h2 class="text-xl font-bold text-gray-900 mb-2">Password updated</h2>
+        <h2 class="text-lg font-bold text-gray-900 mb-1">Password updated</h2>
         <p class="text-gray-500 text-sm">Redirecting to your dashboard&hellip;</p>
       </div>
     );
@@ -41,21 +81,21 @@ export default function ResetPasswordForm() {
   }
 
   return (
-    <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-8">
+    <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
       {error && (
-        <div class="flex items-center gap-2 text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-3 mb-5 text-sm">
+        <div class="flex items-center gap-2 text-red-600 bg-red-50 border border-red-200 rounded-xl px-3 py-2.5 mb-4 text-sm">
           <AlertCircle class="w-4 h-4 flex-shrink-0" />
           {error}
         </div>
       )}
-      <form onSubmit={handleSubmit} class="space-y-4">
+      <form onSubmit={handleSubmit} class="space-y-3">
         <div>
           <label for="password" class="text-sm font-medium text-gray-700">New password</label>
           <input
             id="password"
             type="password"
             placeholder="At least 8 characters"
-            class="mt-1.5 w-full h-11 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
+            class="mt-1 w-full h-10 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             minLength={8}
@@ -68,7 +108,7 @@ export default function ResetPasswordForm() {
             id="confirm"
             type="password"
             placeholder="Repeat your password"
-            class="mt-1.5 w-full h-11 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
+            class="mt-1 w-full h-10 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
             value={confirm}
             onChange={(e) => setConfirm(e.target.value)}
             minLength={8}
@@ -78,7 +118,7 @@ export default function ResetPasswordForm() {
         <button
           type="submit"
           disabled={loading}
-          class="w-full h-11 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl inline-flex items-center justify-center gap-2 transition-colors mt-2"
+          class="w-full h-10 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl inline-flex items-center justify-center gap-2 transition-colors text-sm"
         >
           {loading ? (
             <><Loader2 class="w-4 h-4 animate-spin" />Updating&hellip;</>
