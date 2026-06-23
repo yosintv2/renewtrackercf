@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useCurrency } from "@/lib/currency";
 import { cn } from "@/lib/utils";
-import { Plus, Edit2, Trash2, Loader2, AlertCircle, ArrowLeft, X, Tv, Home, Cpu, Dumbbell, CreditCard, MoreHorizontal, Receipt } from "lucide-react";
+import { Plus, Edit2, Trash2, Loader2, AlertCircle, ArrowLeft, X, CheckCircle2, Clock, Tv, Home, Cpu, Dumbbell, CreditCard, MoreHorizontal, Receipt } from "lucide-react";
 
 type CategoryKey = "entertainment" | "living" | "tech" | "lifestyle" | "financial" | "other";
 type SectionKey = "subscriptions" | "bills";
@@ -49,7 +49,18 @@ function formatDate(dateStr: string): string {
   return new Date(dateStr).toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" });
 }
 
+function advanceDate(from: string, cycle: string): string {
+  if (cycle === "once") return from;
+  const d = new Date(from);
+  if (cycle === "monthly") d.setMonth(d.getMonth() + 1);
+  else if (cycle === "yearly") d.setFullYear(d.getFullYear() + 1);
+  else if (cycle === "weekly") d.setDate(d.getDate() + 7);
+  else if (cycle === "quarterly") d.setMonth(d.getMonth() + 3);
+  return d.toISOString().split("T")[0];
+}
+
 function monthlyEquiv(price: number, cycle: string) {
+  if (cycle === "once") return 0;
   if (cycle === "yearly") return price / 12;
   if (cycle === "weekly") return price * 4.33;
   if (cycle === "quarterly") return price / 3;
@@ -129,14 +140,14 @@ function AddDialog({ open, onOpenChange, editItem, onSaved, mode }: {
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="fixed inset-0 bg-black/50" onClick={() => onOpenChange(false)} />
       <div className="relative bg-white rounded-2xl shadow-xl border border-gray-200 w-full max-w-sm sm:max-w-md max-h-[90vh] flex flex-col mx-4 overflow-hidden">
-        <div className="flex items-center gap-3 px-5 pt-5 pb-4 border-b border-gray-100 flex-shrink-0">
+        <div className="flex items-center gap-2 px-5 pt-5 pb-4 border-b border-gray-100 flex-shrink-0">
           {step > 1 && !editItem && (
-            <button onClick={goBack} className="p-1.5 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors -ml-1">
+            <button onClick={goBack} className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors -ml-1">
               <ArrowLeft className="w-4 h-4" />
             </button>
           )}
           <h2 className="flex-1 text-base font-bold text-gray-900">{stepTitle}</h2>
-          <button onClick={() => onOpenChange(false)} className="p-1.5 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors">
+          <button onClick={() => onOpenChange(false)} className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors">
             <X className="w-4 h-4" />
           </button>
         </div>
@@ -151,19 +162,23 @@ function AddDialog({ open, onOpenChange, editItem, onSaved, mode }: {
 
         <div className="flex-1 overflow-y-auto px-5 pb-5">
           {step === 1 && (
-            <div className="grid grid-cols-2 gap-2.5 pt-1">
-              {availableCats.map(cat => {
+            <div className="space-y-2.5 pt-1">
+              {availableCats.map((cat, idx) => {
                 const Icon = cat.icon;
                 return (
                   <button key={cat.value} onClick={() => selectCategory(cat.value)}
-                    className="group flex flex-col gap-3 p-4 rounded-2xl border border-gray-100 bg-white text-left transition-all duration-150 active:scale-95 hover:border-gray-200 hover:shadow-lg hover:shadow-gray-100/80"
+                    className="group relative w-full flex items-center gap-4 p-4 rounded-2xl border-2 border-transparent bg-white text-left transition-all duration-150 active:scale-[0.99] hover:border-gray-200 hover:shadow-lg hover:shadow-gray-100/60"
+                    style={{ borderLeftColor: cat.borderAccent.includes("purple") ? "#a855f7" : cat.borderAccent.includes("green") ? "#22c55e" : cat.borderAccent.includes("blue") ? "#3b82f6" : cat.borderAccent.includes("orange") ? "#f97316" : cat.borderAccent.includes("red") ? "#ef4444" : "#d1d5db", borderLeftWidth: "4px" }}
                   >
-                    <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center transition-transform duration-150 group-hover:scale-110", cat.iconBg)}>
-                      <Icon className={cn("w-5 h-5", cat.iconColor)} />
+                    <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-150 group-hover:scale-110 shadow-sm", cat.iconBg)}>
+                      <Icon className={cn("w-5.5 h-5.5", cat.iconColor)} />
                     </div>
-                    <div>
-                      <p className="font-bold text-sm text-gray-900 leading-tight">{cat.label}</p>
-                      <p className="text-[11px] text-gray-400 leading-snug mt-1">{cat.desc}</p>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-bold text-sm text-gray-900">{cat.label}</p>
+                      <p className="text-xs text-gray-400 mt-0.5">{cat.desc}</p>
+                    </div>
+                    <div className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center flex-shrink-0 group-hover:border-gray-300 transition-colors">
+                      <svg className="w-3.5 h-3.5 text-gray-300 group-hover:text-gray-500 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m9 18 6-6-6-6"/></svg>
                     </div>
                   </button>
                 );
@@ -183,7 +198,7 @@ function AddDialog({ open, onOpenChange, editItem, onSaved, mode }: {
               <div className="flex flex-wrap gap-2">
                 {(selectedCat.presets ?? []).map(name => (
                   <button key={name} onClick={() => selectPreset(name)}
-                    className="px-3.5 py-1.5 rounded-full border border-gray-200 bg-white text-sm font-medium text-gray-700 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 active:scale-95 transition-all"
+                    className="px-4 py-2 min-h-[40px] rounded-full border border-gray-200 bg-white text-sm font-medium text-gray-700 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 active:scale-[0.97] transition-all"
                   >
                     {name}
                   </button>
@@ -193,13 +208,13 @@ function AddDialog({ open, onOpenChange, editItem, onSaved, mode }: {
                 <p className="text-xs text-gray-400 mb-2">Or type a custom name</p>
                 <div className="flex gap-2">
                   <input placeholder={`Custom ${selectedCat.label} name...`}
-                    className="flex-1 h-11 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
+                    className="flex-1 min-h-[48px] px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
                     value={formData.name} onChange={e => set("name", e.target.value)}
                     onKeyDown={e => { if (e.key === "Enter" && formData.name) { e.preventDefault(); setStep(3); } }}
                   />
                   <button type="button" disabled={!formData.name}
                     onClick={() => setStep(3)}
-                    className="h-11 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex-shrink-0 disabled:opacity-50"
+                    className="min-h-[48px] px-5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-xl flex-shrink-0 disabled:opacity-50 transition-colors"
                   >
                     Next
                   </button>
@@ -217,13 +232,13 @@ function AddDialog({ open, onOpenChange, editItem, onSaved, mode }: {
               )}
               <div>
                 <label className="text-sm font-medium text-gray-700">Name</label>
-                <input className="mt-1.5 w-full h-11 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
+                <input className="mt-1.5 w-full min-h-[48px] px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
                   value={formData.name} onChange={e => set("name", e.target.value)} placeholder="e.g. Netflix" required
                 />
               </div>
               <div>
                 <label className="text-sm font-medium text-gray-700">Category</label>
-                <select className="mt-1.5 w-full h-11 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors bg-white"
+                <select className="mt-1.5 w-full min-h-[48px] px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors bg-white"
                   value={formData.category} onChange={e => set("category", e.target.value)}
                 >
                   <option value="">Select category</option>
@@ -234,15 +249,16 @@ function AddDialog({ open, onOpenChange, editItem, onSaved, mode }: {
                 <div>
                   <label className="text-sm font-medium text-gray-700">Amount ({symbol})</label>
                   <input type="number" min="0" step="0.01" placeholder="0.00"
-                    className="mt-1.5 w-full h-11 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
+                    className="mt-1.5 w-full min-h-[48px] px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
                     value={formData.price} onChange={e => set("price", e.target.value)} required
                   />
                 </div>
                 <div>
                   <label className="text-sm font-medium text-gray-700">Billing cycle</label>
-                  <select className="mt-1.5 w-full h-11 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors bg-white"
+                  <select className="mt-1.5 w-full min-h-[48px] px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors bg-white"
                     value={formData.billing_cycle} onChange={e => set("billing_cycle", e.target.value)}
                   >
+                    <option value="once">One-time</option>
                     <option value="monthly">Monthly</option>
                     <option value="yearly">Yearly</option>
                     <option value="weekly">Weekly</option>
@@ -253,19 +269,19 @@ function AddDialog({ open, onOpenChange, editItem, onSaved, mode }: {
               <div>
                 <label className="text-sm font-medium text-gray-700">Next billing date</label>
                 <input type="date"
-                  className="mt-1.5 w-full h-11 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
+                  className="mt-1.5 w-full min-h-[48px] px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
                   value={formData.next_billing_date} onChange={e => set("next_billing_date", e.target.value)} required
                 />
               </div>
               <div>
                 <label className="text-sm font-medium text-gray-700">Notes <span className="text-gray-400 font-normal">(optional)</span></label>
                 <input placeholder="Plan details, account email..."
-                  className="mt-1.5 w-full h-11 px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
+                  className="mt-1.5 w-full min-h-[48px] px-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition-colors"
                   value={formData.notes} onChange={e => set("notes", e.target.value)}
                 />
               </div>
               <button type="submit" disabled={saving}
-                className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold text-sm mt-2 inline-flex items-center justify-center gap-2 disabled:opacity-90 transition-colors"
+                className="w-full min-h-[52px] bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-xl font-semibold text-sm mt-2 inline-flex items-center justify-center gap-2 disabled:opacity-90 transition-colors"
               >
                 {saving ? <><Loader2 className="w-4 h-4 animate-spin" />Saving...</> : editItem ? "Save changes" : `Add ${sectionLabel}`}
               </button>
@@ -285,19 +301,69 @@ function DeleteDialog({ name, onConfirm, onCancel }: { name: string; onConfirm: 
         <h2 className="font-bold text-gray-900 text-lg mb-2">Remove &quot;{name}&quot;?</h2>
         <p className="text-sm text-gray-500 mb-6">This will permanently delete this entry. Cannot be undone.</p>
         <div className="flex gap-3">
-          <button onClick={onCancel} className="flex-1 h-11 border border-gray-200 rounded-xl text-gray-700 font-medium hover:bg-gray-50 transition-colors">Cancel</button>
-          <button onClick={onConfirm} className="flex-1 h-11 bg-red-600 hover:bg-red-700 text-white rounded-xl transition-colors">Remove</button>
+          <button onClick={onCancel} className="flex-1 min-h-[48px] border border-gray-200 rounded-xl text-gray-700 font-medium hover:bg-gray-50 active:bg-gray-100 transition-colors">Cancel</button>
+          <button onClick={onConfirm} className="flex-1 min-h-[48px] bg-red-600 hover:bg-red-700 active:bg-red-800 text-white rounded-xl transition-colors">Remove</button>
         </div>
       </div>
     </div>
   );
 }
 
-function SubCard({ s, fmt, onEdit, onDelete }: {
-  s: Subscription; fmt: (n: number) => string; onEdit: () => void; onDelete: () => void;
+type PaymentRecord = {
+  id: string; paid_date: string; amount_paid: number;
+  next_billing_date_after: string; created_at: string;
+};
+
+async function markAsPaid(s: Subscription): Promise<string | null> {
+  const supabase = createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return null;
+  const newDate = advanceDate(s.next_billing_date, s.billing_cycle);
+  const { error: insertErr } = await supabase.from("payment_history").insert({
+    subscription_id: s.id, user_id: user.id,
+    name: s.name, category: s.category,
+    amount_paid: s.price, billing_cycle: s.billing_cycle,
+    next_billing_date_after: newDate,
+  });
+  if (insertErr) { console.error("markAsPaid insert error:", insertErr); return null; }
+  if (s.billing_cycle === "once") {
+    await supabase.from("subscriptions").delete().eq("id", s.id);
+    return "deleted";
+  }
+  const { error: updateErr } = await supabase.from("subscriptions").update({ next_billing_date: newDate }).eq("id", s.id);
+  if (updateErr) { console.error("markAsPaid update error:", updateErr); return null; }
+  return newDate;
+}
+
+function SubCard({ s, fmt, onEdit, onDelete, onPaid }: {
+  s: Subscription; fmt: (n: number) => string;
+  onEdit: () => void; onDelete: () => void; onPaid: () => void;
 }) {
   const days = daysUntil(s.next_billing_date);
   const cat = getCat(s.category);
+  const [paidState, setPaidState] = useState<{ date: string } | null>(null);
+  const [paying, setPaying] = useState(false);
+
+  async function handlePaid() {
+    setPaying(true);
+    const result = await markAsPaid(s);
+    if (result) {
+      if (result === "deleted") {
+        onPaid();
+      } else {
+        setPaidState({ date: result });
+        onPaid();
+        setTimeout(() => setPaidState(null), 2000);
+      }
+    }
+    setPaying(false);
+  }
+
+  const isOnce = s.billing_cycle === "once";
+  const showPaidTag = paidState?.date;
+  const btnLabel = paying ? "Advancing..." : paidState ? "Paid! ✓" : isOnce ? "Mark done" : "Mark paid";
+  const btnIcon = paying ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <CheckCircle2 className="w-3.5 h-3.5" />;
+
   return (
     <div className={cn("bg-white rounded-2xl border border-l-4 shadow-sm transition-shadow hover:shadow-md", cat.borderAccent)}>
       <div className="p-4">
@@ -305,24 +371,37 @@ function SubCard({ s, fmt, onEdit, onDelete }: {
           <p className="font-bold text-gray-900 text-base leading-tight">{s.name}</p>
           <div className="text-right flex-shrink-0">
             <p className="font-bold text-gray-900 text-sm">{fmt(s.price)}</p>
-            <p className="text-[11px] text-gray-400">/{s.billing_cycle === "monthly" ? "mo" : s.billing_cycle === "yearly" ? "yr" : s.billing_cycle === "weekly" ? "wk" : "qtr"}</p>
+            {s.billing_cycle !== "once" && <p className="text-[11px] text-gray-400">/{s.billing_cycle === "monthly" ? "mo" : s.billing_cycle === "yearly" ? "yr" : s.billing_cycle === "weekly" ? "wk" : "qtr"}</p>}
           </div>
         </div>
         <div className="flex items-center gap-2 mb-3">
           <span className={cn("text-[11px] font-semibold px-2 py-0.5 rounded-full", cat.badgeCls)}>{cat.label}</span>
           {s.billing_cycle === "yearly" && <span className="text-[11px] text-gray-400">≈ {fmt(Math.round(s.price / 12))}/mo</span>}
+          {s.billing_cycle === "once" && <span className="text-[11px] text-gray-400">One-time</span>}
+          {showPaidTag && <span className="text-[11px] text-green-600 bg-green-50 border border-green-200 font-bold px-2 py-0.5 rounded-full flex items-center gap-1"><CheckCircle2 className="w-3 h-3" />Paid {formatDate(showPaidTag)}</span>}
         </div>
         <div className="flex items-center justify-between">
-          <p className="text-xs text-gray-500">Due {formatDate(s.next_billing_date)}</p>
+          <div className="flex items-center gap-2">
+            <p className="text-xs text-gray-500">Due {formatDate(s.next_billing_date)}</p>
+            {paidState && <span className="text-xs text-green-600 font-semibold animate-pulse">Updated!</span>}
+          </div>
           <DaysTag days={days} />
         </div>
         {s.notes && <p className="text-[11px] text-gray-400 mt-2 truncate">{s.notes}</p>}
       </div>
       <div className="border-t border-gray-50 flex divide-x divide-gray-50">
-        <button onClick={onEdit} className="flex-1 flex items-center justify-center gap-1.5 py-3 text-xs font-semibold text-gray-500 hover:text-blue-600 hover:bg-blue-50 transition-colors rounded-bl-2xl">
+        <button onClick={handlePaid}
+          disabled={paying || !!paidState}
+          className={cn("flex-1 flex items-center justify-center gap-1.5 py-3.5 text-xs font-bold transition-colors rounded-bl-2xl disabled:opacity-70",
+            paidState ? "bg-green-600 text-white" : "text-green-600 hover:text-white hover:bg-green-600 active:bg-green-700"
+          )}
+        >
+          {btnIcon}{btnLabel}
+        </button>
+        <button onClick={onEdit} className="flex-1 flex items-center justify-center gap-1.5 py-3.5 text-xs font-semibold text-gray-500 hover:text-blue-600 hover:bg-blue-50 transition-colors active:bg-blue-100">
           <Edit2 className="w-3.5 h-3.5" />Edit
         </button>
-        <button onClick={onDelete} className="flex-1 flex items-center justify-center gap-1.5 py-3 text-xs font-semibold text-gray-500 hover:text-red-600 hover:bg-red-50 transition-colors rounded-br-2xl">
+        <button onClick={onDelete} className="flex-1 flex items-center justify-center gap-1.5 py-3.5 text-xs font-semibold text-gray-500 hover:text-red-600 hover:bg-red-50 transition-colors rounded-br-2xl active:bg-red-100">
           <Trash2 className="w-3.5 h-3.5" />Remove
         </button>
       </div>
@@ -348,15 +427,28 @@ export default function ItemsPage({ mode }: { mode: SectionKey }) {
 
   const fetchItems = useCallback(async () => {
     setLoading(true);
-    const supabase = createClient();
-    const { data } = await supabase.from("subscriptions")
-      .select("*").in("category", sectionCats).order("next_billing_date", { ascending: true });
-    if (data) setItems(data);
-    setLoading(false);
+    try {
+      const supabase = createClient();
+      const { data } = await supabase.from("subscriptions")
+        .select("*").in("category", sectionCats).order("next_billing_date", { ascending: true });
+      if (data) setItems(data);
+    } catch (e) {
+      console.error("ItemsPage fetch error:", e);
+    } finally {
+      setLoading(false);
+    }
   }, [mode]);
 
   useEffect(() => { fetchItems(); }, [fetchItems]);
   useEffect(() => { setCatFilter("all"); }, [mode]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.location.search.includes("add=true")) {
+      setEditItem(null);
+      setDialogOpen(true);
+      window.history.replaceState({}, "", window.location.pathname);
+    }
+  }, []);
 
   function openAdd() { setEditItem(null); setDialogOpen(true); }
   function openEdit(s: Subscription) { setEditItem(s); setDialogOpen(true); }
@@ -386,7 +478,7 @@ export default function ItemsPage({ mode }: { mode: SectionKey }) {
           {!loading && items.length > 0 && <p className="text-gray-500 text-sm mt-0.5">{fmt(Math.round(totalMonthly))}/month</p>}
         </div>
         <button onClick={openAdd}
-          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-sm font-semibold px-4 h-10 rounded-xl shadow-md shadow-blue-200 transition-colors flex-shrink-0"
+          className="hidden lg:inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-sm font-semibold px-4 min-h-[44px] rounded-xl shadow-md shadow-blue-200 transition-colors flex-shrink-0"
         >
           <Plus className="w-4 h-4" />
           Add {sectionLabel}
@@ -397,14 +489,14 @@ export default function ItemsPage({ mode }: { mode: SectionKey }) {
 
       {!loading && items.length === 0 && (
         <div className="bg-white rounded-2xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center py-20 text-center px-6">
-          <div className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center mb-4">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center mb-5 shadow-sm">
             <SectionIcon className="w-7 h-7 text-gray-300" />
           </div>
           <h3 className="text-lg font-bold text-gray-900 mb-2">No {isSubscription ? "subscriptions" : "bills"} yet</h3>
-          <p className="text-sm text-gray-500 mb-6 max-w-xs">
+          <p className="text-sm text-gray-500 mb-7 max-w-xs leading-relaxed">
             {isSubscription ? "Add Netflix, Spotify, Adobe, or any digital service you pay for." : "Add rent, WiFi, electricity, credit card bills, and loan payments."}
           </p>
-          <button onClick={openAdd} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-6 h-12 rounded-xl shadow-md shadow-blue-200 transition-colors">
+          <button onClick={openAdd} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-sm font-semibold px-6 min-h-[48px] rounded-xl shadow-lg shadow-blue-200 transition-all">
             <Plus className="w-4 h-4" />Add {sectionLabel}
           </button>
         </div>
@@ -423,7 +515,7 @@ export default function ItemsPage({ mode }: { mode: SectionKey }) {
             <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
               {filterTabs.map(tab => (
                 <button key={tab.key} onClick={() => setCatFilter(tab.key)}
-                  className={cn("flex-shrink-0 px-4 h-9 rounded-full text-sm font-semibold transition-colors", catFilter === tab.key ? "bg-blue-600 text-white" : "bg-white border border-gray-200 text-gray-600 hover:border-gray-300")}
+                  className={cn("flex-shrink-0 px-4 min-h-[40px] rounded-full text-sm font-semibold transition-colors flex items-center", catFilter === tab.key ? "bg-blue-600 text-white" : "bg-white border border-gray-200 text-gray-600 hover:border-gray-300")}
                 >
                   {tab.label}
                 </button>
@@ -433,12 +525,12 @@ export default function ItemsPage({ mode }: { mode: SectionKey }) {
 
           <div className="space-y-3">
             {filtered.map(s => (
-              <SubCard key={s.id} s={s} fmt={fmt} onEdit={() => openEdit(s)} onDelete={() => setDeleteItem(s)} />
+              <SubCard key={s.id} s={s} fmt={fmt} onEdit={() => openEdit(s)} onDelete={() => setDeleteItem(s)} onPaid={fetchItems} />
             ))}
             {filtered.length === 0 && (
               <div className="text-center py-12 text-gray-400">
-                <p className="text-sm">No items in this category</p>
-                <button onClick={openAdd} className="mt-3 text-sm font-semibold text-blue-600 hover:underline">Add {sectionLabel}</button>
+                <p className="text-sm">Nothing in this category</p>
+                <button onClick={() => setCatFilter("all")} className="mt-2 text-xs font-semibold text-blue-600 hover:underline">Clear filter</button>
               </div>
             )}
           </div>
@@ -454,9 +546,9 @@ export default function ItemsPage({ mode }: { mode: SectionKey }) {
       <AddDialog open={dialogOpen} onOpenChange={setDialogOpen} editItem={editItem} onSaved={fetchItems} mode={mode} />
       {deleteItem && <DeleteDialog name={deleteItem.name} onConfirm={() => handleDelete(deleteItem)} onCancel={() => setDeleteItem(null)} />}
 
-      <div className="fixed bottom-6 right-4 lg:hidden">
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 lg:hidden z-40 w-[calc(100%-32px)] max-w-sm">
         <button onClick={openAdd}
-          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-sm font-semibold px-5 py-3.5 rounded-full shadow-xl shadow-blue-300 transition-colors"
+          className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-sm px-5 py-4 rounded-2xl shadow-xl shadow-blue-300 transition-all active:scale-[0.97]"
           aria-label={`Add ${sectionLabel}`}
         >
           <Plus className="w-5 h-5" /> Add {sectionLabel}

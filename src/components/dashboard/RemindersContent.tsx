@@ -25,6 +25,7 @@ function formatDate(dateStr: string): string {
 }
 
 function monthlyEquiv(price: number, cycle: string) {
+  if (cycle === "once") return 0;
   if (cycle === "yearly") return price / 12;
   if (cycle === "weekly") return price * 4.33;
   if (cycle === "quarterly") return price / 3;
@@ -85,13 +86,20 @@ export default function RemindersContent() {
   const { fmt } = useCurrency();
 
   useEffect(() => {
+    let cancelled = false;
     async function load() {
-      const supabase = createClient();
-      const { data } = await supabase.from("subscriptions").select("*").order("next_billing_date", { ascending: true });
-      if (data) setSubs(data);
-      setLoading(false);
+      try {
+        const supabase = createClient();
+        const { data } = await supabase.from("subscriptions").select("*").order("next_billing_date", { ascending: true });
+        if (!cancelled && data) setSubs(data);
+      } catch (e) {
+        console.error("RemindersContent load error:", e);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
     }
     load();
+    return () => { cancelled = true; };
   }, []);
 
   const sorted = [...subs].sort((a, b) => daysUntil(a.next_billing_date) - daysUntil(b.next_billing_date));
@@ -117,11 +125,13 @@ export default function RemindersContent() {
 
       {subs.length === 0 && (
         <div className="bg-white rounded-2xl border-2 border-dashed border-gray-200 flex flex-col items-center justify-center py-20 text-center px-6">
-          <Bell className="w-10 h-10 text-gray-300 mb-4" />
-          <h3 className="text-base font-bold text-gray-900 mb-2">No reminders yet</h3>
-          <p className="text-sm text-gray-500 mb-6 max-w-xs">Add subscriptions and bills to get reminded before they charge.</p>
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center mb-5 shadow-sm">
+            <Bell className="w-7 h-7 text-gray-300" />
+          </div>
+          <h3 className="text-lg font-bold text-gray-900 mb-2">No reminders yet</h3>
+          <p className="text-sm text-gray-500 mb-7 max-w-xs leading-relaxed">Add subscriptions and bills to get reminded before they charge.</p>
           <a href="/dashboard/subscriptions"
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-6 h-12 rounded-xl shadow-md shadow-blue-200"
+            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-sm font-semibold px-6 min-h-[48px] rounded-xl shadow-lg shadow-blue-200 transition-all"
           >
             <Plus className="w-4 h-4" /> Add subscription
           </a>
@@ -129,15 +139,15 @@ export default function RemindersContent() {
       )}
 
       {subs.length > 0 && (
-        <div className="grid lg:grid-cols-3 gap-5">
-          <div className="lg:col-span-2 space-y-4">
+        <div className="flex flex-col lg:grid lg:grid-cols-3 gap-5">
+          <div className="order-1 lg:col-span-2 space-y-4">
             <div className="flex gap-2 overflow-x-auto scrollbar-hide">
               {([{ key: "active" as const, label: `Due soon (${active.length})` },
                 { key: "upcoming" as const, label: `Upcoming (${upcoming.length})` },
                 { key: "all" as const, label: `All (${sorted.length})` },
               ]).map(t => (
                 <button key={t.key} onClick={() => setTab(t.key)}
-                  className={cn("flex-shrink-0 px-4 h-9 rounded-full text-sm font-semibold transition-colors",
+                  className={cn("flex-shrink-0 px-4 min-h-[40px] rounded-full text-sm font-semibold transition-colors flex items-center",
                     tab === t.key ? "bg-blue-600 text-white" : "bg-white border border-gray-200 text-gray-600 hover:border-gray-300"
                   )}
                 >{t.label}</button>
@@ -158,7 +168,7 @@ export default function RemindersContent() {
             </div>
           </div>
 
-          <div className="space-y-4">
+          <div className="order-2 space-y-4">
             {active.length > 0 && (
               <div className="bg-gray-900 rounded-2xl p-5">
                 <p className="text-xs text-gray-400 mb-1">Due this month</p>
@@ -180,7 +190,7 @@ export default function RemindersContent() {
             </div>
 
             <a href="/dashboard/subscriptions"
-              className="flex items-center justify-between w-full p-4 bg-white rounded-2xl border border-gray-100 shadow-sm hover:bg-blue-50 transition-colors group"
+              className="flex items-center justify-between w-full p-4 min-h-[52px] bg-white rounded-2xl border border-gray-100 shadow-sm hover:bg-blue-50 active:bg-blue-50 transition-colors group"
             >
               <span className="text-sm font-medium text-gray-700 group-hover:text-blue-700">Manage subscriptions</span>
               <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-blue-600" />

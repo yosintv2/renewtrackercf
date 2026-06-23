@@ -164,25 +164,20 @@ export default function AdminApp() {
     async function load() {
       try {
         const { createClient } = await import("@/lib/supabase/client");
-        const { createAdminClient } = await import("@/lib/supabase/admin");
         const supabase = createClient();
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) { window.location.href = "/login"; return; }
         setCurrentEmail(user.email ?? "");
         if (user.email !== "mail.yosintv@gmail.com") { window.location.href = "/"; return; }
-        const admin = createAdminClient();
-        const [{ data: authData, error: authError }, { data: subscriptions }] = await Promise.all([
-          admin.auth.admin.listUsers({ perPage: 1000 }),
-          admin.from("subscriptions").select("user_id"),
-        ]);
-        if (authError) { setError(authError.message); setLoading(false); return; }
-        const subCounts: Record<string, number> = {};
-        subscriptions?.forEach((s: any) => { subCounts[s.user_id] = (subCounts[s.user_id] ?? 0) + 1; });
-        setUsers((authData?.users ?? []).map((u: any) => ({
-          id: u.id, email: u.email ?? "unknown@—", created_at: u.created_at,
-          last_sign_in_at: u.last_sign_in_at ?? null, provider: (u.app_metadata?.provider as string | undefined) ?? "email",
-          subscriptions: subCounts[u.id] ?? 0,
-        })));
+        const { data: { session } } = await supabase.auth.getSession();
+        const token = session?.access_token;
+        if (!token) { setError("Not authenticated"); setLoading(false); return; }
+        const res = await fetch("/api/admin/users", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const data = await res.json();
+        if (!res.ok) { setError(data.error || "Failed to load users"); setLoading(false); return; }
+        setUsers(data.users);
       } catch (e: any) {
         setError(e.message);
       }

@@ -1,0 +1,85 @@
+---
+// Client-side auth callback (fallback for local dev; Cloudflare Function handles production).
+// Must set detectSessionInUrl:false to prevent gotrue-js' _initialize() from consuming
+// the PKCE code verifier before exchangeCodeForSession runs.
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Signing in — RenewTracker</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #f9fafb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        color: #374151;
+      }
+      .card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 32px 40px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        text-align: center;
+      }
+      .spinner {
+        width: 32px;
+        height: 32px;
+        border: 3px solid #e5e7eb;
+        border-top-color: #2563eb;
+        border-radius: 50%;
+        animation: spin 0.7s linear infinite;
+        margin: 0 auto 16px;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      p { font-size: 15px; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="spinner"></div>
+      <p>Signing you in&hellip;</p>
+    </div>
+
+    <script>
+      import { createBrowserClient } from "@supabase/ssr";
+
+      async function handleCallback() {
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get("code");
+        const next = params.get("next") ?? "/dashboard";
+
+        if (!code) {
+          window.location.href = "/login?error=no_code";
+          return;
+        }
+
+        const supabase = createBrowserClient(
+          import.meta.env.PUBLIC_SUPABASE_URL,
+          import.meta.env.PUBLIC_SUPABASE_ANON_KEY,
+          {
+            auth: {
+              detectSessionInUrl: false,
+            },
+          },
+        );
+
+        const { error } = await supabase.auth.exchangeCodeForSession(code);
+
+        if (error) {
+          window.location.href = `/login?error=${encodeURIComponent(error.message)}`;
+          return;
+        }
+
+        window.location.href = next;
+      }
+
+      handleCallback();
+    </script>
+  </body>
+</html>
