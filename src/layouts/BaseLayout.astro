@@ -57,6 +57,14 @@ const jsonLd = {
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVZZSHSQM0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GVZZSHSQM0');
+    </script>
+
     <link rel="preconnect" href="https://api.fontshare.com" />
     <style>
       @font-face {
