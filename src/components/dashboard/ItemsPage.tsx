@@ -496,9 +496,7 @@ export default function ItemsPage({ mode }: { mode: SectionKey }) {
           <p className="text-sm text-gray-500 mb-7 max-w-xs leading-relaxed">
             {isSubscription ? "Add Netflix, Spotify, Adobe, or any digital service you pay for." : "Add rent, WiFi, electricity, credit card bills, and loan payments."}
           </p>
-          <button onClick={openAdd} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white text-sm font-semibold px-6 min-h-[48px] rounded-xl shadow-lg shadow-blue-200 transition-all">
-            <Plus className="w-4 h-4" />Add {sectionLabel}
-          </button>
+
         </div>
       )}
 
