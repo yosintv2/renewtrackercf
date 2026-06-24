@@ -349,6 +349,7 @@ export default function PaymentHistoryContent() {
               {trendData.length === 0 ? (
                 <div className="flex items-center justify-center h-48 text-gray-400 text-sm">No data for this period</div>
               ) : (
+                <div className="outline-none [&_*]:outline-none" tabIndex={-1}>
                 <ResponsiveContainer width="100%" height={240}>
                   <AreaChart data={trendData} margin={{ top: 5, right: 5, left: -20, bottom: 0 }}>
                     <defs>
@@ -367,6 +368,7 @@ export default function PaymentHistoryContent() {
                     <Area type="monotone" dataKey="total" stroke="#2563eb" strokeWidth={2.5} fill="url(#tg)" dot={{ fill: "#2563eb", r: 3, strokeWidth: 0 }} activeDot={{ r: 5, fill: "#2563eb", stroke: "#fff", strokeWidth: 2 }} />
                   </AreaChart>
                 </ResponsiveContainer>
+                </div>
               )}
             </div>
 
