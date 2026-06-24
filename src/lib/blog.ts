@@ -564,6 +564,783 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "free-trial-management-guide",
+    title: "How to Manage Free Trials So You Never Get Charged Again",
+    excerpt: "Free trials are designed to convert into paid subscriptions. Here is a system to track every trial and cancel before you get billed.",
+    date: "2025-07-20",
+    readTime: "4 min read",
+    category: "Guide",
+    coverEmoji: "receipt",
+    content: [
+      {
+        type: "p",
+        text: "Free trials are one of the most common ways subscriptions sneak into your life. You sign up for a 7-day or 30-day trial, add a payment method, and then forget about it entirely. When the trial ends, the charges begin — and they often continue for months before you notice.",
+      },
+      {
+        type: "h2",
+        text: "Why Free Trials Are Dangerous",
+      },
+      {
+        type: "ul",
+        items: [
+          "The payment method is already saved — no friction means easy auto-conversion",
+          "Trial periods vary (3, 7, 14, 30 days) and are easy to lose track of",
+          "Some services charge a small 'verification' fee that looks like a normal charge",
+          "Cancellation windows are often buried in settings menus",
+          "Free trials frequently renew at a higher 'introductory' rate",
+        ],
+      },
+      {
+        type: "h2",
+        text: "The Free Trial Rule: Log It Immediately",
+      },
+      {
+        type: "p",
+        text: "The moment you sign up for a free trial, add it to RenewTracker. Set the name, the trial end date, and the price it will convert to. This creates a hard deadline that you will see on your dashboard. Do not rely on the service to remind you — they only benefit if you forget.",
+      },
+      {
+        type: "h2",
+        text: "Set Multiple Reminders for Trials",
+      },
+      {
+        type: "p",
+        text: "With RenewTracker, set a reminder 7 days before the trial ends so you have time to evaluate whether you want the service. Set another for 2 days before so you can take action. This gives you two opportunities to decide rather than realizing the charge has already posted.",
+      },
+      {
+        type: "tip",
+        text: "As soon as you sign up for a free trial, open RenewTracker and log it. The 30 seconds it takes could save you from months of unwanted charges.",
+      },
+    ],
+  },
+  {
+    slug: "family-subscription-management",
+    title: "Family Subscription Management: How to Track Everyone's Services",
+    excerpt: "Between streaming, apps, and online learning, a family's subscriptions multiply fast. Here is how to keep them organized.",
+    date: "2025-07-25",
+    readTime: "5 min read",
+    category: "Lifestyle",
+    coverEmoji: "tv",
+    content: [
+      {
+        type: "p",
+        text: "In a household with multiple people, subscriptions multiply quickly. Each family member has their own streaming preferences, apps, and services. Without a central system, you end up paying for duplicates — or worse, missing payment dates that cause service interruptions.",
+      },
+      {
+        type: "h2",
+        text: "The Family Subscription Stack",
+      },
+      {
+        type: "p",
+        text: "A typical family of four may have streaming services, music subscriptions, online learning platforms, cloud storage for school photos, a family gym membership, kids' app subscriptions, and multiple phone plans. The total can easily exceed $300 per month.",
+      },
+      {
+        type: "h2",
+        text: "Create a Shared Subscription Dashboard",
+      },
+      {
+        type: "p",
+        text: "Using RenewTracker, add every family subscription with the primary user's name in the notes field. This makes it clear who uses what. Encourage each family member to flag services they no longer use. A quarterly family subscription review helps everyone understand where the money is going.",
+      },
+      {
+        type: "h2",
+        text: "Spot Duplicates Immediately",
+      },
+      {
+        type: "ul",
+        items: [
+          "Are you paying for two music streaming services when one family plan covers everyone?",
+          "Do you have multiple cloud storage subscriptions that could be consolidated?",
+          "Are there overlapping video streaming platforms that could be rotated?",
+          "Are you paying separately for services that come bundled together?",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Rightsize Your Plans",
+      },
+      {
+        type: "p",
+        text: "Many services offer family or group plans that cost less per person than individual subscriptions. But don't automatically upgrade to family plans — only do so if the additional features are actually being used. A family plan is only a saving if everyone on it is active.",
+      },
+      {
+        type: "tip",
+        text: "Set up a shared RenewTracker account for your household. Everyone can log subscriptions they add, and during the monthly review you can see the full picture in one place.",
+      },
+    ],
+  },
+  {
+    slug: "annual-vs-monthly-billing",
+    title: "Annual vs Monthly Billing: Which Actually Saves You More?",
+    excerpt: "Annual billing usually offers a discount, but it is not always the better choice. Here is how to decide which billing cycle fits your situation.",
+    date: "2025-08-01",
+    readTime: "4 min read",
+    category: "Money Tips",
+    coverEmoji: "chart",
+    content: [
+      {
+        type: "p",
+        text: "Almost every subscription service pushes annual billing by offering a 20–40% discount. It looks like a clear win, but the math is more complicated than the simple percentage suggests. Whether annual billing makes sense depends on your usage habits and financial situation.",
+      },
+      {
+        type: "h2",
+        text: "When Annual Billing Makes Sense",
+      },
+      {
+        type: "ul",
+        items: [
+          "You have used the service consistently for 6+ months",
+          "The service is essential and you would not cancel regardless",
+          "The annual discount is 30% or more",
+          "You have the cash upfront and it does not strain your budget",
+          "The service offers a pro-rated refund if you cancel early",
+        ],
+      },
+      {
+        type: "h2",
+        text: "When Monthly Billing Is Better",
+      },
+      {
+        type: "ul",
+        items: [
+          "You are still evaluating the service",
+          "You may only need it for a specific project or season",
+          "The annual payment would be a significant cash outlay",
+          "The service has a history of price increases (annual lock-in can backfire)",
+          "You tend to rotate services throughout the year",
+        ],
+      },
+      {
+        type: "h2",
+        text: "How to Decide Using RenewTracker",
+      },
+      {
+        type: "p",
+        text: "Track the subscription on monthly billing in RenewTracker for 3–6 months. If you find yourself using it consistently and have no desire to cancel, switch to annual billing and update the entry. The dashboard shows your actual usage pattern — use that data to decide.",
+      },
+      {
+        type: "warning",
+        text: "Do not pay annually for a service you have not used consistently for at least three months. The 'savings' from annual billing disappear entirely if you stop using the service halfway through the year.",
+      },
+      {
+        type: "tip",
+        text: "Compare the total annual cost of a service — including any hidden fees — before committing. RenewTracker makes it easy to see your yearly spend across every subscription at a glance.",
+      },
+    ],
+  },
+  {
+    slug: "student-subscription-deals-discounts",
+    title: "Best Student Subscription Deals: Save Hundreds Per Year",
+    excerpt: "Students can access massive discounts on the services they already use. Here is a guide to the best student subscription deals and how to manage them.",
+    date: "2025-08-05",
+    readTime: "4 min read",
+    category: "Money Tips",
+    coverEmoji: "search",
+    content: [
+      {
+        type: "p",
+        text: "Students are one of the most targeted groups for subscription discounts — and for good reason. Services want to build habits early. The result is that students can access premium tools at dramatically reduced rates, often 50% off or more. But managing these subscriptions requires care since many automatically convert to full price after graduation.",
+      },
+      {
+        type: "h2",
+        text: "Types of Student Discounts Available",
+      },
+      {
+        type: "ul",
+        items: [
+          "Streaming services often bundle student plans with music and video together",
+          "Productivity tools like Notion, Microsoft 365, and Google Workspace offer student pricing",
+          "Design and development tools (Adobe CC, GitHub, Canva) have generous student plans",
+          "Cloud storage and backup services frequently include student discounts",
+          "News and research publications offer academic rates",
+        ],
+      },
+      {
+        type: "h2",
+        text: "The Graduation Trap",
+      },
+      {
+        type: "p",
+        text: "Student discounts are great while you are in school, but many automatically convert to full-price subscriptions. When you graduate, your costs can suddenly jump by 2–3x on every service. Without tracking these conversions, you might pay full price for months without realizing the discount expired.",
+      },
+      {
+        type: "h2",
+        text: "How to Manage Student Subscriptions",
+      },
+      {
+        type: "p",
+        text: "Add each student subscription to RenewTracker with a note about the discount rate and the expected graduation date. Set a reminder to review and update each subscription when the student plan expires. This way you can either cancel, renegotiate, or prepare for the full price.",
+      },
+      {
+        type: "tip",
+        text: "When a student discount is about to expire, check if the service offers a standard annual plan. Sometimes the annual rate is still affordable compared to the new monthly full price.",
+      },
+    ],
+  },
+  {
+    slug: "small-business-subscription-management",
+    title: "Small Business Subscription Management: Track SaaS Costs and Stay Profitable",
+    excerpt: "Small businesses use dozens of SaaS tools that silently drain budgets. Here is how to track, audit, and optimize every business subscription.",
+    date: "2025-08-10",
+    readTime: "5 min read",
+    category: "Guide",
+    coverEmoji: "monitor",
+    content: [
+      {
+        type: "p",
+        text: "A small business with 5–20 employees can easily have 20–40 SaaS subscriptions running simultaneously. Communication tools, project management, design software, analytics, hosting, CRMs, email platforms — the list grows every month. Without active management, SaaS costs can quietly consume 10–20% of operating expenses.",
+      },
+      {
+        type: "h2",
+        text: "The SaaS Spiral Problem",
+      },
+      {
+        type: "p",
+        text: "SaaS subscriptions are easy to add and hard to remove. An employee signs up for a tool with a company card, uses it for a project, then the tool remains active for years. Department heads add separate tools without knowing the company already pays for something similar.",
+      },
+      {
+        type: "h2",
+        text: "How to Audit Business Subscriptions",
+      },
+      {
+        type: "ol",
+        items: [
+          "Pull all credit card and bank statements for the last 6 months",
+          "List every recurring SaaS charge and who uses it",
+          "Flag duplicates — multiple tools that do the same thing",
+          "Check per-seat billing (are you paying for inactive users?)",
+          "Identify underused subscriptions costing more than they deliver",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Assign Ownership to Every Subscription",
+      },
+      {
+        type: "p",
+        text: "Every business subscription in RenewTracker should have an owner. That person is responsible for knowing whether the tool is still needed, whether the plan is the right size, and whether the renewal date is coming up. Without ownership, subscriptions slip through the cracks.",
+      },
+      {
+        type: "tip",
+        text: "Schedule a quarterly SaaS audit using RenewTracker. Compare your current tool stack against your team size and needs. Most small businesses can cut 15–25% of their SaaS spend in the first audit.",
+      },
+    ],
+  },
+  {
+    slug: "spot-subscription-price-hikes",
+    title: "How to Spot Subscription Price Hikes Before They Hit Your Account",
+    excerpt: "Streaming and software services raise prices regularly. Here is how to monitor price changes and decide when to cancel or switch.",
+    date: "2025-08-15",
+    readTime: "4 min read",
+    category: "Money Tips",
+    coverEmoji: "search",
+    content: [
+      {
+        type: "p",
+        text: "Subscription services raise prices with surprising regularity. Netflix, Spotify, Amazon Prime, Apple TV+, and countless SaaS tools have all increased prices in recent years. The increases are often small — a dollar or two per month — but they add up when applied across all your services.",
+      },
+      {
+        type: "h2",
+        text: "Why Companies Raise Prices Quietly",
+      },
+      {
+        type: "p",
+        text: "Services typically notify you of price increases by email — an email that looks like a routine update and is easy to miss. Some companies apply grandfather clauses where existing users stay at the old price for a period, creating confusion. Others simply increase the rate at renewal, banking on the fact that you will not notice.",
+      },
+      {
+        type: "h2",
+        text: "Track Your Baseline Prices",
+      },
+      {
+        type: "p",
+        text: "When you add a subscription to RenewTracker, enter the current price. When you receive a price increase notification, update the entry. The price history lets you see how much each service has increased over time — making it easier to decide whether the service still delivers proportional value.",
+      },
+      {
+        type: "h2",
+        text: "What to Do When Prices Go Up",
+      },
+      {
+        type: "ul",
+        items: [
+          "Check if competitors offer the same service for less",
+          "See if you can downgrade to a lower tier that still meets your needs",
+          "Consider annual billing if the price increase has not been applied to annual plans yet",
+          "Rotate to a different service — most streaming platforms have comparable content",
+          "Cancel entirely if the price exceeds your usage value threshold",
+        ],
+      },
+      {
+        type: "tip",
+        text: "Set a reminder in RenewTracker to review your subscription prices every 6 months. Price increases in different months are easy to miss individually but impossible to miss when reviewed together on your dashboard.",
+      },
+    ],
+  },
+  {
+    slug: "digital-wallet-subscription-tracking",
+    title: "How to Track Subscriptions Paid Through Digital Wallets",
+    excerpt: "PayPal, Apple Pay, and Google Pay make subscriptions easy to start and easy to forget. Here is how to find and track every digital wallet subscription.",
+    date: "2025-08-20",
+    readTime: "4 min read",
+    category: "Guide",
+    coverEmoji: "creditcard",
+    content: [
+      {
+        type: "p",
+        text: "Digital wallets like PayPal, Apple Pay, Google Pay, and Venmo have made subscription signups frictionless. One tap and you are subscribed. But that same convenience makes it hard to get a complete picture of your recurring payments, because they are spread across multiple payment platforms rather than appearing on a single card statement.",
+      },
+      {
+        type: "h2",
+        text: "Where Digital Wallet Subscriptions Hide",
+      },
+      {
+        type: "ul",
+        items: [
+          "PayPal's automatic payments page lists every merchant with recurring access",
+          "Apple's Subscriptions settings show in-app subscriptions across all apps",
+          "Google Pay's recurring payments are managed through the Google Pay app",
+          "Venmo and Cash App subscriptions are less visible and often missed",
+          "Some subscriptions route through multiple wallets (e.g., PayPal into a credit card)",
+        ],
+      },
+      {
+        type: "h2",
+        text: "How to Find All Digital Wallet Subscriptions",
+      },
+      {
+        type: "p",
+        text: "Go through each digital wallet's settings page and look for subscriptions or automatic payments. PayPal calls it 'Automatic Payments' under settings. Apple lists subscriptions in Settings > your name > Subscriptions. Google Pay has it under 'Manage payments.' Create a list of everything you find, then enter each one into RenewTracker.",
+      },
+      {
+        type: "h2",
+        text: "Consolidate Where Possible",
+      },
+      {
+        type: "p",
+        text: "Having subscriptions spread across multiple wallets makes them hard to track. Where possible, consolidate to one or two payment methods. This makes it easier to spot new charges and keep your RenewTracker dashboard accurate with the correct billing dates and amounts.",
+      },
+      {
+        type: "tip",
+        text: "Check your digital wallet subscriptions quarterly. New subscriptions can be added without a notification when you use Apple Pay or Google Pay on a website — it is worth scanning the list regularly.",
+      },
+    ],
+  },
+  {
+    slug: "subscription-sharing-family-plans",
+    title: "Subscription Sharing: How to Split Costs Without the Drama",
+    excerpt: "Sharing subscription plans with friends and family saves money, but it requires coordination. Here is a system to manage shared subscriptions fairly.",
+    date: "2025-08-25",
+    readTime: "4 min read",
+    category: "Lifestyle",
+    coverEmoji: "clipboard",
+    content: [
+      {
+        type: "p",
+        text: "Subscription sharing has become a popular way to save money. Friends split a Netflix account, family members share cloud storage, and groups pool together for music streaming family plans. The savings can be significant, but shared subscriptions come with their own challenges — payment coordination, account access, and what happens when someone wants to leave.",
+      },
+      {
+        type: "h2",
+        text: "The Fair Split Problem",
+      },
+      {
+        type: "p",
+        text: "The most common issue with shared subscriptions is who pays what and when. One person usually holds the account and everyone else sends their share — but not always on time. Over months, the account holder ends up subsidizing late payments or forgotten contributions.",
+      },
+      {
+        type: "h2",
+        text: "Track Shared Subscriptions Separately",
+      },
+      {
+        type: "p",
+        text: "In RenewTracker, mark shared subscriptions clearly by adding the names of contributors in the notes. Set the total price and then note what each person pays. When a billing date approaches, the reminder serves as a prompt for everyone to send their share — not just for the account holder to pay.",
+      },
+      {
+        type: "h2",
+        text: "Plan for Changes in the Group",
+      },
+      {
+        type: "ul",
+        items: [
+          "Agree upfront what happens when someone leaves the group",
+          "Decide how new members join and what they pay",
+          "Set a fixed day each month for everyone to send their share",
+          "Use the RenewTracker reminder as the monthly payment prompt",
+          "Consider a small buffer fund for months when someone is late",
+        ],
+      },
+      {
+        type: "tip",
+        text: "When you are the account holder for a shared subscription, log it in RenewTracker at the full price. The reminder helps you stay on top of the billing date and gives you a moment to check that everyone has paid their share.",
+      },
+    ],
+  },
+  {
+    slug: "kids-subscription-management",
+    title: "Managing Children's Subscriptions: Apps, Games, and Learning Platforms",
+    excerpt: "Kids accumulate subscriptions through apps, games, and educational platforms. Here is how to control spending and know what your children are using.",
+    date: "2025-08-30",
+    readTime: "4 min read",
+    category: "Lifestyle",
+    coverEmoji: "tv",
+    content: [
+      {
+        type: "p",
+        text: "Children's subscriptions present a unique challenge: they are easy to acquire (a few taps in an app store), often start as free trials, and can be difficult for parents to discover. A child might subscribe to a game, an educational app, or a content platform without fully understanding that real money is being charged each month.",
+      },
+      {
+        type: "h2",
+        text: "How Kids' Subscriptions Slip Through",
+      },
+      {
+        type: "ul",
+        items: [
+          "In-app purchases that convert into recurring subscriptions",
+          "Free trials in children's games that auto-convert without parental notification",
+          "Educational platforms that charge monthly or yearly after an initial free period",
+          "App Store family sharing that makes subscriptions across devices hard to track",
+          "Subscription-based content platforms that bill through Google Play or the App Store",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Create a Kids' Subscriptions Category",
+      },
+      {
+        type: "p",
+        text: "In RenewTracker, create a clear category for children's subscriptions using the notes section to identify which child uses each service. This makes it easy to track costs per child and evaluate whether each subscription is still being used. Review this category monthly — children's interests change quickly.",
+      },
+      {
+        type: "h2",
+        text: "Set Parental Approval Reminders",
+      },
+      {
+        type: "p",
+        text: "Use RenewTracker's reminder system to flag children's subscriptions before they renew. A 7-day reminder gives you time to check with your child about whether they still want the service. This turns a passive auto-renewal into an active decision each billing cycle.",
+      },
+      {
+        type: "warning",
+        text: "Many children's apps make cancellation intentionally difficult. Some require you to cancel through the app store's subscription management rather than the app itself. Always check App Store or Google Play subscriptions for anything related to children's accounts.",
+      },
+      {
+        type: "tip",
+        text: "Check app store subscriptions for every family device once a month. Kids can subscribe through any device logged into your family account, so scanning all devices regularly prevents surprise charges.",
+      },
+    ],
+  },
+  {
+    slug: "subscription-budgeting-guide",
+    title: "How to Budget for Subscriptions Without Feeling Restricted",
+    excerpt: "Subscriptions are a fixed cost, but they often fly under the radar in traditional budgets. Here is a framework for budgeting recurring expenses.",
+    date: "2025-09-05",
+    readTime: "5 min read",
+    category: "Financial",
+    coverEmoji: "banknote",
+    content: [
+      {
+        type: "p",
+        text: "Most budgeting systems focus on variable spending — groceries, dining, shopping. But for many people, subscriptions and recurring bills make up a larger share of monthly outflows than variable spending. And unlike variable costs, subscriptions are sticky: they renew automatically until you take action.",
+      },
+      {
+        type: "h2",
+        text: "The 50-30-20 Rule for Subscriptions",
+      },
+      {
+        type: "p",
+        text: "The classic budgeting rule allocates 50% of income to needs, 30% to wants, and 20% to savings. Subscriptions span all three categories. Rent, utilities, and insurance go into needs. Streaming, gym memberships, and lifestyle boxes go into wants. Some subscriptions (like retirement account fees) fall into savings. Categorizing them properly gives you a clearer picture.",
+      },
+      {
+        type: "h2",
+        text: "Track Total Monthly Subscription Spend",
+      },
+      {
+        type: "p",
+        text: "Use RenewTracker to see your total monthly recurring spend at a glance. Aim to keep wants-based subscriptions under 10% of your take-home pay. If your entertainment, streaming, and lifestyle subscriptions exceed that threshold, it is time to cut back. The dashboard shows each active subscription with its cost, making it easy to see where cuts would have the most impact.",
+      },
+      {
+        type: "h2",
+        text: "The Subscription Budget Review Cadence",
+      },
+      {
+        type: "ol",
+        items: [
+          "Monthly: Review any new subscriptions added and check your total spend",
+          "Quarterly: Evaluate usage of each service and cancel underused ones",
+          "Annually: Compare this year's subscription total to last year's and check for price increases",
+        ],
+      },
+      {
+        type: "tip",
+        text: "A healthy subscription budget is one where you know exactly what you are paying for and use every service regularly. Use RenewTracker's dashboard to measure usage against cost — it is the only reliable way to know if a subscription is worth keeping.",
+      },
+    ],
+  },
+  {
+    slug: "email-receipt-subscription-management",
+    title: "How to Use Your Email Inbox to Find Hidden Subscriptions",
+    excerpt: "Every subscription sends a receipt. Your inbox holds the complete record of everything you pay for. Here is how to mine it effectively.",
+    date: "2025-09-10",
+    readTime: "4 min read",
+    category: "Tech",
+    coverEmoji: "monitor",
+    content: [
+      {
+        type: "p",
+        text: "Your email inbox is the single best record of every subscription you have ever signed up for. Every free trial, every monthly charge, every price increase, and every renewal generates a receipt or notification. The problem is that these emails get buried under newsletters, promotions, and spam.",
+      },
+      {
+        type: "h2",
+        text: "Search Your Inbox Like a Pro",
+      },
+      {
+        type: "p",
+        text: "Run searches for keywords like 'receipt', 'invoice', 'your subscription', 'renewal', 'you have been charged', 'billing statement', and 'automatic payment'. Search for recurring amounts ($9.99, $14.99, etc.) to catch services where the email subject does not include the keyword. You can also search for specific dates like 'monthly' or 'annually'.",
+      },
+      {
+        type: "h2",
+        text: "Create a System for New Subscriptions",
+      },
+      {
+        type: "p",
+        text: "Going forward, set up a rule or filter that labels any email containing subscription keywords. When you subscribe to something new, forward the confirmation email to yourself with a tag. The goal is to ensure every new subscription triggers an entry in RenewTracker within minutes of signup.",
+      },
+      {
+        type: "h2",
+        text: "What You Will Find in Your Inbox",
+      },
+      {
+        type: "ul",
+        items: [
+          "Subscriptions you cancelled that have a paid period still running",
+          "Price increase notifications you missed",
+          "Services you signed up for with a different email alias",
+          "Annual subscriptions that renewed without you noticing",
+          "Free trials that converted to paid months ago",
+        ],
+      },
+      {
+        type: "tip",
+        text: "Most people find 2–5 forgotten subscriptions in their inbox on the first search. Do not just cancel them — add any services you want to keep into RenewTracker so they never go missing again.",
+      },
+    ],
+  },
+  {
+    slug: "subscription-security-guide",
+    title: "Subscription Security: How to Keep Your Accounts Safe",
+    excerpt: "Each subscription is an account that can be compromised. Here is how to secure every subscription and payment method you use.",
+    date: "2025-09-15",
+    readTime: "4 min read",
+    category: "Tech",
+    coverEmoji: "monitor",
+    content: [
+      {
+        type: "p",
+        text: "Every subscription you own is an account with a saved payment method. If that account is compromised, the attacker has access to your card details, personal information, and possibly linked services. Subscription security is an often-overlooked part of managing recurring payments.",
+      },
+      {
+        type: "h2",
+        text: "Common Subscription Security Risks",
+      },
+      {
+        type: "ul",
+        items: [
+          "Shared passwords across multiple subscription accounts",
+          "Old subscriptions on compromised platforms that still have your payment info",
+          "Digital wallet accounts with weak security settings",
+          "Subscriptions associated with email accounts that no longer have current recovery options",
+          "Former family plan members or ex-partners who still have account access",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Audit Access to Your Subscriptions",
+      },
+      {
+        type: "p",
+        text: "Use RenewTracker as your subscription inventory. For each subscription, review who has access and what payment method is saved. Remove any old payment methods from accounts you no longer actively use. If a subscription is inactive, close the account entirely — don't just let it lapse — to remove your data from the platform.",
+      },
+      {
+        type: "h2",
+        text: "Use Unique Passwords for Payment Accounts",
+      },
+      {
+        type: "p",
+        text: "The most critical subscriptions — those with saved payment methods — should each have a unique, strong password. Use a password manager so you do not have to remember them. If one subscription service is breached, a unique password ensures the rest of your accounts remain safe.",
+      },
+      {
+        type: "warning",
+        text: "If you have cancelled a subscription but the account still exists, your payment details may still be on file. Contact the service to request account deletion or removal of payment information to fully close the risk.",
+      },
+      {
+        type: "tip",
+        text: "Every three months, review your RenewTracker list and close any accounts for services you no longer use. Fewer active accounts means fewer security risks.",
+      },
+    ],
+  },
+  {
+    slug: "pause-vs-cancel-subscriptions",
+    title: "Pause vs Cancel Subscriptions: Which Is Better and How to Do Each",
+    excerpt: "Should you pause a subscription or cancel it outright? Here is a framework to decide based on your actual usage patterns.",
+    date: "2025-09-20",
+    readTime: "4 min read",
+    category: "Guide",
+    coverEmoji: "clipboard",
+    content: [
+      {
+        type: "p",
+        text: "When you decide to stop paying for a subscription, you usually have two options: pause it or cancel it. Pausing is a relatively new feature offered by many services — it suspends your subscription for a defined period without losing your profile, history, or preferences. Canceling ends the subscription entirely.",
+      },
+      {
+        type: "h2",
+        text: "When Pausing Makes Sense",
+      },
+      {
+        type: "ul",
+        items: [
+          "You plan to return to the service within a few months",
+          "The service does not offer a way to export your data after cancellation",
+          "You want to keep your profile, playlists, or saved content intact",
+          "You are traveling or taking a break and will resume later",
+          "The service offers pause-only benefits like grandfathered pricing",
+        ],
+      },
+      {
+        type: "h2",
+        text: "When Cancelling Is Better",
+      },
+      {
+        type: "ul",
+        items: [
+          "You do not see yourself using the service again",
+          "The service has raised prices and you want to explore alternatives",
+          "The pause period is short (30 days) and you would need to re-pause each month",
+          "You want to remove your payment data from the platform for security reasons",
+          "You want to qualify for a new subscriber promotion in the future",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Track Your Paused Subscriptions",
+      },
+      {
+        type: "p",
+        text: "If you pause a subscription, add it to RenewTracker with the pause end date. Otherwise, you risk the subscription resuming without you noticing. Set a reminder a few days before the pause ends so you can decide whether to extend the pause, cancel, or let it resume.",
+      },
+      {
+        type: "tip",
+        text: "A paused subscription is not a cancelled subscription. It will resume automatically, often at the same price. Always set a reminder in RenewTracker for the pause end date so you do not get surprised by a resumed charge.",
+      },
+    ],
+  },
+  {
+    slug: "tax-deductible-subscriptions",
+    title: "Tax Deductible Subscriptions: What You Can Write Off and How to Track It",
+    excerpt: "Many subscriptions are tax-deductible if you are self-employed or run a business. Here is a guide to identifying deductible subscription expenses.",
+    date: "2025-09-25",
+    readTime: "5 min read",
+    category: "Financial",
+    coverEmoji: "receipt",
+    content: [
+      {
+        type: "p",
+        text: "For freelancers, contractors, and small business owners, many subscription services are legitimate tax deductions. The key is distinguishing between personal subscriptions and business-related ones — and keeping proper records throughout the year rather than scrambling at tax time.",
+      },
+      {
+        type: "h2",
+        text: "Commonly Deductible Business Subscriptions",
+      },
+      {
+        type: "ul",
+        items: [
+          "Software tools (Adobe, Notion, Microsoft 365, project management apps)",
+          "Cloud storage and hosting (iCloud, Google Drive, AWS, web hosting)",
+          "Professional memberships (industry associations, publications, journals)",
+          "Marketing tools (email platforms, social media schedulers, SEO tools)",
+          "Communication tools (Slack, Zoom, Microsoft Teams premium plans)",
+          "Domain names and website subscriptions",
+        ],
+      },
+      {
+        type: "h2",
+        text: "How to Track Deductible Subscriptions",
+      },
+      {
+        type: "p",
+        text: "In RenewTracker, add a tag or note for any subscription that has a business purpose. Save the receipts or invoices in a dedicated folder. At tax time, you can export your RenewTracker data for the full year filtered by business-related entries — saving hours of going through bank statements.",
+      },
+      {
+        type: "h2",
+        text: "The Partial Deduction Rule",
+      },
+      {
+        type: "p",
+        text: "If you use a subscription for both personal and business purposes, you may be able to deduct the portion used for business. For example, if you use a phone plan 60% for business, you can deduct 60% of the cost. RenewTracker lets you note the business percentage alongside each subscription entry for easy reference.",
+      },
+      {
+        type: "warning",
+        text: "Tax rules vary by country and change frequently. The information here is a general guide — always consult a tax professional to confirm which subscriptions qualify as deductions in your jurisdiction.",
+      },
+      {
+        type: "tip",
+        text: "Set aside time in January to tag your business subscriptions from the previous year in RenewTracker. Doing it while the year is fresh saves hours of detective work during tax season.",
+      },
+    ],
+  },
+  {
+    slug: "subscription-renewal-reminder-best-practices",
+    title: "Subscription Renewal Reminder Best Practices: Never Miss a Payment Date",
+    excerpt: "Reminders are the foundation of good subscription management. Here is the optimal system for setting reminders that actually work.",
+    date: "2025-10-01",
+    readTime: "4 min read",
+    category: "Guide",
+    coverEmoji: "clipboard",
+    content: [
+      {
+        type: "p",
+        text: "The entire purpose of a subscription tracker is the reminder system. Without reliable reminders, you are just keeping a glorified list. A well-designed reminder system saves you from late fees, missed payments, and the cognitive load of keeping billing dates in your head.",
+      },
+      {
+        type: "h2",
+        text: "The Multi-Layer Reminder Strategy",
+      },
+      {
+        type: "p",
+        text: "A single reminder is unreliable — you might be traveling, busy, or the notification arrives at a bad time. The best approach is a multi-layer reminder system with decreasing intervals. RenewTracker uses this approach by default, sending reminders at 30, 15, 7, 3, and 1 day before each billing date.",
+      },
+      {
+        type: "h2",
+        text: "Why 7 Days Is the Sweet Spot",
+      },
+      {
+        type: "p",
+        text: "Research on subscription reminders shows that 7 days before a payment is the optimal time for most people. It is close enough that the payment feels relevant, but far enough ahead to take action if needed — whether that is ensuring funds are available, adjusting a budget, or cancelling the service.",
+      },
+      {
+        type: "h2",
+        text: "Customize Reminders by Subscription Type",
+      },
+      {
+        type: "ul",
+        items: [
+          "Bills and rent: Set the first reminder at 14 days — you want more lead time for large payments",
+          "BNPL installments: The default 7-day window works well since amounts are small",
+          "Free trials: Set reminders at 7 days and 2 days before conversion",
+          "Annual subscriptions: Start reminders 30 days before — annual fees are large and you may want to evaluate before committing",
+          "Credit card payments: 7 days before due date is ideal to check your balance and avoid late fees",
+        ],
+      },
+      {
+        type: "h2",
+        text: "What to Do When a Reminder Arrives",
+      },
+      {
+        type: "p",
+        text: "When you receive a RenewTracker reminder, take 30 seconds to check the service. Does it need to be cancelled, paused, or adjusted? If you want to keep it, confirm the payment method is valid and move on. The key is building a habit of acting on the reminder rather than dismissing it immediately.",
+      },
+      {
+        type: "tip",
+        text: "Set a weekly recurring time (like Sunday evening) to scan all upcoming reminders in RenewTracker for the week ahead. This turns reactive reminders into proactive management and makes missed payments nearly impossible.",
+      },
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
