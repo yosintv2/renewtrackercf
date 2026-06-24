@@ -41,44 +41,33 @@ const faqs = [
   { q: "Is my data secure?", a: "Yes. All data is encrypted and stored securely on Supabase (PostgreSQL). Row-level security ensures only you can access your data." },
 ];
 
-function getCurrencyFromLocale(locale: string): string {
-  const map: Record<string, string> = {
-    "en-US": "USD", "en-GB": "GBP", "en-IN": "INR", "en-NP": "NPR",
-    "en-AU": "AUD", "en-CA": "CAD", "en-SG": "SGD", "en-PH": "PHP",
-    "en-PK": "PKR", "en-BD": "BDT", "en-LK": "LKR", "en-MY": "MYR",
-    "en-ZA": "ZAR", "en-NG": "NGN",
-    "de-DE": "EUR", "de-AT": "EUR", "de-CH": "CHF",
-    "fr-FR": "EUR", "fr-BE": "EUR", "fr-CH": "CHF", "fr-CA": "CAD",
-    "it-IT": "EUR", "es-ES": "EUR", "es-MX": "MXN",
-    "pt-BR": "BRL", "pt-PT": "EUR", "nl-NL": "EUR",
-    "ja-JP": "JPY", "ko-KR": "KRW", "zh-CN": "CNY",
-    "zh-TW": "TWD", "zh-HK": "HKD", "th-TH": "THB",
-    "vi-VN": "VND", "id-ID": "IDR", "tr-TR": "TRY",
-    "pl-PL": "PLN", "sv-SE": "SEK", "da-DK": "DKK", "nb-NO": "NOK",
-    "ar-SA": "SAR", "ar-AE": "AED", "ar-EG": "EGP",
-  };
-  const lang = locale.split("-")[0];
-  return map[locale] ?? map[lang] ?? "USD";
-}
+const DEMO_CURRENCIES = ["USD", "EUR", "GBP", "INR", "JPY", "AUD", "NPR", "BRL", "KRW", "AED"];
 
 function DashboardMockup() {
-  const [fmt, setFmt] = useState<(n: number) => string>(() => (n: number) => `$${n.toLocaleString()}`);
+  const [idx, setIdx] = useState(0);
+  const [animKey, setAnimKey] = useState(0);
+  const currency = DEMO_CURRENCIES[idx];
 
   useEffect(() => {
+    const timer = setInterval(() => {
+      setIdx(i => (i + 1) % DEMO_CURRENCIES.length);
+      setAnimKey(k => k + 1);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  function fmt(n: number) {
     try {
-      const locale = navigator.language;
-      const currency = getCurrencyFromLocale(locale);
-      const formatter = new Intl.NumberFormat(locale, {
+      return new Intl.NumberFormat("en", {
         style: "currency",
         currency,
         minimumFractionDigits: 0,
         maximumFractionDigits: 2,
-      });
-      setFmt(() => (n: number) => formatter.format(n));
+      }).format(n);
     } catch {
-      /* keep default USD */
+      return `$${n.toLocaleString()}`;
     }
-  }, []);
+  }
 
   const monthlyTotal = 1283.47;
   const yearlyTotal = monthlyTotal * 12;
@@ -121,7 +110,10 @@ function DashboardMockup() {
 
           <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-4">
             <p className="text-[11px] text-gray-400 font-medium tracking-wide uppercase">Monthly spend</p>
-            <p className="text-3xl font-bold text-white mt-0.5">{fmt(monthlyTotal)}</p>
+            <p className="text-3xl font-bold text-white mt-0.5">
+              <span key={animKey} className="transition-all duration-300 animate-currency-flip">{fmt(monthlyTotal)}</span>
+              <span className="text-xs font-semibold text-blue-300 ml-2 bg-blue-500/20 px-1.5 py-0.5 rounded-full">{currency}</span>
+            </p>
             <div className="flex items-center gap-3 mt-2">
               <span className="text-xs text-gray-400">{fmt(yearlyTotal)}/year</span>
               <span className="text-[11px] font-semibold bg-orange-500/20 text-orange-300 px-2 py-0.5 rounded-full">3 due in 7 days</span>
@@ -151,7 +143,7 @@ function DashboardMockup() {
                 <div key={item.name} className="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors">
                   <div className="min-w-0">
                     <p className="text-xs font-semibold text-gray-900 truncate">{item.name}</p>
-                    <p className="text-[10px] text-gray-400 mt-0.5">{fmt(item.price)} · {item.due}</p>
+                    <p className="text-[10px] text-gray-400 mt-0.5"><span key={animKey} className="inline-block transition-all duration-300">{fmt(item.price)}</span> · {item.due}</p>
                   </div>
                   <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full flex-shrink-0 ml-2 ${item.badge}`}>{item.badgeText}</span>
                 </div>
@@ -178,6 +170,7 @@ function DashboardMockup() {
         </div>
       </div>
       <div className="absolute -bottom-2 -right-2 sm:-bottom-3 sm:-right-3 w-full h-full rounded-2xl border-2 border-blue-200 -z-10" />
+      <p className="text-center text-[11px] text-gray-400 mt-3 animate-pulse">34 currencies supported — prices cycling above</p>
     </div>
   );
 }
