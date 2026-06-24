@@ -6,7 +6,7 @@ import {
   Clock, CheckCircle2, Loader2, SearchX, RefreshCw, Tv, Home, Cpu,
   Dumbbell, CreditCard, MoreHorizontal, ArrowLeft, ArrowRight, TrendingUp,
   BarChart3, Calendar, DollarSign, Wallet, TrendingDown, Minus, Search,
-  Sparkles, Zap, Target, PiggyBank,
+  Sparkles, Zap, Target, PiggyBank, X,
 } from "lucide-react";
 import {
   AreaChart, Area, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer,
@@ -403,92 +403,139 @@ export default function PaymentHistoryContent() {
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-            <div className="px-5 py-3.5 border-b border-gray-50">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="relative flex-1 max-w-xs">
-                  <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+          {hasFilters && (
+            <div className="flex flex-wrap items-center gap-1.5">
+              <span className="text-xs text-gray-400 font-medium mr-1">Active filters:</span>
+              {catFilter !== "all" && (
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">
+                  {CATEGORY_LABELS[catFilter] ?? catFilter}
+                  <button onClick={() => setCatFilter("all")} className="hover:text-blue-900 ml-0.5"><X className="w-3 h-3" /></button>
+                </span>
+              )}
+              {chartFilter && (
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">
+                  Chart: {CATEGORY_LABELS[chartFilter] ?? chartFilter}
+                  <button onClick={() => setChartFilter(null)} className="hover:text-blue-900 ml-0.5"><X className="w-3 h-3" /></button>
+                </span>
+              )}
+              {periodFilter !== "all" && (
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-700 border border-gray-200">
+                  {PERIOD_OPTIONS.find(p => p.value === periodFilter)?.label ?? periodFilter}
+                  <button onClick={() => setPeriodFilter("all")} className="hover:text-gray-900 ml-0.5"><X className="w-3 h-3" /></button>
+                </span>
+              )}
+              {(customStart || customEnd) && (
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-700 border border-gray-200">
+                  {customStart || "…"} — {customEnd || "…"}
+                  <button onClick={() => { setCustomStart(""); setCustomEnd(""); }} className="hover:text-gray-900 ml-0.5"><X className="w-3 h-3" /></button>
+                </span>
+              )}
+              {typeFilter !== "all" && (
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-700 border border-gray-200">
+                  {typeFilter === "recurring" ? "Recurring" : "One-time"}
+                  <button onClick={() => setTypeFilter("all")} className="hover:text-gray-900 ml-0.5"><X className="w-3 h-3" /></button>
+                </span>
+              )}
+              {searchQuery && (
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-700 border border-gray-200">
+                  "{searchQuery}"
+                  <button onClick={() => setSearchQuery("")} className="hover:text-gray-900 ml-0.5"><X className="w-3 h-3" /></button>
+                </span>
+              )}
+              <button onClick={clearFilters} className="text-xs font-medium text-blue-600 hover:underline ml-1">Clear all</button>
+            </div>
+          )}
+
+          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm">
+            <div className="p-4 space-y-3">
+              <div className="flex items-center gap-3">
+                <div className="relative flex-1">
+                  <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
                   <input type="text" placeholder="Search payments..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
-                    className="w-full h-9 pl-9 pr-3 border border-gray-200 rounded-lg text-xs font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400"
+                    className="w-full h-10 pl-10 pr-4 bg-gray-50 border-0 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:bg-white transition-colors"
                   />
+                  {searchQuery && (
+                    <button onClick={() => setSearchQuery("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                      <X className="w-4 h-4" />
+                    </button>
+                  )}
+                </div>
+                <div className="flex items-center gap-1 bg-gray-50 rounded-xl p-0.5">
+                  {[
+                    { value: "all" as const, label: "All" },
+                    { value: "recurring" as const, label: "Recurring" },
+                    { value: "once" as const, label: "One-time" },
+                  ].map(t => (
+                    <button key={t.value} onClick={() => setTypeFilter(t.value)}
+                      className={cn("px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all",
+                        typeFilter === t.value ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-700"
+                      )}
+                    >{t.label}</button>
+                  ))}
                 </div>
               </div>
-              <div className="flex flex-wrap items-center gap-1.5 text-xs font-medium text-gray-400">
-                <span className={cn("px-3 py-1.5 rounded-lg transition-colors cursor-pointer", catFilter === "all" && !chartFilter ? "bg-gray-900 text-white" : "text-gray-500 hover:text-gray-900")} onClick={() => { setCatFilter("all"); setChartFilter(null); }}>
-                  All ({payments.length})
-                </span>
-                {activeCategories.filter(c => c.value !== "all").map(cat => {
-                  const count = payments.filter(p => p.category === cat.value).length;
+
+              <div className="flex flex-wrap items-center gap-1.5">
+                {activeCategories.map(cat => {
+                  const isActive = catFilter === cat.value || (cat.value !== "all" && chartFilter === cat.value);
+                  const meta = cat.value !== "all" ? CATEGORY_META[cat.value] : null;
+                  const Icon = meta?.icon;
+                  const count = cat.value === "all" ? payments.length : payments.filter(p => p.category === cat.value).length;
                   return (
-                    <span key={cat.value}
-                      className={cn("px-3 py-1.5 rounded-lg transition-colors cursor-pointer whitespace-nowrap",
-                        (catFilter === cat.value || chartFilter === cat.value) ? "bg-blue-600 text-white" : "text-gray-500 hover:text-gray-900"
+                    <button key={cat.value} onClick={() => { setCatFilter(cat.value); setChartFilter(null); }}
+                      className={cn("inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all",
+                        isActive
+                          ? "bg-gray-900 text-white shadow-sm"
+                          : "bg-gray-50 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                       )}
-                      onClick={() => { setCatFilter(cat.value); setChartFilter(null); }}
                     >
-                      {cat.label} ({count})
-                    </span>
+                      {Icon && <Icon className="w-3.5 h-3.5" />}
+                      {cat.label}
+                      <span className={cn("text-[10px] font-bold ml-0.5", isActive ? "text-white/60" : "text-gray-400")}>{count}</span>
+                    </button>
                   );
                 })}
-                {chartFilter && (
-                  <button onClick={() => setChartFilter(null)} className="ml-1 text-xs font-medium text-blue-600 hover:underline">Clear</button>
-                )}
               </div>
-            </div>
-            <div className="px-5 py-3 border-b border-gray-50">
-              <div className="flex flex-wrap items-center gap-2">
-                <Calendar className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
-                <div className="flex gap-1 flex-wrap">
-                  {PERIOD_OPTIONS.map(p => (
-                    <button key={p.value} onClick={() => handlePeriodClick(p.value)}
-                      className={cn("px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors",
-                        periodFilter === p.value && !showCustom ? "bg-gray-900 text-white" : "text-gray-500 hover:text-gray-900 hover:bg-gray-100"
-                      )}
-                    >{p.label}</button>
-                  ))}
-                  <button onClick={() => { setShowCustom(!showCustom); setPeriodFilter("all"); }}
-                    className={cn("px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1",
-                      showCustom ? "bg-gray-900 text-white" : "text-gray-500 hover:text-gray-900 hover:bg-gray-100"
+
+              <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                <Calendar className="w-3.5 h-3.5 text-gray-400" />
+                {PERIOD_OPTIONS.map(p => (
+                  <button key={p.value} onClick={() => handlePeriodClick(p.value)}
+                    className={cn("px-3 py-1.5 rounded-xl text-xs font-semibold transition-all",
+                      periodFilter === p.value && !showCustom ? "bg-gray-900 text-white shadow-sm" : "text-gray-500 hover:bg-gray-100 hover:text-gray-700"
                     )}
-                  >
-                    <Calendar className="w-3 h-3" />Custom
-                  </button>
-                </div>
+                  >{p.label}</button>
+                ))}
+                <button onClick={() => { setShowCustom(!showCustom); setPeriodFilter("all"); }}
+                  className={cn("px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1",
+                    showCustom ? "bg-blue-600 text-white shadow-sm" : "text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                  )}
+                >
+                  <Calendar className="w-3 h-3" />Custom
+                </button>
               </div>
+
               {showCustom && (
-                <div className="flex items-center gap-2 mt-3 pt-3 border-t border-gray-50">
-                  <input type="date" value={customStart} onChange={(e) => setCustomStart(e.target.value)}
-                    className="h-9 px-3 border border-gray-200 rounded-lg text-xs font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400"
-                  />
-                  <span className="text-xs text-gray-400">to</span>
-                  <input type="date" value={customEnd} onChange={(e) => setCustomEnd(e.target.value)}
-                    className="h-9 px-3 border border-gray-200 rounded-lg text-xs font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400"
-                  />
+                <div className="flex items-center gap-2 pt-2 border-t border-gray-100">
+                  <div className="relative">
+                    <Calendar className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+                    <input type="date" value={customStart} onChange={(e) => setCustomStart(e.target.value)}
+                      className="h-9 pl-9 pr-3 bg-gray-50 border-0 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:bg-white transition-colors"
+                    />
+                  </div>
+                  <span className="text-xs text-gray-400">—</span>
+                  <div className="relative">
+                    <Calendar className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+                    <input type="date" value={customEnd} onChange={(e) => setCustomEnd(e.target.value)}
+                      className="h-9 pl-9 pr-3 bg-gray-50 border-0 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:bg-white transition-colors"
+                    />
+                  </div>
                   {(customStart || customEnd) && (
                     <button onClick={() => { setCustomStart(""); setCustomEnd(""); }}
-                      className="text-xs font-medium text-blue-600 hover:underline ml-1"
+                      className="text-xs font-medium text-blue-600 hover:underline"
                     >Clear</button>
                   )}
                 </div>
-              )}
-            </div>
-            <div className="px-5 py-3 flex flex-wrap items-center gap-3 border-b border-gray-50">
-              <span className="text-xs font-medium text-gray-400">Type</span>
-              <div className="flex gap-1">
-                {[
-                  { value: "all" as const, label: "All" },
-                  { value: "recurring" as const, label: "Recurring" },
-                  { value: "once" as const, label: "One-time" },
-                ].map(t => (
-                  <button key={t.value} onClick={() => setTypeFilter(t.value)}
-                    className={cn("px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors",
-                      typeFilter === t.value ? "bg-blue-100 text-blue-700" : "text-gray-500 hover:text-gray-900 hover:bg-gray-100"
-                    )}
-                  >{t.label}</button>
-                ))}
-              </div>
-              {hasFilters && (
-                <button onClick={clearFilters} className="ml-auto text-xs font-medium text-blue-600 hover:underline">Clear all filters</button>
               )}
             </div>
           </div>
