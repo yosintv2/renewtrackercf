@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ArrowRight, CheckCircle2, Star, BookOpen, Bell, LayoutDashboard, Shield, WalletCards, Globe, TrendingDown, Zap, CreditCard, Calendar, Clock, AlertTriangle, ChevronDown, Repeat2, BarChart3, Users, Sparkles, Timer } from "lucide-react";
 import { blogPosts } from "../lib/blog";
+import { CURRENCIES } from "../lib/currency";
 import BlogCoverIcon from "./BlogCoverIcon";
 
 const features = [
@@ -41,18 +42,21 @@ const faqs = [
   { q: "Is my data secure?", a: "Yes. All data is encrypted and stored securely on Supabase (PostgreSQL). Row-level security ensures only you can access your data." },
 ];
 
-const DEMO_CURRENCIES = ["USD", "EUR", "GBP", "INR", "JPY", "AUD", "NPR", "BRL", "KRW", "AED"];
+const ALL_CODES = CURRENCIES.map(c => c.code);
 
 function DashboardMockup() {
   const [idx, setIdx] = useState(0);
-  const [animKey, setAnimKey] = useState(0);
-  const currency = DEMO_CURRENCIES[idx];
+  const [fading, setFading] = useState(false);
+  const currency = ALL_CODES[idx];
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setIdx(i => (i + 1) % DEMO_CURRENCIES.length);
-      setAnimKey(k => k + 1);
-    }, 3000);
+      setFading(true);
+      setTimeout(() => {
+        setIdx(i => (i + 1) % ALL_CODES.length);
+        setFading(false);
+      }, 150);
+    }, 1000);
     return () => clearInterval(timer);
   }, []);
 
@@ -110,12 +114,12 @@ function DashboardMockup() {
 
           <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-4">
             <p className="text-[11px] text-gray-400 font-medium tracking-wide uppercase">Monthly spend</p>
-            <p className="text-3xl font-bold text-white mt-0.5">
-              <span key={animKey} className="transition-all duration-300 animate-currency-flip">{fmt(monthlyTotal)}</span>
-              <span className="text-xs font-semibold text-blue-300 ml-2 bg-blue-500/20 px-1.5 py-0.5 rounded-full">{currency}</span>
+            <p className="flex items-baseline gap-2 mt-0.5" style={{ transition: "opacity 0.15s ease", opacity: fading ? 0 : 1 }}>
+              <span className="text-3xl font-bold text-white">{fmt(monthlyTotal)}</span>
+              <span className="text-xs font-semibold text-blue-300 bg-blue-500/20 px-1.5 py-0.5 rounded-full">{currency}</span>
             </p>
             <div className="flex items-center gap-3 mt-2">
-              <span className="text-xs text-gray-400">{fmt(yearlyTotal)}/year</span>
+              <span className="text-xs text-gray-400" style={{ transition: "opacity 0.15s ease", opacity: fading ? 0 : 1 }}>{fmt(yearlyTotal)}/year</span>
               <span className="text-[11px] font-semibold bg-orange-500/20 text-orange-300 px-2 py-0.5 rounded-full">3 due in 7 days</span>
             </div>
           </div>
@@ -143,7 +147,7 @@ function DashboardMockup() {
                 <div key={item.name} className="flex items-center justify-between px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors">
                   <div className="min-w-0">
                     <p className="text-xs font-semibold text-gray-900 truncate">{item.name}</p>
-                    <p className="text-[10px] text-gray-400 mt-0.5"><span key={animKey} className="inline-block transition-all duration-300">{fmt(item.price)}</span> · {item.due}</p>
+                    <p className="text-[10px] text-gray-400 mt-0.5"><span style={{ transition: "opacity 0.15s ease", opacity: fading ? 0 : 1 }}>{fmt(item.price)}</span> · {item.due}</p>
                   </div>
                   <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full flex-shrink-0 ml-2 ${item.badge}`}>{item.badgeText}</span>
                 </div>
@@ -170,7 +174,7 @@ function DashboardMockup() {
         </div>
       </div>
       <div className="absolute -bottom-2 -right-2 sm:-bottom-3 sm:-right-3 w-full h-full rounded-2xl border-2 border-blue-200 -z-10" />
-      <p className="text-center text-[11px] text-gray-400 mt-3 animate-pulse">34 currencies supported — prices cycling above</p>
+      <p className="text-center text-[11px] text-gray-400 mt-3 animate-pulse">{CURRENCIES.length} currencies supported — cycling every 1s</p>
     </div>
   );
 }
