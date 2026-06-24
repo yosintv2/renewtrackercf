@@ -342,7 +342,68 @@ export default function HomeContent() {
         </div>
       </section>
 
-      <section className="py-20 sm:py-28 bg-gray-50 px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-24 bg-white px-4 sm:px-6 lg:px-8 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="inline-block text-xs font-semibold tracking-widest uppercase text-blue-600 mb-4 bg-blue-50 px-3 py-1 rounded-full">Guides</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 tracking-tight">Popular Subscription Tracking Guides</h2>
+            <p className="text-gray-500 max-w-xl mx-auto">Detailed guides to track, manage, and cancel popular subscriptions.</p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto">
+            {["netflix", "spotify", "chatgpt-plus", "disney-plus", "adobe-creative-cloud", "github-copilot", "apple-arcade", "xbox-game-pass", "nordvpn", "google-workspace", "hubspot", "digitalocean"].map((slug) => {
+              const names: Record<string, string> = {
+                netflix: "Netflix", spotify: "Spotify", "chatgpt-plus": "ChatGPT Plus",
+                "disney-plus": "Disney+", "adobe-creative-cloud": "Adobe CC",
+                "github-copilot": "GitHub Copilot", "apple-arcade": "Apple Arcade",
+                "xbox-game-pass": "Xbox Game Pass", nordvpn: "NordVPN",
+                "google-workspace": "Google Workspace", hubspot: "HubSpot",
+                digitalocean: "DigitalOcean",
+              };
+              return (
+                <a key={slug} href={`/track/${slug}`} className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 bg-gray-100 hover:bg-blue-100 hover:text-blue-700 px-3.5 py-2 rounded-xl transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  {names[slug] ?? slug}
+                </a>
+              );
+            })}
+          </div>
+          <div className="text-center mt-6">
+            <a href="/track" className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors">
+              View all 120+ tracking guides <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 sm:py-24 bg-gray-50 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid sm:grid-cols-3 gap-6">
+            <a href="/compare" className="group bg-white rounded-2xl p-7 border border-gray-200 hover:border-blue-200 hover:shadow-lg transition-all">
+              <div className="w-11 h-11 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </div>
+              <h3 className="font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Compare with Competitors</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">See how RenewTracker stacks up against Rocket Money, Truebill, Bobby, Subby, Mint, and YNAB.</p>
+            </a>
+            <a href="/tools" className="group bg-white rounded-2xl p-7 border border-gray-200 hover:border-blue-200 hover:shadow-lg transition-all">
+              <div className="w-11 h-11 rounded-xl bg-green-100 text-green-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              </div>
+              <h3 className="font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">Free Online Tools</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">Calculate subscription costs, check domain expiry, and plan renewal reminders — no account needed.</p>
+            </a>
+            <a href="/domains/track-domain-expiry" className="group bg-white rounded-2xl p-7 border border-gray-200 hover:border-blue-200 hover:shadow-lg transition-all">
+              <div className="w-11 h-11 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <h3 className="font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition-colors">Domain Renewal Guides</h3>
+              <p className="text-sm text-gray-500 leading-relaxed">Never lose a domain. Track expiry dates for Namecheap, GoDaddy, Cloudflare, Hostinger, and more.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <span className="inline-block text-xs font-semibold tracking-widest uppercase text-blue-600 mb-4 bg-blue-50 px-3 py-1 rounded-full">Testimonials</span>

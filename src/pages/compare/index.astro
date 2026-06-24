@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import { comparisons } from "../../data/comparisons";
+---
+
+<BaseLayout title="RenewTracker vs Competitors — Free Comparison Guides" description="See how RenewTracker compares to Rocket Money, Truebill, Bobby, Subby, Mint, and YNAB. Honest feature comparisons, pricing breakdowns, and pros & cons.">
+  <div class="min-h-screen bg-white">
+    <Navbar currentPath={Astro.url.pathname} />
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
+      <header class="mb-12 text-center">
+        <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-3">RenewTracker vs Competitors</h1>
+        <p class="text-lg text-gray-500 max-w-2xl mx-auto">Honest, detailed comparisons showing how RenewTracker stacks up against other subscription tracking and budgeting apps.</p>
+      </header>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {comparisons.map((c) => (
+          <a
+            key={c.slug}
+            href={`/compare/${c.slug}`}
+            class="group bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-50 transition-all"
+          >
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm">
+                RT
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-300"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              <div class="w-10 h-10 rounded-xl bg-gray-100 text-gray-600 flex items-center justify-center font-bold text-sm">
+                {c.competitorName.slice(0, 2).toUpperCase()}
+              </div>
+            </div>
+            <h2 class="font-bold text-gray-900 text-base group-hover:text-blue-600 transition-colors mb-2">{c.title}</h2>
+            <p class="text-sm text-gray-500 leading-relaxed line-clamp-2">{c.description}</p>
+            <div class="mt-4 flex items-center gap-2 text-xs font-semibold text-blue-600 group-hover:gap-3 transition-all">
+              View comparison <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-16 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-3xl p-8 sm:p-12 text-center">
+        <h3 class="text-2xl sm:text-3xl font-bold text-white mb-3">See why RenewTracker is the best free option</h3>
+        <p class="text-blue-200 mb-6 max-w-lg mx-auto">No paid tiers, no hidden fees, no credit card required. Track unlimited subscriptions and get reminders before every payment.</p>
+        <a href="/register" class="inline-flex items-center gap-2 bg-white text-blue-700 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors">
+          Start for free <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <Footer />
+  </div>
+</BaseLayout>
