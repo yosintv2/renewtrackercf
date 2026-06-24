@@ -1,0 +1,31 @@
+---
+export interface Props {
+  items: { q: string; a: string }[];
+}
+const { items } = Astro.props;
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: items.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<div class="space-y-4">
+  {items.map((item, i) => (
+    <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
+      <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-5 text-sm font-semibold text-gray-900 hover:bg-gray-50 transition-colors">
+        {item.q}
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400 flex-shrink-0 group-open:rotate-180 transition-transform"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="px-5 pb-5 text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+        {item.a}
+      </div>
+    </details>
+  ))}
+</div>

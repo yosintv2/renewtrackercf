@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import { tools } from "../../data/tools";
+
+const categoryLabels: Record<string, string> = {
+  calculator: "Calculators",
+  checker: "Checkers",
+  planner: "Planners",
+};
+---
+
+<BaseLayout title="Free Subscription & Renewal Tools" description="Free online subscription cost calculators, domain expiry checkers, hosting renewal calculators, and renewal reminder planners to track all your recurring payments.">
+  <div class="min-h-screen bg-white">
+    <Navbar currentPath={Astro.url.pathname} />
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
+      <header class="mb-12 text-center">
+        <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-3">Free Renewal Tools</h1>
+        <p class="text-lg text-gray-500 max-w-2xl mx-auto">Calculate subscription costs, check domain expiry dates, and plan renewal reminders — all free, no account required.</p>
+      </header>
+
+      <div class="space-y-10">
+        {Object.entries(categoryLabels).map(([catKey, catLabel]) => {
+          const filtered = tools.filter((t) => t.category === catKey);
+          if (filtered.length === 0) return null;
+          return (
+            <section>
+              <h2 class="text-xl font-bold text-gray-900 mb-5">{catLabel}</h2>
+              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {filtered.map((tool) => (
+                  <a
+                    key={tool.slug}
+                    href={`/tools/${tool.slug}`}
+                    class="group bg-white border border-gray-200 rounded-2xl p-5 hover:border-blue-200 hover:shadow-sm transition-all"
+                  >
+                    <h3 class="font-semibold text-gray-900 text-sm group-hover:text-blue-600 transition-colors mb-1.5">{tool.title}</h3>
+                    <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">{tool.description}</p>
+                  </a>
+                ))}
+              </div>
+            </section>
+          );
+        })}
+      </div>
+    </div>
+
+    <Footer />
+  </div>
+</BaseLayout>

@@ -16,6 +16,15 @@ export default defineConfig({
       if (path.startsWith("/blog/")) {
         return { ...page, priority: 0.7, changefreq: "monthly" };
       }
+      if (path.startsWith("/track/")) {
+        return { ...page, priority: 0.6, changefreq: "monthly" };
+      }
+      if (path.startsWith("/compare/")) {
+        return { ...page, priority: 0.7, changefreq: "monthly" };
+      }
+      if (path.startsWith("/domains/")) {
+        return { ...page, priority: 0.6, changefreq: "monthly" };
+      }
       if (["/blog", "/about", "/contact", "/privacy", "/terms"].includes(path)) {
         return { ...page, priority: 0.8, changefreq: "monthly" };
       }
