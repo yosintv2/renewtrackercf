@@ -292,27 +292,58 @@ export default function CalendarContent() {
             )}
 
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
-              <h3 className="text-sm font-semibold text-gray-900 mb-3">Legend</h3>
-              <div className="space-y-2">
-                {Object.entries(CATEGORY_COLORS).map(([cat, color]) => (
-                  <div key={cat} className="flex items-center gap-2">
-                    <span className={cn("w-2.5 h-2.5 rounded-full flex-shrink-0", color)} />
-                    <span className="text-xs text-gray-600">{CATEGORY_LABELS[cat] ?? cat}</span>
+              <h3 className="text-sm font-semibold text-gray-900 mb-3">
+                {daysWithSubs.length > 0 ? `${MONTH_NAMES[month]} spending` : "Legend"}
+              </h3>
+              {(() => {
+                const todaySubs = subs.filter((s) => {
+                  const d = new Date(s.next_billing_date);
+                  return d.getFullYear() === year && d.getMonth() === month;
+                });
+                const byCategory = new Map<string, { subs: Subscription[]; total: number }>();
+                for (const s of todaySubs) {
+                  const cat = s.category ?? "other";
+                  if (!byCategory.has(cat)) byCategory.set(cat, { subs: [], total: 0 });
+                  const entry = byCategory.get(cat)!;
+                  entry.subs.push(s);
+                  entry.total += s.price;
+                }
+                const sortedCats = Array.from(byCategory.entries()).sort((a, b) => b[1].total - a[1].total);
+                return (
+                  <div className="space-y-3">
+                    {sortedCats.map(([cat, { subs: catSubs, total }]) => (
+                      <div key={cat}>
+                        <div className="flex items-center justify-between mb-1">
+                          <div className="flex items-center gap-2">
+                            <span className={cn("w-2.5 h-2.5 rounded-full flex-shrink-0", CATEGORY_COLORS[cat] ?? "bg-gray-400")} />
+                            <span className="text-xs font-semibold text-gray-700">{CATEGORY_LABELS[cat] ?? cat}</span>
+                          </div>
+                          <span className="text-xs font-bold text-gray-900">{fmt(Math.round(total))}</span>
+                        </div>
+                        <div className="flex flex-wrap gap-1 ml-5">
+                          {catSubs.map((s) => (
+                            <span key={s.id} className="px-1.5 py-0.5 rounded bg-gray-100 text-[10px] text-gray-600 font-medium">
+                              {s.name}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                    <div className="pt-2 border-t border-gray-100 space-y-1.5">
+                      <div className="flex items-center gap-2">
+                        <span className="w-2.5 h-2.5 rounded-full bg-red-500 flex-shrink-0" />
+                        <span className="text-xs text-gray-600">Overdue</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="w-5 h-5 rounded-full bg-blue-600 flex-shrink-0 flex items-center justify-center">
+                          <span className="text-white text-[9px] font-bold">1</span>
+                        </span>
+                        <span className="text-xs text-gray-600">Today</span>
+                      </div>
+                    </div>
                   </div>
-                ))}
-              </div>
-              <div className="mt-3 pt-3 border-t border-gray-100 space-y-2">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-500 flex-shrink-0" />
-                  <span className="text-xs text-gray-600">Overdue</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-5 h-5 rounded-full bg-blue-600 flex-shrink-0 flex items-center justify-center">
-                    <span className="text-white text-[9px] font-bold">1</span>
-                  </span>
-                  <span className="text-xs text-gray-600">Today</span>
-                </div>
-              </div>
+                );
+              })()}
             </div>
 
             <a href="/dashboard/subscriptions"
