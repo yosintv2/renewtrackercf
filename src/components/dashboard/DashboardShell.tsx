@@ -1,9 +1,10 @@
 import { useState, useEffect, lazy, Suspense } from "react";
-import { Menu, ChevronDown, Check, X, LogOut, ChevronRight, LayoutDashboard, Bell, Settings, Tv, Receipt, Clock, LoaderCircle } from "lucide-react";
+import { Menu, ChevronDown, Check, X, LogOut, ChevronRight, LayoutDashboard, Bell, Settings, Tv, Receipt, Clock, CalendarDays, LoaderCircle } from "lucide-react";
 import { CurrencyProvider, useCurrency, CURRENCIES } from "@/lib/currency";
 import DashboardOverviewContent from "./DashboardOverviewContent";
 import ItemsPage from "./ItemsPage";
 import RemindersContent from "./RemindersContent";
+import CalendarContent from "./CalendarContent";
 import SettingsContent from "./SettingsContent";
 import PaymentHistoryContent from "./PaymentHistoryContent";
 
@@ -127,6 +128,7 @@ function Sidebar({ currentPage, onClose }: { currentPage: string; onClose: () =>
     { href: "/dashboard/subscriptions", label: "Subscriptions", icon: Tv, badge: subCount > 0 ? String(subCount) : undefined, badgeVariant: "count" },
     { href: "/dashboard/bills", label: "Bills", icon: Receipt, badge: billCount > 0 ? String(billCount) : undefined, badgeVariant: "count" },
     { href: "/dashboard/reminders", label: "Reminders", icon: Bell, badge: alertCount > 0 ? String(alertCount) : undefined, badgeVariant: "alert" },
+    { href: "/dashboard/calendar", label: "Calendar", icon: CalendarDays },
     { href: "/dashboard/payment-history", label: "Payment History", icon: Clock },
     { href: "/dashboard/settings", label: "Settings", icon: Settings },
   ];
@@ -238,6 +240,7 @@ const PAGE_CONTENT: Record<string, React.ReactNode> = {
   "/dashboard/subscriptions": <ItemsPage mode="subscriptions" />,
   "/dashboard/bills": <ItemsPage mode="bills" />,
   "/dashboard/reminders": <RemindersContent />,
+  "/dashboard/calendar": <CalendarContent />,
   "/dashboard/payment-history": <PaymentHistoryContent />,
   "/dashboard/settings": <SettingsContent />,
 };
