@@ -212,14 +212,12 @@ export default function CalendarContent() {
           </div>
 
           <div className="space-y-4">
-            {daysWithSubs.length > 0 && (
-              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
-                <h3 className="text-sm font-semibold text-gray-900 mb-3">
-                  {selectedDay
-                    ? `${MONTH_NAMES[month]} ${selectedDay}`
-                    : "Payment days"}
-                </h3>
-                {selectedDay ? (
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
+              <h3 className="text-sm font-semibold text-gray-900 mb-3">
+                {selectedDay ? `${MONTH_NAMES[month]} ${selectedDay}` : "Payment days"}
+              </h3>
+              {daysWithSubs.length > 0 ? (
+                selectedDay ? (
                   selectedSubs.length === 0 ? (
                     <p className="text-xs text-gray-400">No payments on this day.</p>
                   ) : (
@@ -288,21 +286,24 @@ export default function CalendarContent() {
                       <p className="text-[10px] text-gray-400 text-center pt-1">+{daysWithSubs.length - 10} more days</p>
                     )}
                   </div>
-                )}
-              </div>
-            )}
+                )
+              ) : (
+                <p className="text-xs text-gray-400 py-6 text-center">No payments this month.</p>
+              )}
+            </div>
 
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
-              <h3 className="text-sm font-semibold text-gray-900 mb-3">
-                {daysWithSubs.length > 0 ? `${MONTH_NAMES[month]} spending` : "Legend"}
-              </h3>
+              <h3 className="text-sm font-semibold text-gray-900 mb-3">{MONTH_NAMES[month]} spending</h3>
               {(() => {
-                const todaySubs = subs.filter((s) => {
+                const monthSubs = subs.filter((s) => {
                   const d = new Date(s.next_billing_date);
                   return d.getFullYear() === year && d.getMonth() === month;
                 });
+                if (monthSubs.length === 0) {
+                  return <p className="text-xs text-gray-400 py-3 text-center">No spending this month.</p>;
+                }
                 const byCategory = new Map<string, { subs: Subscription[]; total: number }>();
-                for (const s of todaySubs) {
+                for (const s of monthSubs) {
                   const cat = s.category ?? "other";
                   if (!byCategory.has(cat)) byCategory.set(cat, { subs: [], total: 0 });
                   const entry = byCategory.get(cat)!;

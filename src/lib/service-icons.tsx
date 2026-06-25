@@ -64,9 +64,9 @@ const ICONS: Record<string, IconEntry> = {
     path: "<circle cx='12' cy='12' r='9' fill='none' stroke='currentColor' stroke-width='1.8'/><path d='M15.5 10c.8.5 1.5 1.3 1.5 2.5 0 2-2 3-4 3s-4-1-4-3c0-1.2.7-2 1.5-2.5' stroke='currentColor' stroke-width='1.4' fill='none' stroke-linecap='round'/><circle cx='10' cy='9.5' r='.8' fill='currentColor'/><circle cx='14' cy='9.5' r='.8' fill='currentColor'/>",
   },
   "claude pro": {
-    color: "#D97706",
-    bg: "#D97706",
-    path: "<circle cx='12' cy='12' r='9' fill='none' stroke='currentColor' stroke-width='1.8'/><path d='M7 15V9l5 6V9' stroke='currentColor' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/>",
+    color: "#CC8B3C",
+    bg: "#CC8B3C",
+    path: "<circle cx='12' cy='12' r='9' fill='none' stroke='currentColor' stroke-width='1.8'/><path d='M8 9.5A4.5 4.5 0 0 1 16 9.5c0 2-1.2 3.7-3 4.3V16h-2v-2.2a4.8 4.8 0 0 1-3-4.3z' stroke='currentColor' stroke-width='1.4' fill='none'/><path d='M9.5 9.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2M14.5 9.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2' fill='currentColor'/>",
   },
   "github copilot": {
     color: "#6e40c9",
