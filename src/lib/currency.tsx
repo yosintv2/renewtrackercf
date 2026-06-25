@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode } from "react";
 
 export const CURRENCIES = [
   { code: "AUD", symbol: "A$", label: "Australian Dollar" },
@@ -54,14 +54,13 @@ const CurrencyContext = createContext<CurrencyContextType>({
 const STORAGE_KEY = "renewtracker-currency";
 
 export function CurrencyProvider({ children }: { children: ReactNode }) {
-  const [code, setCode] = useState("USD");
-
-  useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored && CURRENCIES.find((c) => c.code === stored)) {
-      setCode(stored);
+  const [code, setCode] = useState(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored && CURRENCIES.find((c) => c.code === stored)) return stored;
     }
-  }, []);
+    return "USD";
+  });
 
   function setCurrency(newCode: string) {
     setCode(newCode);

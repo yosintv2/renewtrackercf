@@ -241,22 +241,45 @@ export default function CalendarContent() {
                     </div>
                   )
                 ) : (
-                  <div className="space-y-2">
+                  <div className="space-y-1.5">
                     {daysWithSubs.slice(0, 10).map((day) => {
                       const subsThisDay = subsByDay.get(day) ?? [];
                       const total = subsThisDay.reduce((sum, s) => sum + s.price, 0);
+                      const overdue = subsThisDay.some(s => daysUntil(s.next_billing_date) < 0);
                       return (
                         <button
                           key={day}
                           onClick={() => setSelectedDay(day)}
-                          className="flex items-center justify-between w-full p-2 rounded-lg hover:bg-gray-50 transition-colors text-left"
+                          className={cn(
+                            "w-full p-2.5 rounded-xl transition-colors text-left",
+                            overdue ? "bg-red-50 hover:bg-red-100" : "bg-gray-50 hover:bg-gray-100"
+                          )}
                         >
-                          <span className="text-xs font-semibold text-gray-700">
-                            {MONTH_NAMES[month]} {day}
-                          </span>
-                          <span className="text-xs text-gray-400">
-                            {subsThisDay.length} payments · {fmt(Math.round(total))}
-                          </span>
+                          <div className="flex items-center justify-between mb-1">
+                            <span className={cn("text-xs font-bold", overdue ? "text-red-700" : "text-gray-700")}>
+                              {MONTH_NAMES[month]} {day}
+                            </span>
+                            <span className={cn("text-[10px] font-semibold", overdue ? "text-red-500" : "text-gray-400")}>
+                              {subsThisDay.length} · {fmt(Math.round(total))}
+                            </span>
+                          </div>
+                          <div className="flex flex-wrap gap-1">
+                            {subsThisDay.slice(0, 4).map((s) => {
+                              const overdueS = daysUntil(s.next_billing_date) < 0;
+                              return (
+                                <span key={s.id} className={cn(
+                                  "inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-medium",
+                                  overdueS ? "bg-red-200/60 text-red-700" : "bg-white text-gray-600 border border-gray-200"
+                                )}>
+                                  <span className={cn("w-1.5 h-1.5 rounded-full flex-shrink-0", CATEGORY_COLORS[s.category] ?? "bg-gray-400")} />
+                                  {s.name}
+                                </span>
+                              );
+                            })}
+                            {subsThisDay.length > 4 && (
+                              <span className="text-[10px] text-gray-400 px-1">+{subsThisDay.length - 4}</span>
+                            )}
+                          </div>
                         </button>
                       );
                     })}
