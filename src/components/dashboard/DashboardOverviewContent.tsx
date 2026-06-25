@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/client";
 import { AlertTriangle, CheckCircle2, Clock, ArrowRight, Bell, Loader2, Plus, Calendar, TrendingDown } from "lucide-react";
 import { useCurrency } from "@/lib/currency";
 import { cn } from "@/lib/utils";
+import { ServiceIcon } from "@/lib/service-icons";
 
 type Subscription = {
   id: string; name: string; category: string; price: number;
@@ -236,7 +237,8 @@ export default function DashboardOverviewContent() {
                 [...overdue, ...upcoming].slice(0, 6).map(s => {
                   const days = daysUntil(s.next_billing_date);
                   return (
-                    <div key={s.id} className="flex items-center justify-between px-5 py-3.5 hover:bg-gray-50 transition-colors">
+                    <div key={s.id} className="flex items-center gap-3 px-5 py-3.5 hover:bg-gray-50 transition-colors">
+                      <ServiceIcon name={s.name} size={22} />
                       <div className="min-w-0">
                         <p className="text-sm font-semibold text-gray-900 truncate">{s.name}</p>
                         <p className="text-xs text-gray-400 mt-0.5">{fmt(s.price)} · {formatDate(s.next_billing_date)}</p>

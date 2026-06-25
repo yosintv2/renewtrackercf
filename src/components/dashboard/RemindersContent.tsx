@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/client";
 import { Bell, AlertTriangle, Clock, CheckCircle2, Loader2, Plus, ArrowRight } from "lucide-react";
 import { useCurrency } from "@/lib/currency";
 import { cn } from "@/lib/utils";
+import { ServiceIcon } from "@/lib/service-icons";
 
 type Subscription = {
   id: string; name: string; category: string; price: number;
@@ -63,7 +64,7 @@ function ReminderRow({ s, fmt }: { s: Subscription; fmt: (n: number) => string }
   return (
     <div className={cn("flex items-center justify-between p-4 rounded-xl border gap-3", rowBg)}>
       <div className="flex items-center gap-3 min-w-0">
-        {icon}
+        <ServiceIcon name={s.name} size={24} />
         <div className="min-w-0">
           <p className="text-sm font-semibold text-gray-900 truncate">{s.name}</p>
           <p className="text-xs text-gray-400 mt-0.5">

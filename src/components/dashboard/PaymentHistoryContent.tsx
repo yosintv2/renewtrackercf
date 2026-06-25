@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useCurrency } from "@/lib/currency";
 import { cn } from "@/lib/utils";
+import { ServiceIcon } from "@/lib/service-icons";
 import {
   Clock, CheckCircle2, Loader2, SearchX, RefreshCw, Tv, Home, Cpu,
   Dumbbell, CreditCard, MoreHorizontal, ArrowLeft, ArrowRight, TrendingUp,
@@ -327,7 +328,7 @@ export default function PaymentHistoryContent() {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-semibold text-gray-900">
-                  Biggest payment this month: <span className="text-blue-600">{biggestPayment.name}</span> — {fmt(Math.round(biggestPayment.amount_paid))}
+                  Biggest payment this month: <ServiceIcon name={biggestPayment.name} size={16} className="inline mr-1 -mt-0.5" /> <span className="text-blue-600">{biggestPayment.name}</span> — {fmt(Math.round(biggestPayment.amount_paid))}
                 </p>
                 <p className="text-xs text-gray-500 mt-0.5">
                   {filtered.length} payment{filtered.length !== 1 ? "s" : ""} this month · Avg {fmt(Math.round(avgPayment))} each
@@ -561,10 +562,8 @@ export default function PaymentHistoryContent() {
                       const meta = CATEGORY_META[p.category] ?? CATEGORY_META.other;
                       const Icon = meta.icon;
                       return (
-                        <div key={p.id} className="bg-white rounded-xl border border-gray-100 shadow-sm p-3.5 flex items-center gap-3.5 hover:shadow-md hover:border-gray-200 transition-all">
-                          <div className={cn("w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0", meta.bg)}>
-                            <Icon className={cn("w-4 h-4", meta.color)} />
-                          </div>
+                          <div key={p.id} className="bg-white rounded-xl border border-gray-100 shadow-sm p-3.5 flex items-center gap-3 hover:shadow-md hover:border-gray-200 transition-all">
+                          <ServiceIcon name={p.name} size={28} />
                           <div className="flex-1 min-w-0">
                             <p className="font-semibold text-gray-900 text-sm truncate">{p.name}</p>
                             <p className="text-xs text-gray-400 mt-0.5 flex items-center gap-1.5">

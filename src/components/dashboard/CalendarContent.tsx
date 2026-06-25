@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/client";
 import { ChevronLeft, ChevronRight, CalendarDays, Plus, Loader2 } from "lucide-react";
 import { useCurrency } from "@/lib/currency";
 import { cn } from "@/lib/utils";
+import { ServiceIcon } from "@/lib/service-icons";
 
 type Subscription = {
   id: string; name: string; category: string; price: number;
@@ -194,7 +195,7 @@ export default function CalendarContent() {
                               )}
                               title={`${s.name} · ${fmt(s.price)}`}
                             >
-                              <span className={cn("w-1.5 h-1.5 rounded-full flex-shrink-0", CATEGORY_COLORS[s.category] ?? "bg-gray-400")} />
+                              <ServiceIcon name={s.name} size={14} className="mr-0.5" />
                               <span className="truncate">{s.name}</span>
                             </div>
                           );
@@ -227,7 +228,7 @@ export default function CalendarContent() {
                         const overdue = daysUntil(s.next_billing_date) < 0;
                         return (
                           <div key={s.id} className={cn("flex items-center gap-2 p-2 rounded-lg", overdue ? "bg-red-50" : "bg-gray-50")}>
-                            <span className={cn("w-2 h-2 rounded-full flex-shrink-0", CATEGORY_COLORS[s.category] ?? "bg-gray-400")} />
+                            <ServiceIcon name={s.name} size={18} />
                             <div className="min-w-0 flex-1">
                               <p className="text-xs font-semibold text-gray-900 truncate">{s.name}</p>
                               <p className="text-[10px] text-gray-400">{CATEGORY_LABELS[s.category] ?? s.category}</p>
@@ -271,7 +272,7 @@ export default function CalendarContent() {
                                   "inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-medium",
                                   overdueS ? "bg-red-200/60 text-red-700" : "bg-white text-gray-600 border border-gray-200"
                                 )}>
-                                  <span className={cn("w-1.5 h-1.5 rounded-full flex-shrink-0", CATEGORY_COLORS[s.category] ?? "bg-gray-400")} />
+                                  <ServiceIcon name={s.name} size={12} />
                                   {s.name}
                                 </span>
                               );
@@ -322,7 +323,8 @@ export default function CalendarContent() {
                         </div>
                         <div className="flex flex-wrap gap-1 ml-5">
                           {catSubs.map((s) => (
-                            <span key={s.id} className="px-1.5 py-0.5 rounded bg-gray-100 text-[10px] text-gray-600 font-medium">
+                            <span key={s.id} className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-gray-100 text-[10px] text-gray-600 font-medium">
+                              <ServiceIcon name={s.name} size={12} />
                               {s.name}
                             </span>
                           ))}

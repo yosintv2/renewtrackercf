@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useCurrency } from "@/lib/currency";
 import { cn } from "@/lib/utils";
+import { ServiceIcon } from "@/lib/service-icons";
 import { Plus, Edit2, Trash2, Loader2, AlertCircle, ArrowLeft, X, CheckCircle2, Clock, Tv, Home, Cpu, Dumbbell, CreditCard, MoreHorizontal, Receipt } from "lucide-react";
 
 type CategoryKey = "entertainment" | "living" | "tech" | "lifestyle" | "financial" | "other";
@@ -368,7 +369,10 @@ function SubCard({ s, fmt, onEdit, onDelete, onPaid }: {
     <div className={cn("bg-white rounded-2xl border border-l-4 shadow-sm transition-shadow hover:shadow-md", cat.borderAccent)}>
       <div className="p-4">
         <div className="flex items-start justify-between gap-2 mb-1">
-          <p className="font-bold text-gray-900 text-base leading-tight">{s.name}</p>
+          <div className="flex items-center gap-2 min-w-0">
+            <ServiceIcon name={s.name} size={22} />
+            <p className="font-bold text-gray-900 text-base leading-tight truncate">{s.name}</p>
+          </div>
           <div className="text-right flex-shrink-0">
             <p className="font-bold text-gray-900 text-sm">{fmt(s.price)}</p>
             {s.billing_cycle !== "once" && <p className="text-[11px] text-gray-400">/{s.billing_cycle === "monthly" ? "mo" : s.billing_cycle === "yearly" ? "yr" : s.billing_cycle === "weekly" ? "wk" : "qtr"}</p>}
