@@ -7,6 +7,7 @@ import FaqSection from "../../components/FaqSection.astro";
 import { subscriptions, type SubscriptionEntry } from "../../data/subscriptions";
 
 const site = "https://www.renewtracker.net";
+const year = new Date().getFullYear();
 
 export function getStaticPaths() {
   return subscriptions.map((s) => ({ params: { slug: s.slug } }));
@@ -34,7 +35,7 @@ function renderList(items: string[], numbered: boolean = false) {
 ---
 
 <BaseLayout
-  title={`${entry.name} Subscription 2025: Cost, Renewal Tips & How to Cancel`}
+  title={`${entry.name} Subscription ${year}: Cost, Renewal Tips & How to Cancel`}
   description={entry.description}
   canonical={`${site}/track/${entry.slug}`}
   breadcrumbs={[{ label: "Track", href: "/track" }, { label: entry.name }]}

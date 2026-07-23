@@ -7,6 +7,7 @@ import FaqSection from "../../components/FaqSection.astro";
 import { comparisons, type ComparisonEntry } from "../../data/comparisons";
 
 const site = "https://www.renewtracker.net";
+const year = new Date().getFullYear();
 
 export function getStaticPaths() {
   return comparisons.map((c) => ({ params: { slug: c.slug } }));
@@ -25,7 +26,7 @@ function renderList(items: string[]) {
 ---
 
 <BaseLayout
-  title={`${entry.title}: Which Is Better? (2025 Comparison)`}
+  title={`${entry.title}: Which Is Better? (${year} Comparison)`}
   description={entry.description}
   canonical={`${site}/compare/${entry.slug}`}
   breadcrumbs={[{ label: "Compare", href: "/compare" }, { label: entry.competitorName }]}

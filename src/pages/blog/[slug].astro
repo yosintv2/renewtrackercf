@@ -6,6 +6,7 @@ import BlogCoverIcon from "../../components/BlogCoverIcon";
 import { blogPosts, getBlogPost, getRelatedPosts, type BlogSection } from "../../lib/blog";
 
 const site = "https://www.renewtracker.net";
+const year = new Date().getFullYear();
 
 export async function getStaticPaths() {
   return blogPosts.map((post) => ({
@@ -57,7 +58,7 @@ function renderSection(section: BlogSection, idx: number) {
 }
 ---
 
-<BaseLayout title={post.title + " (2025 Guide)"} description={post.excerpt} canonical={site + "/blog/" + post.slug} breadcrumbs={[{ label: "Blog", href: "/blog" }, { label: post.title }]}>
+<BaseLayout title={post.title + ` (${year} Guide)`} description={post.excerpt} canonical={site + "/blog/" + post.slug} breadcrumbs={[{ label: "Blog", href: "/blog" }, { label: post.title }]}>
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Article",

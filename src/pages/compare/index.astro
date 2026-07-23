@@ -3,9 +3,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
 import { comparisons } from "../../data/comparisons";
+
+const year = new Date().getFullYear();
 ---
 
-<BaseLayout title="RenewTracker vs Rocket Money, Mint, YNAB & More: 6 Honest Comparisons (2025)" description="See how RenewTracker compares to Rocket Money, Truebill, Bobby, Subby, Mint, and YNAB. Honest feature comparisons, pricing breakdowns, and pros & cons.">
+<BaseLayout title={`RenewTracker vs Rocket Money, Mint, YNAB & More: 6 Honest Comparisons (${year})`} description="See how RenewTracker compares to Rocket Money, Truebill, Bobby, Subby, Mint, and YNAB. Honest feature comparisons, pricing breakdowns, and pros & cons.">
   <div class="min-h-screen bg-white">
     <Navbar currentPath={Astro.url.pathname} />
 

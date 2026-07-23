@@ -1,3 +1,5 @@
+const displayYear = new Date().getFullYear();
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -1489,7 +1491,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "best-subscription-tracker-apps",
-    title: "Best Subscription Tracker Apps: Free & Paid Options for 2025",
+    title: `Best Subscription Tracker Apps: Free & Paid Options for ${displayYear}`,
     excerpt:
       "The best subscription tracker app depends on your needs. Compare alternative to Bobby, Subby, Truebill, and more with RenewTracker as the top free option.",
     date: "2025-10-20",

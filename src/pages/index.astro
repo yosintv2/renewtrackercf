@@ -3,10 +3,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import HomeContent from "../components/HomeContent";
+
+const year = new Date().getFullYear();
 ---
 
 <BaseLayout
-  title="RenewTracker: Free Subscription Tracker & Renewal Reminder App (2025)"
+  title={`RenewTracker: Free Subscription Tracker & Renewal Reminder App (${year})`}
   description="Track every subscription, bill, rent, loan, domain, and BNPL payment in one place. Get free email reminders before every due date. Netflix, Spotify, rent, credit cards — the best free subscription manager. Forever free."
 >
   <script type="application/ld+json" set:html={JSON.stringify({

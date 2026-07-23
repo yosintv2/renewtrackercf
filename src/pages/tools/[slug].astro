@@ -13,6 +13,7 @@ import RenewalReminderTool from "../../components/tools/RenewalReminderTool";
 import { tools } from "../../data/tools";
 
 const site = "https://www.renewtracker.net";
+const year = new Date().getFullYear();
 
 export async function getStaticPaths() {
   return tools.map((tool) => ({
@@ -29,7 +30,7 @@ if (!tool) {
 
 ---
 
-<BaseLayout title={tool.title + " (2025) — Free Online Tool"} description={tool.metaDescription} canonical={site + "/tools/" + tool.slug} breadcrumbs={[{ label: "Tools", href: "/tools" }, { label: tool.title }]}>
+<BaseLayout title={tool.title + " (" + year + ") — Free Online Tool"} description={tool.metaDescription} canonical={site + "/tools/" + tool.slug} breadcrumbs={[{ label: "Tools", href: "/tools" }, { label: tool.title }]}>
   <div class="min-h-screen bg-white">
     <Navbar currentPath={Astro.url.pathname} />
 

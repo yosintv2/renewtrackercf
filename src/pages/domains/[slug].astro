@@ -7,6 +7,7 @@ import FaqSection from "../../components/FaqSection.astro";
 import { domains, type DomainEntry } from "../../data/domains";
 
 const site = "https://www.renewtracker.net";
+const year = new Date().getFullYear();
 
 export function getStaticPaths() {
   return domains.map((d) => ({ params: { slug: d.slug } }));
@@ -30,7 +31,7 @@ function renderList(items: string[], numbered: boolean = false) {
 ---
 
 <BaseLayout
-  title={entry.name.match(/domain|expir|renewal|ssl|certificate|registrar|cost|checker|check/i) ? (entry.name.includes("2025") ? entry.name : `${entry.name} (2025)`) : `${entry.name} Domain Renewal (2025)`}
+  title={entry.name.match(/domain|expir|renewal|ssl|certificate|registrar|cost|checker|check/i) ? (entry.name.includes(year.toString()) ? entry.name : `${entry.name} (${year})`) : `${entry.name} Domain Renewal (${year})`}
   description={entry.description}
   canonical={`${site}/domains/${entry.slug}`}
   breadcrumbs={[{ label: "Domains", href: "/domains" }, { label: entry.name }]}

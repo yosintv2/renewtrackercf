@@ -4,6 +4,8 @@ import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
 import { subscriptions } from "../../data/subscriptions";
 
+const year = new Date().getFullYear();
+
 const categories = [
   { key: "entertainment", label: "Entertainment", desc: "Netflix, Spotify, Disney+, Crunchyroll, and more" },
   { key: "tech", label: "Tech & Tools", desc: "ChatGPT, Adobe, Notion, GitHub Copilot, and more" },
@@ -15,7 +17,7 @@ const categories = [
 ];
 ---
 
-<BaseLayout title="Track 120+ Subscriptions: Free Renewal & Cancellation Guides (2025)" description="Free subscription tracking guides for Netflix, ChatGPT, Spotify, Adobe, Xbox Game Pass, and 120+ services. See pricing, renewal tips, cancellation steps, and FAQs.">
+<BaseLayout title={`Track 120+ Subscriptions: Free Renewal & Cancellation Guides (${year})`} description="Free subscription tracking guides for Netflix, ChatGPT, Spotify, Adobe, Xbox Game Pass, and 120+ services. See pricing, renewal tips, cancellation steps, and FAQs.">
   <div class="min-h-screen bg-white">
     <Navbar currentPath={Astro.url.pathname} />
 
