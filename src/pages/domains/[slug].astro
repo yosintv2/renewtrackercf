@@ -2,6 +2,8 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import FaqSection from "../../components/FaqSection.astro";
 import { domains, type DomainEntry } from "../../data/domains";
 
 const site = "https://www.renewtracker.net";
@@ -25,35 +27,24 @@ function renderList(items: string[], numbered: boolean = false) {
   ).join("")}</ul>`;
 }
 
-function renderFaq(faqs: { q: string; a: string }[]) {
-  return faqs?.map((f, i) =>
-    `<div class="mb-6 ${i > 0 ? 'pt-6 border-t border-gray-100' : ''}">
-      <h3 class="text-base font-bold text-gray-900 mb-2">${f.q}</h3>
-      <p class="text-sm text-gray-600 leading-relaxed">${f.a}</p>
-    </div>`
-  ).join("");
-}
 ---
 
 <BaseLayout
-  title={`${entry.name} Domain Renewal — Pricing, Tips & Expiration Guide`}
+  title={entry.name.match(/domain|expir|renewal|ssl|certificate|registrar|cost|checker|check/i) ? (entry.name.includes("2025") ? entry.name : `${entry.name} (2025)`) : `${entry.name} Domain Renewal (2025)`}
   description={entry.description}
   canonical={`${site}/domains/${entry.slug}`}
+  breadcrumbs={[{ label: "Domains", href: "/domains" }, { label: entry.name }]}
 >
   <div class="min-h-screen bg-white">
     <Navbar currentPath={Astro.url.pathname} />
 
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-16">
-      <nav class="flex items-center gap-2 text-sm text-gray-400 mb-8">
-        <a href="/" class="hover:text-blue-600 transition-colors">Home</a>
-        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-        <a href="/domains" class="hover:text-blue-600 transition-colors">Domains</a>
-        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-        <span class="text-gray-600 font-medium">{entry.name}</span>
-      </nav>
+      <div class="mb-6">
+        <Breadcrumbs items={[{ label: "Domain Renewals", href: "/domains" }, { label: entry.name }]} />
+      </div>
 
       <header class="mb-10">
-        <h1 class="text-2xl sm:text-4xl font-bold text-gray-900 leading-tight mb-4">{entry.name} Domain Renewal</h1>
+        <h1 class="text-2xl sm:text-4xl font-bold text-gray-900 leading-tight mb-4">{entry.name}</h1>
         {entry.pricing && (
           <div class="flex items-center gap-2 text-sm text-gray-600 mb-4">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500"><line x1="12" x2="12" y1="1" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
@@ -73,7 +64,18 @@ function renderFaq(faqs: { q: string; a: string }[]) {
         <div set:html={renderList(entry.renewalTips, true)} />
 
         <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mt-10 mb-4">Frequently Asked Questions</h2>
-        <div class="mt-6" set:html={renderFaq(entry.faq || [])} />
+        <FaqSection items={entry.faq || []} />
+      </div>
+
+      <div class="mt-12 bg-gray-50 border border-gray-200 rounded-2xl p-6 sm:p-7">
+        <h3 class="text-base font-bold text-gray-900 mb-3">Related domain tools</h3>
+        <div class="flex flex-wrap gap-2">
+          <a href="/tools/domain-expiry-calculator" class="text-xs font-medium bg-white border border-gray-200 text-gray-700 px-3 py-1.5 rounded-lg hover:border-blue-300 hover:text-blue-600 transition-colors">Domain Expiry Calculator</a>
+          <a href="/tools/hosting-renewal-calculator" class="text-xs font-medium bg-white border border-gray-200 text-gray-700 px-3 py-1.5 rounded-lg hover:border-blue-300 hover:text-blue-600 transition-colors">Hosting Renewal Calculator</a>
+          <a href="/tools/renewal-reminder-tool" class="text-xs font-medium bg-white border border-gray-200 text-gray-700 px-3 py-1.5 rounded-lg hover:border-blue-300 hover:text-blue-600 transition-colors">Renewal Reminder Planner</a>
+          <a href="/blog/domain-subscription-tracker-combined" class="text-xs font-medium bg-white border border-gray-200 text-gray-700 px-3 py-1.5 rounded-lg hover:border-blue-300 hover:text-blue-600 transition-colors">Domain & Subscription Tracker Guide</a>
+          <a href="/domains/domain-renewal-price-comparison" class="text-xs font-medium bg-white border border-gray-200 text-gray-700 px-3 py-1.5 rounded-lg hover:border-blue-300 hover:text-blue-600 transition-colors">Compare Domain Renewal Prices</a>
+        </div>
       </div>
 
       <div class="mt-14 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-6 sm:p-8 text-center">

@@ -1854,6 +1854,95 @@ export const subscriptions: SubscriptionEntry[] = [
 
   // ===== Financial =====
   {
+    slug: "paypal",
+    name: "PayPal",
+    category: "financial",
+    description:
+      "PayPal is a digital wallet platform that processes online payments, money transfers, and recurring subscription billing across millions of merchants worldwide.",
+    pricing: "Free (personal) or 2.99% + $0.49 fee per transaction (business)",
+    billingCycle: "Per transaction",
+    renewalTips: [
+      "PayPal itself has no subscription fee — but it stores your recurring payment agreements that you need to track separately.",
+      "Review your PayPal 'Preapproved Payments' page regularly to find forgotten subscriptions.",
+      "Set PayPal notifications for every recurring payment to catch unexpected renewals.",
+    ],
+    cancellationTips: [
+      "Cancel recurring payments via PayPal Settings > 'Payments' > 'Manage Automatic Payments'.",
+      "Removing a payment method does not cancel subscriptions — you must cancel each agreement individually.",
+    ],
+    faq: [
+      {
+        q: "Does PayPal charge for subscriptions?",
+        a: "PayPal does not charge users for recurring payments. Merchants pay transaction fees.",
+      },
+      {
+        q: "How do I find all my PayPal subscriptions in one place?",
+        a: "Go to Settings > Payments > Manage Automatic Payments to see every active recurring agreement.",
+      },
+    ],
+    url: "https://www.paypal.com",
+  },
+  {
+    slug: "klarna",
+    name: "Klarna",
+    category: "financial",
+    description:
+      "Klarna is a buy now, pay later (BNPL) service that lets you split purchases into interest-free installments or pay later, with automatic payment reminders.",
+    pricing: "Free (consumer) — late fees may apply",
+    billingCycle: "Per installment plan",
+    renewalTips: [
+      "Klarna sends payment reminders via email and the app — enable push notifications to avoid late fees.",
+      "Each installment plan is separate; missing one payment can affect your Klarna purchasing power.",
+      "Klarna reports missed payments to credit bureaus in some regions.",
+    ],
+    cancellationTips: [
+      "Cancel a pending order in the Klarna app before the first payment is processed.",
+      "You cannot cancel an active installment plan — you must pay the remaining balance.",
+      "Close your Klarna account by contacting customer support after all plans are paid off.",
+    ],
+    faq: [
+      {
+        q: "Does Klarna affect my credit score?",
+        a: "Klarna performs a soft credit check initially. Missed payments may be reported to credit bureaus in some countries.",
+      },
+      {
+        q: "Can I pay off my Klarna plan early?",
+        a: "Yes, you can pay off any installment plan early at no extra cost through the Klarna app.",
+      },
+    ],
+    url: "https://www.klarna.com",
+  },
+  {
+    slug: "afterpay",
+    name: "Afterpay",
+    category: "financial",
+    description:
+      "Afterpay lets you buy now and pay later in four interest-free installments, with automatic bi-weekly payments and no credit check for most purchases.",
+    pricing: "Free (consumer) — late fees up to 25% of order value",
+    billingCycle: "Per installment plan",
+    renewalTips: [
+      "Afterpay auto-deducts payments from your linked card every two weeks — ensure sufficient balance.",
+      "Late fees are capped at 25% of the order value or $8, whichever is less, in the US.",
+      "Afterpay does not charge interest, but missed payments can restrict future spending limits.",
+    ],
+    cancellationTips: [
+      "Cancel an Afterpay order within the app before the first payment is processed for a full refund.",
+      "Once payments have started, you must complete the payment plan or contact support.",
+      "Close your Afterpay account by contacting customer support after all plans are cleared.",
+    ],
+    faq: [
+      {
+        q: "Does Afterpay run a credit check?",
+        a: "Afterpay does not perform credit checks in most regions. Eligibility is based on order history and payment behavior.",
+      },
+      {
+        q: "Can I use Afterpay anywhere?",
+        a: "Afterpay is accepted at thousands of online retailers. Look for the Afterpay logo at checkout.",
+      },
+    ],
+    url: "https://www.afterpay.com",
+  },
+  {
     slug: "credit-karma",
     name: "Credit Karma",
     category: "financial",
@@ -3439,5 +3528,30 @@ export const subscriptions: SubscriptionEntry[] = [
       { q: "Can I use WP Engine for multiple sites?", a: "Yes, the Growth plan covers up to 10 sites, and the Scale plan covers up to 30 sites." },
     ],
     url: "https://wpengine.com",
+  },
+  {
+    slug: "hostgator-domain-renewal",
+    name: "HostGator",
+    category: "tech",
+    description:
+      "HostGator is a popular web hosting provider offering domain registration, shared hosting, VPS, and dedicated servers with competitive introductory pricing and higher renewal rates.",
+    pricing: "$2.99/month intro, renews at $6.99–$8.99/month",
+    billingCycle: "Monthly & Annual",
+    renewalTips: [
+      "HostGator's introductory prices are significantly lower than renewal rates — expect prices to increase 2-3x after the first term.",
+      "Lock in the best rate by choosing the longest initial billing cycle (36 months) when signing up.",
+      "Set reminders 30 days before hosting renewal to evaluate whether you still need the plan before auto-renewal kicks in.",
+    ],
+    cancellationTips: [
+      "Cancel hosting via HostGator's portal under 'Billing' > 'Cancel'.",
+      "Domain registrations must be canceled or transferred separately from hosting.",
+      "HostGator offers a 45-day money-back guarantee on shared hosting plans.",
+    ],
+    faq: [
+      { q: "How much does HostGator charge for hosting renewal?", a: "HostGator renewal prices are typically 2-3x higher than introductory rates. A $2.99/month intro plan may renew at $6.99–$8.99/month." },
+      { q: "Does HostGator offer a grace period after expiration?", a: "Yes, HostGator provides a grace period of approximately 30 days for domain renewals before additional fees apply." },
+      { q: "Can I transfer my HostGator domain to another registrar?", a: "Yes, unlock the domain in your HostGator dashboard and obtain the EPP code to transfer to any other registrar." },
+    ],
+    url: "https://www.hostgator.com",
   },
 ];

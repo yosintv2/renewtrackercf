@@ -29,7 +29,7 @@ if (!tool) {
 
 ---
 
-<BaseLayout title={tool.title} description={tool.metaDescription} canonical={site + "/tools/" + tool.slug}>
+<BaseLayout title={tool.title + " (2025) — Free Online Tool"} description={tool.metaDescription} canonical={site + "/tools/" + tool.slug} breadcrumbs={[{ label: "Tools", href: "/tools" }, { label: tool.title }]}>
   <div class="min-h-screen bg-white">
     <Navbar currentPath={Astro.url.pathname} />
 

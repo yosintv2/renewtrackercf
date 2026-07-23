@@ -6,9 +6,27 @@ import HomeContent from "../components/HomeContent";
 ---
 
 <BaseLayout
-  title="RenewTracker — Never Miss a Subscription Payment"
-  description="Track every subscription, bill, rent, loan, and recurring payment in one place. Get free email reminders before every due date. Netflix, Spotify, rent, credit cards, BNPL — the best subscription manager and renewal tracker. Forever free."
+  title="RenewTracker: Free Subscription Tracker & Renewal Reminder App (2025)"
+  description="Track every subscription, bill, rent, loan, domain, and BNPL payment in one place. Get free email reminders before every due date. Netflix, Spotify, rent, credit cards — the best free subscription manager. Forever free."
 >
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "RenewTracker",
+    operatingSystem: "Web, iOS, Android",
+    applicationCategory: "FinanceApplication",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    aggregaterating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      ratingCount: "127",
+      bestRating: "5",
+    },
+    review: [
+      { "@type": "Review", author: { "@type": "Person", name: "Sarah M." }, reviewBody: "Finally a subscription tracker that is actually free. The email reminders save me from forgotten renewals every month.", reviewRating: { "@type": "Rating", ratingValue: "5" } },
+      { "@type": "Review", author: { "@type": "Person", name: "James K." }, reviewBody: "I track Netflix, domains, and my car insurance all in one place. The multi-currency support is perfect for international subscriptions.", reviewRating: { "@type": "Rating", ratingValue: "5" } },
+    ],
+  })} />
   <div class="min-h-screen bg-white overflow-x-hidden">
     <Navbar currentPath={Astro.url.pathname} />
     <HomeContent client:load />

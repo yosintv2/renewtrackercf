@@ -127,6 +127,34 @@ export const domains: DomainEntry[] = [
     url: "https://www.hostinger.com",
   },
   {
+    slug: "hostgator-domain-renewal",
+    name: "HostGator",
+    description:
+      "HostGator is a popular web hosting provider offering domain registration, shared hosting, VPS, and dedicated servers with competitive introductory pricing and higher renewal rates.",
+    services: ["domain registration", "web hosting", "VPS hosting", "SSL certificates", "website builder"],
+    renewalTips: [
+      "HostGator's introductory prices are significantly lower than renewal rates — expect prices to increase 2-3x after the first term.",
+      "Lock in the best rate by choosing the longest initial billing cycle (36 months) when signing up.",
+      "Set reminders 30 days before hosting renewal to evaluate whether you still need the plan before auto-renewal kicks in.",
+    ],
+    faq: [
+      {
+        q: "How much does HostGator charge for hosting renewal?",
+        a: "HostGator renewal prices are typically 2-3x higher than introductory rates. A $2.99/month intro plan may renew at $6.99–$8.99/month.",
+      },
+      {
+        q: "Does HostGator offer a grace period after expiration?",
+        a: "Yes, HostGator provides a grace period of approximately 30 days for domain renewals before additional fees apply.",
+      },
+      {
+        q: "Can I transfer my HostGator domain to another registrar?",
+        a: "Yes, unlock the domain in your HostGator dashboard and obtain the EPP code to transfer to any other registrar.",
+      },
+    ],
+    pricing: "Shared hosting from $2.99/month intro, renews at $6.99–$8.99/month",
+    url: "https://www.hostgator.com",
+  },
+  {
     slug: "ssl-certificate-expiration",
     name: "SSL Certificate Expiration",
     description:
@@ -325,6 +353,39 @@ export const domains: DomainEntry[] = [
         a: "Yes, if you miss the grace and redemption periods, the domain is released and can be registered by anyone, including domain squatters who may demand a high price for it.",
       },
     ],
+  },
+  {
+    slug: "domain-renewal-price-comparison",
+    name: "Domain Renewal Price Comparison",
+    description:
+      "Compare domain renewal prices across 12+ registrars including Cloudflare, Porkbun, Namecheap, GoDaddy, and more. Find the cheapest place to renew .com, .io, .org, and other TLDs.",
+    services: ["price comparison", "registrar comparison", "domain renewal savings"],
+    renewalTips: [
+      "Cloudflare sells domains at cost (~$9.15 for .com) with no markup — the cheapest option for most TLDs.",
+      "Porkbun and NameSilo consistently offer the next best renewal prices at $10–$12/year for .com domains.",
+      "GoDaddy charges $19–$22/year for .com renewals — up to 2x more than budget registrars. Always compare before renewing.",
+      "Bulk renewal discounts are rare but some registrars (Namecheap, Porkbun) offer small savings for multi-year renewals.",
+      "Watch for hidden fees: WHOIS privacy, DNS hosting, and email forwarding can add $5–$15/year on top of renewal costs.",
+    ],
+    faq: [
+      {
+        q: "Which registrar has the cheapest .com renewal?",
+        a: "Cloudflare is the cheapest at ~$9.15/year (at cost). Porkbun (~$10–$12), NameSilo (~$10.39), and Namecheap (~$13–$16) are also competitive. GoDaddy is typically the most expensive at $19–$22/year.",
+      },
+      {
+        q: "Are renewal prices the same as initial registration prices?",
+        a: "Almost never. Most registrars offer discounted first-year pricing ($1–$6 for .com) and charge standard rates on renewal. Cloudflare and Porkbun have the smallest spreads between intro and renewal pricing.",
+      },
+      {
+        q: "How can I avoid paying high domain renewal fees?",
+        a: "Transfer your domain to a cheaper registrar before renewal. You must wait 60 days after registration or last transfer, and each transfer adds 1 year to the expiration date. Cloudflare, Porkbun, and NameSilo are popular low-cost destinations.",
+      },
+      {
+        q: "What TLDs have the highest renewal costs?",
+        a: "Premium TLDs like .io ($30–$60/year), .ai ($40–$80/year), and .co ($20–$30/year) cost significantly more than .com. Specialized TLDs like .design or .photography can also carry higher renewal rates.",
+      },
+    ],
+    pricing: "Varies by registrar and TLD; .com renewals range from ~$9.15 (Cloudflare) to ~$22 (GoDaddy)",
   },
   {
     slug: "check-domain-expiration-date",

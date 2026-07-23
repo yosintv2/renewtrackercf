@@ -104,7 +104,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Trying to track subscriptions in a spreadsheet or your head fails for a simple reason: billing dates creep up on you. You don't think about your AWS bill until you get the charge. You forget your yearly Adobe renewal until the money is already gone.",
+        text: "Trying to track subscriptions in a spreadsheet or your head fails for a simple reason: billing dates creep up on you. You don't think about your <a href=\"/track/digitalocean\" class=\"text-blue-600 hover:underline\">AWS</a> bill until you get the charge. You forget your yearly <a href=\"/track/adobe-creative-cloud\" class=\"text-blue-600 hover:underline\">Adobe</a> renewal until the money is already gone.",
       },
       {
         type: "h2",
@@ -113,11 +113,11 @@ export const blogPosts: BlogPost[] = [
       {
         type: "ul",
         items: [
-          "Entertainment: Netflix, Spotify, Crunchyroll, gaming subscriptions",
+          "Entertainment: <a href=\"/track/netflix\" class=\"text-blue-600 hover:underline\">Netflix</a>, <a href=\"/track/spotify\" class=\"text-blue-600 hover:underline\">Spotify</a>, <a href=\"/track/crunchyroll\" class=\"text-blue-600 hover:underline\">Crunchyroll</a>, gaming subscriptions",
           "Living Essentials: Rent, electricity, water, internet, phone bill",
-          "Tech & Tools: iCloud, ChatGPT Plus, Notion, Adobe CC, Microsoft 365",
+          "Tech & Tools: <a href=\"/track/icloud-plus\" class=\"text-blue-600 hover:underline\">iCloud</a>, <a href=\"/track/chatgpt-plus\" class=\"text-blue-600 hover:underline\">ChatGPT Plus</a>, <a href=\"/track/notion\" class=\"text-blue-600 hover:underline\">Notion</a>, <a href=\"/track/adobe-creative-cloud\" class=\"text-blue-600 hover:underline\">Adobe CC</a>, <a href=\"/track/microsoft-365\" class=\"text-blue-600 hover:underline\">Microsoft 365</a>",
           "Lifestyle: Gym, meal kits, fashion boxes, fitness apps",
-          "Financial Liabilities: Credit card bills, BNPL installments, loan EMIs",
+          "Financial Liabilities: Credit card bills, <a href=\"/track/klarna\" class=\"text-blue-600 hover:underline\">BNPL installments</a>, loan EMIs",
         ],
       },
       {
@@ -209,7 +209,7 @@ export const blogPosts: BlogPost[] = [
     content: [
       {
         type: "p",
-        text: "Streaming has replaced cable, but the bills are starting to look the same. Between Netflix, Disney+, Amazon Prime, Apple TV+, a music service, and maybe a sports platform, a household can easily spend $80–120 per month on entertainment subscriptions alone.",
+        text: "Streaming has replaced cable, but the bills are starting to look the same. Between <a href=\"/track/netflix\" class=\"text-blue-600 hover:underline\">Netflix</a>, <a href=\"/track/disney-plus\" class=\"text-blue-600 hover:underline\">Disney+</a>, <a href=\"/track/amazon-prime-video\" class=\"text-blue-600 hover:underline\">Amazon Prime</a>, <a href=\"/track/apple-tv-plus\" class=\"text-blue-600 hover:underline\">Apple TV+</a>, a music service, and maybe a sports platform, a household can easily spend $80–120 per month on entertainment subscriptions alone.",
       },
       {
         type: "h2",
@@ -250,7 +250,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "A subscription tracker helps you monitor every streaming service you pay for. Use RenewTracker to track streaming subscriptions — Netflix, Spotify, Disney+, and more — so you can see total entertainment spend at a glance and decide where to cut back.",
+        text: "A subscription tracker helps you monitor every streaming service you pay for. Use RenewTracker to track streaming subscriptions — <a href=\"/track/netflix\" class=\"text-blue-600 hover:underline\">Netflix</a>, <a href=\"/track/spotify\" class=\"text-blue-600 hover:underline\">Spotify</a>, <a href=\"/track/disney-plus\" class=\"text-blue-600 hover:underline\">Disney+</a>, and more — so you can see total entertainment spend at a glance and decide where to cut back.",
       },
       {
         type: "tip",
@@ -459,9 +459,9 @@ export const blogPosts: BlogPost[] = [
       {
         type: "ul",
         items: [
-          "Cloud storage: People often pay for iCloud AND Google One AND Dropbox",
-          "AI tools: Multiple AI subscriptions for services that do the same thing",
-          "Design tools: Canva Pro, Figma, and Adobe CC for occasional use",
+          "Cloud storage: People often pay for <a href=\"/track/icloud-plus\" class=\"text-blue-600 hover:underline\">iCloud</a>, <a href=\"/track/google-one\" class=\"text-blue-600 hover:underline\">Google One</a>, AND <a href=\"/track/dropbox\" class=\"text-blue-600 hover:underline\">Dropbox</a>",
+          "AI tools: Multiple <a href=\"/track/chatgpt-plus\" class=\"text-blue-600 hover:underline\">AI subscriptions</a> for services that do the same thing",
+          "Design tools: <a href=\"/track/canva-pro\" class=\"text-blue-600 hover:underline\">Canva Pro</a>, <a href=\"/track/figma\" class=\"text-blue-600 hover:underline\">Figma</a>, and <a href=\"/track/adobe-creative-cloud\" class=\"text-blue-600 hover:underline\">Adobe CC</a> for occasional use",
           "Password managers: Multiple accounts when one is enough",
           "Domain and hosting: Forgotten domains registered 'just in case'",
         ],
@@ -805,8 +805,8 @@ export const blogPosts: BlogPost[] = [
         type: "ul",
         items: [
           "Streaming services often bundle student plans with music and video together",
-          "Productivity tools like Notion, Microsoft 365, and Google Workspace offer student pricing",
-          "Design and development tools (Adobe CC, GitHub, Canva) have generous student plans",
+          "Productivity tools like <a href=\"/track/notion\" class=\"text-blue-600 hover:underline\">Notion</a>, <a href=\"/track/microsoft-365\" class=\"text-blue-600 hover:underline\">Microsoft 365</a>, and Google Workspace offer student pricing",
+          "Design and development tools (<a href=\"/track/adobe-creative-cloud\" class=\"text-blue-600 hover:underline\">Adobe CC</a>, GitHub, <a href=\"/track/canva-pro\" class=\"text-blue-600 hover:underline\">Canva</a>) have generous student plans",
           "Cloud storage and backup services frequently include student discounts",
           "News and research publications offer academic rates",
         ],
@@ -901,7 +901,7 @@ export const blogPosts: BlogPost[] = [
     content: [
       {
         type: "p",
-        text: "Subscription services raise prices with surprising regularity. Netflix, Spotify, Amazon Prime, Apple TV+, and countless SaaS tools have all increased prices in recent years. The increases are often small — a dollar or two per month — but they add up when applied across all your services.",
+        text: "Subscription services raise prices with surprising regularity. <a href=\"/track/netflix\" class=\"text-blue-600 hover:underline\">Netflix</a>, <a href=\"/track/spotify\" class=\"text-blue-600 hover:underline\">Spotify</a>, <a href=\"/track/amazon-prime-video\" class=\"text-blue-600 hover:underline\">Amazon Prime</a>, <a href=\"/track/apple-tv-plus\" class=\"text-blue-600 hover:underline\">Apple TV+</a>, and countless SaaS tools have all increased prices in recent years. The increases are often small — a dollar or two per month — but they add up when applied across all your services.",
       },
       {
         type: "h2",
@@ -1007,7 +1007,7 @@ export const blogPosts: BlogPost[] = [
     content: [
       {
         type: "p",
-        text: "Subscription sharing has become a popular way to save money. Friends split a Netflix account, family members share cloud storage, and groups pool together for music streaming family plans. The savings can be significant, but shared subscriptions come with their own challenges — payment coordination, account access, and what happens when someone wants to leave.",
+        text: "Subscription sharing has become a popular way to save money. Friends split a <a href=\"/track/netflix\" class=\"text-blue-600 hover:underline\">Netflix</a> account, family members share cloud storage, and groups pool together for music streaming family plans. The savings can be significant, but shared subscriptions come with their own challenges — payment coordination, account access, and what happens when someone wants to leave.",
       },
       {
         type: "h2",
@@ -1041,7 +1041,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "A recurring payments organizer makes shared subscription management easy. RenewTracker sends billing reminders to the whole group, so no one forgets their share of the Netflix or Spotify family plan.",
+        text: "A recurring payments organizer makes shared subscription management easy. RenewTracker sends billing reminders to the whole group, so no one forgets their share of the <a href=\"/track/netflix\" class=\"text-blue-600 hover:underline\">Netflix</a> or <a href=\"/track/spotify\" class=\"text-blue-600 hover:underline\">Spotify</a> family plan.",
       },
       {
         type: "tip",
@@ -1346,8 +1346,8 @@ export const blogPosts: BlogPost[] = [
       {
         type: "ul",
         items: [
-          "Software tools (Adobe, Notion, Microsoft 365, project management apps)",
-          "Cloud storage and hosting (iCloud, Google Drive, AWS, web hosting)",
+          "Software tools (<a href=\"/track/adobe-creative-cloud\" class=\"text-blue-600 hover:underline\">Adobe</a>, <a href=\"/track/notion\" class=\"text-blue-600 hover:underline\">Notion</a>, <a href=\"/track/microsoft-365\" class=\"text-blue-600 hover:underline\">Microsoft 365</a>, project management apps)",
+          "Cloud storage and hosting (<a href=\"/track/icloud-plus\" class=\"text-blue-600 hover:underline\">iCloud</a>, Google Drive, AWS, web hosting)",
           "Professional memberships (industry associations, publications, journals)",
           "Marketing tools (email platforms, social media schedulers, SEO tools)",
           "Communication tools (Slack, Zoom, Microsoft Teams premium plans)",

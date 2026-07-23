@@ -6,15 +6,24 @@ export interface Props {
   description?: string;
   canonical?: string;
   ogImage?: string;
+  breadcrumbs?: { label: string; href?: string }[];
 }
 
 const site = "https://www.renewtracker.net";
 const defaultTitle = "RenewTracker — Never Miss a Subscription Payment";
-const defaultDesc = "Track every subscription, bill, rent, loan, and recurring payment in one place. Free reminders before every due date — Netflix, rent, credit cards, BNPL, and more.";
-const { title = defaultTitle, description = defaultDesc, canonical, ogImage = "/apple-icon.png" } = Astro.props;
+const defaultDesc = "Track every subscription, bill, rent, loan, and recurring payment in one place. Free email reminders before every due date — Netflix, Spotify, rent, domains, BNPL, and more. Forever free.";
+const { title = defaultTitle, description = defaultDesc, canonical, ogImage = "/apple-icon.png", breadcrumbs } = Astro.props;
 
 const pageTitle = title.includes("RenewTracker") ? title : `${title} — RenewTracker`;
-const jsonLd = {
+
+const path = Astro.url.pathname.endsWith("/") ? Astro.url.pathname : Astro.url.pathname + "/";
+
+const author = "RenewTracker Team";
+const publisher = "RenewTracker";
+
+const jsonLd = [];
+
+jsonLd.push({
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "RenewTracker",
@@ -22,8 +31,26 @@ const jsonLd = {
   description: defaultDesc,
   applicationCategory: "FinanceApplication",
   operatingSystem: "Web",
+  author: { "@type": "Organization", name: "RenewTracker" },
+  publisher: { "@type": "Organization", name: "RenewTracker" },
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-};
+});
+
+if (breadcrumbs && breadcrumbs.length > 0) {
+  jsonLd.push({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: site + "/" },
+      ...breadcrumbs.map((b, i) => ({
+        "@type": "ListItem",
+        position: i + 2,
+        name: b.label,
+        ...(b.href ? { item: site + b.href } : {}),
+      })),
+    ],
+  });
+}
 ---
 
 <!doctype html>
@@ -33,7 +60,7 @@ const jsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="subscription tracker,subscription manager,subscription reminder,renewal tracker,renewal reminder,recurring payment tracker,recurring subscription manager,subscription organizer,subscription calendar,subscription monitoring,manage subscriptions online,track subscriptions,subscription renewal software,auto renewal tracker,subscription expiration tracker,domain renewal reminder,domain expiration tracker,hosting renewal reminder,SSL certificate expiration reminder,website renewal tracker,domain expiry checker,track domain renewals,renewal calendar,monthly subscriptions tracker,manage monthly bills,recurring expenses tracker,bill reminder app,expense subscription manager,track streaming subscriptions,subscription budgeting app,recurring payments organizer,Netflix subscription tracker,software subscription tracker,SaaS subscription management,software license tracker,subscription management software,vendor renewal tracker,company subscription manager,business renewal reminder,software expiry tracker,contract renewal management,asset renewal tracker,membership renewal software,best subscription tracker app,free subscription tracker,online renewal reminder tool,subscription reminder website,subscription expiration management tool,how to track subscriptions,avoid forgotten subscriptions,stop unwanted renewals,recurring bills organizer,manage all subscriptions in one place,subscription tracker with email reminders,subscription tracker with notifications,domain and subscription tracker,free renewal tracking software,bill reminder,recurring payment tracker,monthly bill organizer,BNPL tracker,credit card payment reminder,free subscription manager,renewtracker" />
+    <meta name="keywords" content="subscription tracker, subscription manager, renewal reminder, free subscription tracker, domain renewal tracker, bill reminder, recurring payment tracker, BNPL tracker" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#2563eb" />
     <link rel="canonical" href={canonical || site + Astro.url.pathname} />
@@ -55,7 +82,11 @@ const jsonLd = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={site + ogImage} />
 
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    {jsonLd.length === 1 ? (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd[0])} />
+    ) : (
+      jsonLd.map((ld) => <script type="application/ld+json" set:html={JSON.stringify(ld)} />)
+    )}
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVZZSHSQM0"></script>
     <script>
